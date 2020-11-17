@@ -15,7 +15,11 @@ CC = gcc
 FLG = -Wall -Wextra -Werror
 INC = ./inc/
 SRC_PATH = src/
-SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
+SRC = $(addprefix $(SRC_PATH)lib/, $(SRCS_LIB)) \
+	  $(addprefix $(SRC_PATH)bonus/, $(SRCS_BONUS)) \
+	  $(addprefix $(SRC_PATH)printf/, $(SRCS_PRINTF)) \
+
+SRCS_LIB = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c ft_lstdel.c \
 	  ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_memalloc.c \
 	  ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
@@ -27,16 +31,60 @@ SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c \
 	  ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
 	  ft_tolower.c ft_toupper.c
-BONUS = ft_abs.c ft_isspace.c ft_max.c ft_min.c ft_islower.c ft_isupper.c \
-		ft_sqrt.c ft_strndup.c ft_isprime.c ft_itoa_base.c ft_utoa_base.c \
-		 ft_strspn.c ft_strpbrk.c ft_strjoin_free.c free_tab.c tablen.c \
-		get_next_line.c ft_swap.c sort_int_tab.c tabcpy.c nbwords.c \
-		lstdel_tlist.c ft_listsize.c ft_intlen.c ft_dabs.c \
-		ft_putnbrmax_fd.c ft_putnbrmax.c ft_putnbrumax_fd.c \
-		ft_putnbrumax.c ft_intmaxabs.c ft_ldabs.c ft_llabs.c ft_pow.c ft_powl.c \
-		ft_powf.c
 
-OBJ = $(SRC:.c=.o) $(BONUS:.c=.o)
+SRCS_BONUS = ft_abs.c \
+			ft_isspace.c \
+			ft_max.c \
+			ft_min.c \
+			ft_islower.c \
+			ft_isupper.c \
+			ft_sqrt.c \
+			ft_strndup.c \
+			ft_isprime.c \
+			ft_itoa_base.c \
+			ft_utoa_base.c \
+		 	ft_strspn.c \
+		 	ft_strpbrk.c \
+			ft_strjoin_free.c \
+			free_tab.c \
+			tablen.c \
+			get_next_line.c \
+			ft_swap.c \
+			sort_int_tab.c \
+			tabcpy.c \
+			nbwords.c \
+			lstdel_tlist.c \
+			ft_listsize.c \
+			ft_intlen.c \
+			ft_dabs.c \
+			ft_putnbrmax_fd.c \
+			ft_putnbrmax.c \
+			ft_putnbrumax_fd.c \
+			ft_putnbrumax.c \
+			ft_intmaxabs.c \
+			ft_ldabs.c \
+			ft_llabs.c \
+			ft_pow.c \
+			ft_powl.c \
+			ft_powf.c \
+
+SRCS_PRINTF = ft_printf.c \
+		 parse.c \
+		 parse_utils.c \
+		 convert_length.c \
+		 print_percent.c \
+		 print_c.c \
+		 print_s.c \
+		 print_p.c \
+		 print_di.c \
+		 print_o.c \
+		 print_u.c \
+		 print_x.c \
+		 print_f.c \
+		 utils.c \
+		 utils2.c \
+
+OBJ = $(SRCS_LIB:.c=.o) $(SRCS_BONUS:.c=.o) $(SRCS_PRINTF:.c=.o)
 
 all: $(NAME)
 
