@@ -18,9 +18,10 @@ SRC_PATH = src/
 SRC = $(addprefix $(SRC_PATH)lib/, $(SRCS_LIB)) \
 	  $(addprefix $(SRC_PATH)bonus/, $(SRCS_BONUS)) \
 	  $(addprefix $(SRC_PATH)printf/, $(SRCS_PRINTF)) \
+	  $(addprefix $(SRC_PATH)ctype/, $(SRCS_CTYPE)) \
 
-SRCS_LIB = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-	  ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c ft_lstdel.c \
+SRCS_LIB = ft_atoi.c ft_bzero.c \
+	   ft_itoa.c ft_lstadd.c ft_lstdel.c \
 	  ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_memalloc.c \
 	  ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
 	  ft_memmove.c ft_memset.c ft_putchar.c ft_putchar_fd.c ft_putendl.c \
@@ -30,14 +31,10 @@ SRCS_LIB = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c \
 	  ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c \
 	  ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c \
-	  ft_tolower.c ft_toupper.c
-
+	  
 SRCS_BONUS = ft_abs.c \
-			ft_isspace.c \
 			ft_max.c \
 			ft_min.c \
-			ft_islower.c \
-			ft_isupper.c \
 			ft_sqrt.c \
 			ft_strndup.c \
 			ft_isprime.c \
@@ -68,6 +65,18 @@ SRCS_BONUS = ft_abs.c \
 			ft_powl.c \
 			ft_powf.c \
 
+SRCS_CTYPE = ft_isalnum.c \
+			 ft_isalpha.c \
+			 ft_isascii.c \
+			 ft_isdigit.c \
+			 ft_isprint.c \
+			 ft_ispunct.c \
+			 ft_isspace.c \
+			 ft_islower.c \
+			 ft_isupper.c \
+			 ft_tolower.c \
+			 ft_toupper.c \
+
 SRCS_PRINTF = ft_printf.c \
 		 parse.c \
 		 parse_utils.c \
@@ -84,7 +93,7 @@ SRCS_PRINTF = ft_printf.c \
 		 utils.c \
 		 utils2.c \
 
-OBJ = $(SRCS_LIB:.c=.o) $(SRCS_BONUS:.c=.o) $(SRCS_PRINTF:.c=.o)
+OBJ = $(SRCS_LIB:.c=.o) $(SRCS_BONUS:.c=.o) $(SRCS_PRINTF:.c=.o) $(SRCS_CTYPE:.c=.o)
 
 all: $(NAME)
 
