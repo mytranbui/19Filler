@@ -105,7 +105,8 @@ int	parse(va_list ap, t_print *p, int i)
 		{
 			if (isflag(p->fmt[i]))
 				i = get_flag(p, i);
-			else if (ft_isdigit(p->fmt[i]) || p->fmt[i] == '.' || p->fmt[i] == '*')
+			else if (ft_isdigit(p->fmt[i]) || p->fmt[i] == '.'
+			|| p->fmt[i] == '*')
 				i = get_width_pres(ap, p, i);
 			else if (issize(p->fmt[i]))
 				i = get_size(p, i);

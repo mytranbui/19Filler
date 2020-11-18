@@ -12,23 +12,23 @@
 
 #include "../../inc/libftprintf.h"
 
-int		isflag(char c)
+int	isflag(char c)
 {
 	return (c == '+' || c == '-' || c == ' ' || c == '#' || c == '0');
 }
 
-int		istype(char c)
+int	istype(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o'
 			|| c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == '%');
 }
 
-int		issize(char c)
+int	issize(char c)
 {
 	return (c == 'h' || c == 'l' || c == 'L');
 }
 
-int		validtype(t_print *p, int i)
+int	validtype(t_print *p, int i)
 {
 	while (p->fmt[i])
 	{
