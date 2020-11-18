@@ -6,7 +6,7 @@
 #    By: mbui <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 17:37:13 by mbui              #+#    #+#              #
-#    Updated: 2020/11/15 17:37:42 by mbui             ###   ########.fr        #
+#    Updated: 2020/11/18 19:21:48 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = mbui.filler
 CC = gcc
 FLG = -Wall -Wextra -Werror
 SRC_DIR = src/
-SRC = check_input.c store.c solve.c main.c 
+SRC = test.c 
 LIB = libft/libft.a
 OBJ = $(SRC:.c=.o)
 

@@ -153,7 +153,7 @@ SRCS_PRINTF = ft_printf.c \
 all: $(NAME)
 
 $(NAME):
-	$(CC) -c $(FLG) $(SRC)
+	@$(CC) -c $(FLG) $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "\033[1;32m$(NAME) \033[0m\033[32mcreated."
