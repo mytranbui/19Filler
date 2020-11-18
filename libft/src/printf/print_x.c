@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libftprintf.h"
+#include "libftprintf.h"
 
 /*
 ** %x & %X: undefined behavior with +, '0' and ' '
