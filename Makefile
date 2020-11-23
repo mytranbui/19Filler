@@ -6,7 +6,7 @@
 #    By: mbui <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 17:37:13 by mbui              #+#    #+#              #
-#    Updated: 2020/11/18 19:21:48 by mbui             ###   ########.fr        #
+#    Updated: 2020/11/23 10:00:34 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = mbui.filler
 CC = gcc
 FLG = -Wall -Wextra -Werror
 SRC_DIR = src/
-SRC = test.c 
+SRC = main.c 
 LIB = libft/libft.a
 OBJ = $(SRC:.c=.o)
 
@@ -23,7 +23,7 @@ all: $(NAME)
 $(NAME): getlibft
 	@$(CC) $(FLG) -c $(addprefix $(SRC_DIR)/,$(SRC))
 	@$(CC) $(FLG) $(OBJ) $(LIB) -o $(NAME)
-	@echo "$(NAME) created.\n"
+	@echo "\033[1;32m$(NAME) \033[0m\033[32mcreated.\033[0m"
 
 getlibft:
 	@make -C libft
@@ -31,12 +31,12 @@ getlibft:
 clean:
 	@rm -f $(OBJ)
 	@make clean -C libft
-	@printf "objects of filler removed.\n"
+	@echo "\033[31mobject files of \033[0m\033[1;31m$(NAME)\033[0m \033[31mremoved.\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C libft
-	@printf "$(NAME) removed.\n"
+	@echo "\033[1;31m$(NAME) \033[0m\033[31mremoved.\033[0m"
 
 re: fclean all
 

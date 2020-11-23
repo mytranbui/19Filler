@@ -1,5 +1,6 @@
-seed = 3496
-X: error on input
+seed = 4866
+O: error on input
+../mbui.filler: Segfault at 0
 players/champely.filler won
 Score:
 0AGAINST0

@@ -122,4 +122,5 @@ void			ft_putnbrumax(uintmax_t n);
 double			ft_pow(double x, double y);
 long double		ft_powl(long double x, long double y);
 float			ft_powf(float x, float y);
+int				ft_printf(const char *format, ...);
 #endif

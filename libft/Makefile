@@ -156,15 +156,15 @@ $(NAME):
 	@$(CC) -c $(FLG) $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "\033[1;32m$(NAME) \033[0m\033[32mcreated."
+	@echo "\033[1;32m$(NAME) \033[0m\033[32mcreated.\033[0m"
 
 clean:
 	@rm -f $(OBJ) libft.h.gch
-	@echo "\033[31mobjects files of \033[0m\033[1;31m$(NAME)\033[0m \033[31mremoved.\033[0m"
+	@echo "\033[31mobject files of \033[0m\033[1;31m$(NAME)\033[0m \033[31mremoved.\033[0m"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "\033[1;31m$(NAME) \033[0m\033[31mremoved."
+	@echo "\033[1;31m$(NAME) \033[0m\033[31mremoved.\033[0m"
 
 re: fclean all
 
