@@ -20,7 +20,7 @@
 int	main(void)
 {
 	ft_printf("MBUI");
-	//t_filler	f;
+	t_filler	f;
 	int			i;
 	int			j;
 	char		*line;
@@ -31,6 +31,9 @@ int	main(void)
 	j = 0;
 	count_lines = 0;
 	get_next_line(0, &line);
+	//if (!(f = (t_filler*)ft_memalloc(sizeof(t_filler))))
+	//	return (-1);
+	//init_filler(f);
 	//fprintf("line[10]=%s\n", line[10]);
 	// while ((ret = get_next_line(0, &line)) == 1)
 	// 	{
@@ -40,6 +43,7 @@ int	main(void)
 	// 	}
 	// 	free(line);
 	// 	ft_printf("\n------\nRet: %d\nLines: %d\n", ret, count_lines);
+	f.me = (line[10] == '1') ? 'o' : 'x';
 	FILE *ID = fopen("debug.txt","a");
     //fprintf(ID,"LOL%c\n", line[10]);
 	while (line[j])

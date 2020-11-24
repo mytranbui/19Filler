@@ -122,13 +122,13 @@ SRCS_LST = ft_lstnew.c \
 		   ft_listsize.c \
 		   lstdel_tlist.c \
 
-SRCS_BONUS = ft_max.c \
+SRCS_BONUS = ft_swap.c \
+			ft_max.c \
 			ft_min.c \
 			ft_isprime.c \
 			free_tab.c \
 			tablen.c \
 			get_next_line.c \
-			ft_swap.c \
 			sort_int_tab.c \
 			tabcpy.c \
 			nbwords.c \
