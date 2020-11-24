@@ -45,6 +45,7 @@ int	main(void)
 	// 	ft_printf("\n------\nRet: %d\nLines: %d\n", ret, count_lines);
 	f.me = (line[10] == '1') ? 'o' : 'x';
 	FILE *ID = fopen("debug.txt","a");
+	fprintf(ID,"f.me=%c\n", f.me);
     //fprintf(ID,"LOL%c\n", line[10]);
 	while (line[j])
 	{
