@@ -12,29 +12,39 @@
 
 #ifndef FILLER_H
 # define FILLER_H
+
 # include "libft/libft.h"
+# include <stdio.h>
 # define MAX_READ 545
 
-typedef struct	s_coord
+typedef struct	s_point
 {
 	int	x;
 	int	y;
-}		t_coord;
+}		t_point;
 
-/*typedef struct	s_tetro
+typedef struct	s_piece
 {
+	int	width;
+	int	height;
+}		t_piece;
 
-}		t_tetro;
-
-typedef struct	s_map;
+/*typedef struct	s_map;
 {
 }		t_map;
 */
 
 typedef struct	s_filler
 {
-	int	player;
-	int	cpu;
+	//char	**map;
+	//char	**piece;
+	char	me;
+	char	ennemy;
+	int		player;
+	int		cpu;
+	t_piece	piece;
+	t_piece	map;
+	int		score;
 }				t_filler;
 
 
