@@ -39,14 +39,12 @@ typedef struct	s_filler
 	//char	**map;
 	//char	**piece;
 	char	me;
-	char	ennemy;
-	int		player;
-	int		cpu;
+	char	opp;
 	t_piece	piece;
 	t_piece	map;
 	int		score;
 }				t_filler;
 
 
-int	main(void);
+int		main(void);
 #endif
