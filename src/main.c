@@ -30,14 +30,17 @@ void	debug(void)
 	
 	i = 0;
 	ID = fopen("debug.txt","a");
-	get_next_line(0, &line);
-	while (line[i])
+	//get_next_line(0, &line);
+	 while (get_next_line(0, &line) > -1)
+	//while (line[i])
 	{
-		fprintf(ID,"line[%d]=%c\n",i, line[i]);
+		//if (!line)
+		//	continue;
+		fprintf(ID,"line[%d]=%s\n",i, line);
 	 	i++;
+		ft_strdel(&line);
 	}
     fclose(ID);
-	ft_strdel(&line);
 }
 
 int	main(void)
@@ -45,7 +48,7 @@ int	main(void)
 	t_filler	f;
 	int			i;
 	int			j;
-	//char		*line;
+	char		*line;
 	//int			ret;
 	int			count_lines;
 	
@@ -70,7 +73,9 @@ int	main(void)
 	FILE *ID = fopen("debug.txt","a");
 	fprintf(ID,"f.me=%c\n", f.me);
 	fprintf(ID,"f.opp=%c\n", f.opp);
-	debug();
+	line = NULL;
+	//while (!line)
+		debug();
 	// get_next_line(0, &line);
 	// while (line[j])
 	// {
