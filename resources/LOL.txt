@@ -1,2 +1,0 @@
-f.me=O
-f.opp=X

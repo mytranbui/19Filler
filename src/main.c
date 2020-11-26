@@ -12,53 +12,57 @@
 
 #include "../filler.h"
 
-int		get_player(t_filler *filler)
-{
-	 FILE	*ID;
-
-
-	ID = fopen("play.txt","a");
-	 fprintf(ID,"LOL");
-	char 	*line;
-
-	get_next_line(0, &line);
-	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
-	(line[10] == '1' || line[10] == '2'))
-	{
-	 	fprintf(ID,"LOL");
-		filler->me = (line[10] == '1') ? 'O' : 'X';
-		filler->opp = (line[10] == '1') ? 'X' : 'O';
-		ft_strdel(&line);
-		FILE *ID = fopen("LOL.txt","a");
-	fprintf(ID,"f.me=%c\n", filler->me);
-	fprintf(ID,"f.opp=%c\n", filler->opp);
-		return (1);
-	}
-	return (-1);
-}
-
-// void	get_mapsize(t_filler *filler)
-// {
-
-// }
-
 void	debug(int i)
 {
 	char	*line;
-	// int		i;
 	FILE	*ID;
 	
-	// i = 0;
 	ID = fopen("debug.txt","a");
 	get_next_line(0, &line);
 	fprintf(ID,"line[%d]=%s\n",i, line);
-	// while (line[i])
-	// {
-	// 	fprintf(ID,"line[%d]=%c\n",i, line[i]);
-	//  	i++;
-	// }
 	ft_strdel(&line);
     fclose(ID);
+}
+
+void	get_player(t_filler *filler)
+{
+	char 	*line;
+	FILE *ID = fopen("player.txt","a");
+
+	get_next_line(0, &line);
+	fprintf(ID,"line=%s\n", line);
+	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
+	(line[10] == '1' || line[10] == '2'))
+	{
+		filler->me = (line[10] == '1') ? 'O' : 'X';
+		filler->opp = (line[10] == '1') ? 'X' : 'O';
+		ft_strdel(&line);
+		fprintf(ID,"f.me=%c\n", filler->me);
+		fprintf(ID,"f.opp=%c\n", filler->opp);
+	//	return (1);
+	}
+	//return (-1);
+}
+
+void	get_mapsize(t_filler *filler)
+{
+	char 	*line;
+	char 	**size;
+
+	get_next_line(0, &line);
+	if (line && !ft_strncmp(line, "Plateau ", 8))
+	{	
+		if (!(size = ft_strsplit(line, ' ')))
+			return ;
+		filler->map.width = ft_atoi(size[1]);
+		filler->map.height = ft_atoi(size[2]);
+		ft_strdel(&line);
+		FILE *ID = fopen("map.txt","a");
+		fprintf(ID,"f.map.width=%d\n", filler->map.width);
+		fprintf(ID,"f.map.height=%d\n", filler->map.height);
+		//return (1);
+	}
+//	return (-1);
 }
 
 void	debug2(void)
@@ -92,12 +96,14 @@ int	main(void)
 	i = 0;
 	line = NULL;
 	ft_bzero(&f, sizeof(t_filler));
-	if (get_player(&f))
-	{
-		FILE *ID = fopen("LOL2.txt","a");
-		fprintf(ID,"f.me=%c\n", f.me);
-		fprintf(ID,"f.opp=%c\n", f.opp);
-	}
+	get_player(&f);
+	get_mapsize(&f);
+	debug(i);
+	// while (!line)
+	// {
+	// 	debug(i);
+	// 	i++;
+	// }
 	// while (!line)
 	//  // while (get_next_line(0, &line) > -1)
 	// {
@@ -118,27 +124,5 @@ int	main(void)
 	// 	}
 	// 	free(line);
 	// 	ft_printf("\n------\nRet: %d\nLines: %d\n", ret, count_lines);
-	//f.me = (line[10] == '1') ? 'O' : 'X';
-	//f.opp = (line[10] == '1') ? 'X' : 'O';
-	// FILE *ID = fopen("debug.txt","a");
-	// fprintf(ID,"f.me=%c\n", f.me);
-	// fprintf(ID,"f.opp=%c\n", f.opp);
-	// // if (!ft_strncmp(line, "Plateau ", 8))
-	// // line = NULL;
-	// while (!line)
-	//  // while (get_next_line(0, &line) > -1)
-	// {
-	// 	debug(i);
-	// 	// if (!ft_strncmp(line, "(null)", ft_strlen(line) - 6))
-	// 	// 	return (-1);
-	// 	i++;
-	// }
-	// get_next_line(0, &line);
-	// while (line[j])
-	// {
-	// 	fprintf(ID,"line[%d]=%c\n",j, line[j]);
-	//  	j++;
-	// }
-    // fclose(ID);
 	return (0);
 }
