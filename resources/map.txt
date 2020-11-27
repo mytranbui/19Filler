@@ -1,4 +1,2 @@
-f.map.width=15
-f.map.height=17
-f.map.width=15
-f.map.height=17
+f.map.height=15
+f.map.width=17

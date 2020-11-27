@@ -12,7 +12,7 @@
 
 #include "../filler.h"
 
-void	debug(int i)
+int	debug(int i)//, char *line)
 {
 	char	*line;
 	FILE	*ID;
@@ -20,8 +20,20 @@ void	debug(int i)
 	ID = fopen("debug.txt","a");
 	get_next_line(0, &line);
 	fprintf(ID,"line[%d]=%s\n",i, line);
+	if (!line)
+	//if (!ft_strncmp(line, "(null)", 6))
+	{
+		fprintf(ID,"ENDNULL");
+		return (-1);
+	}
+	if (line && !ft_strncmp(line, "== X fin: ", 10))
+	{
+		fprintf(ID,"ENDOK");
+			return (-1);
+	}
 	ft_strdel(&line);
     fclose(ID);
+	return (1);
 }
 
 void	get_player(t_filler *filler)
@@ -54,12 +66,35 @@ void	get_mapsize(t_filler *filler)
 	{	
 		if (!(size = ft_strsplit(line, ' ')))
 			return ;
-		filler->map.width = ft_atoi(size[1]);
-		filler->map.height = ft_atoi(size[2]);
+		filler->map.height = ft_atoi(size[1]);
+		filler->map.width = ft_atoi(size[2]);
+		free_tab(size, 3);
 		ft_strdel(&line);
 		FILE *ID = fopen("map.txt","a");
-		fprintf(ID,"f.map.width=%d\n", filler->map.width);
 		fprintf(ID,"f.map.height=%d\n", filler->map.height);
+		fprintf(ID,"f.map.width=%d\n", filler->map.width);
+		//return (1);
+	}
+//	return (-1);
+}
+
+void	get_piece(t_filler *filler, char *line)
+{
+	//char 	*line;
+	char 	**size;
+
+	//get_next_line(0, &line);
+	if (line && !ft_strncmp(line, "Piece ", 6))
+	{	
+		if (!(size = ft_strsplit(line, ' ')))
+			return ;
+		filler->map.height = ft_atoi(size[1]);
+		filler->map.width = ft_atoi(size[2]);
+		free_tab(size, 3);
+		ft_strdel(&line);
+		FILE *ID = fopen("map.txt","a");
+		fprintf(ID,"f.piece.height=%d\n", filler->piece.height);
+		fprintf(ID,"f.piece.width=%d\n", filler->piece.width);
 		//return (1);
 	}
 //	return (-1);
@@ -91,14 +126,20 @@ int	main(void)
 	t_filler	f;
 	int			i;
 	char		*line;
-	//int			ret;
+	int			ret;
 	
 	i = 0;
 	line = NULL;
 	ft_bzero(&f, sizeof(t_filler));
 	get_player(&f);
 	get_mapsize(&f);
-	debug(i);
+	//ret = 1;
+	while ((ret = debug(i)) == 1)
+	//while (get_next_line(0, &line) > -1 && ret == 1)
+	{
+		//ret = debug(i);//, line);
+		i++;
+	}
 	// while (!line)
 	// {
 	// 	debug(i);
