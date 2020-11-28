@@ -1,2 +1,0 @@
-f.map.height=15
-f.map.width=17

@@ -21,7 +21,6 @@ int	debug(int i)//, char *line)
 	get_next_line(0, &line);
 	fprintf(ID,"line[%d]=%s\n",i, line);
 	if (!line)
-	//if (!ft_strncmp(line, "(null)", 6))
 	{
 		fprintf(ID,"ENDNULL");
 		return (-1);
@@ -56,6 +55,48 @@ void	get_player(t_filler *filler)
 	//return (-1);
 }
 
+t_object		*fill_object(t_object *object)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	line = NULL;
+	FILE *ID = fopen("fillobject.txt","a");
+	if (!(object->tab = (char **)ft_memalloc(sizeof(char *) * object->height)))
+		return (NULL);
+	while (i < object->height && get_next_line(0, &line) > -1 && line)
+	{
+		if (!(object->tab[i] = ft_strsub(line, 4, object->width)))
+			return (NULL);
+		fprintf(ID,"object->tab[%d]=%s\n", i,object->tab[i]);
+		ft_strdel(&line);
+		i++;
+	}
+	return (object);
+}
+
+int		fill_map(t_filler *filler)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	line = NULL;
+	FILE *ID = fopen("fillmap.txt","a");
+	if (!(filler->map.tab = (char **)ft_memalloc(sizeof(char *) * filler->map.height)))
+		return (-1);
+	while (i < filler->map.height && get_next_line(0, &line) > -1 && line)
+	{
+		if (!(filler->map.tab[i] = ft_strsub(line, 4, filler->map.width)))
+			return (-1);
+		fprintf(ID,"f.map.tab[%d]=%s\n", i,filler->map.tab[i]);
+		ft_strdel(&line);
+		i++;
+	}
+	return (1);
+}
+
 void	get_mapsize(t_filler *filler)
 {
 	char 	*line;
@@ -70,6 +111,12 @@ void	get_mapsize(t_filler *filler)
 		filler->map.width = ft_atoi(size[2]);
 		free_tab(size, 3);
 		ft_strdel(&line);
+		get_next_line(0, &line);// skip line lol
+		ft_strdel(&line);
+		// if (!(fill_map(filler)))
+			// return ;
+		if (!(filler->map = *fill_object(&filler->map)))
+			return ;
 		FILE *ID = fopen("map.txt","a");
 		fprintf(ID,"f.map.height=%d\n", filler->map.height);
 		fprintf(ID,"f.map.width=%d\n", filler->map.width);
