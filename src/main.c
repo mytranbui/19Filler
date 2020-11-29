@@ -35,7 +35,7 @@ int	debug(int i)//, char *line)
 	return (1);
 }
 
-void	get_player(t_filler *filler)
+int	get_player(t_filler *filler)
 {
 	char 	*line;
 	FILE *ID = fopen("player.txt","a");
@@ -50,12 +50,12 @@ void	get_player(t_filler *filler)
 		ft_strdel(&line);
 		fprintf(ID,"f.me=%c\n", filler->me);
 		fprintf(ID,"f.opp=%c\n", filler->opp);
-	//	return (1);
+		return (1);
 	}
-	//return (-1);
+	return (-1);
 }
 
-t_object		*fill_object(t_object *object)
+int		fill_object(t_object *object, unsigned int start)
 {
 	int		i;
 	char	*line;
@@ -64,45 +64,22 @@ t_object		*fill_object(t_object *object)
 	line = NULL;
 	FILE *ID = fopen("fillobject.txt","a");
 	if (!(object->tab = (char **)ft_memalloc(sizeof(char *) * object->height)))
-		return (NULL);
+		return (-1);
 	while (i < object->height && get_next_line(0, &line) > -1 && line)
 	{
-		if (!(object->tab[i] = ft_strsub(line, 4, object->width)))
-			return (NULL);
-		fprintf(ID,"object->tab[%d]=%s\n", i,object->tab[i]);
-		ft_strdel(&line);
-		i++;
-	}
-	return (object);
-}
-
-int		fill_map(t_filler *filler)
-{
-	int		i;
-	char	*line;
-
-	i = 0;
-	line = NULL;
-	FILE *ID = fopen("fillmap.txt","a");
-	if (!(filler->map.tab = (char **)ft_memalloc(sizeof(char *) * filler->map.height)))
-		return (-1);
-	while (i < filler->map.height && get_next_line(0, &line) > -1 && line)
-	{
-		if (!(filler->map.tab[i] = ft_strsub(line, 4, filler->map.width)))
+		if (!(object->tab[i] = ft_strsub(line, start, object->width)))
 			return (-1);
-		fprintf(ID,"f.map.tab[%d]=%s\n", i,filler->map.tab[i]);
+		fprintf(ID,"object->tab[%d]=%s\n", i,object->tab[i]);
 		ft_strdel(&line);
 		i++;
 	}
 	return (1);
 }
 
-void	get_mapsize(t_filler *filler)
+void	get_map(t_filler *filler, char *line)
 {
-	char 	*line;
 	char 	**size;
 
-	get_next_line(0, &line);
 	if (line && !ft_strncmp(line, "Plateau ", 8))
 	{	
 		if (!(size = ft_strsplit(line, ' ')))
@@ -113,9 +90,7 @@ void	get_mapsize(t_filler *filler)
 		ft_strdel(&line);
 		get_next_line(0, &line);// skip line lol
 		ft_strdel(&line);
-		// if (!(fill_map(filler)))
-			// return ;
-		if (!(filler->map = *fill_object(&filler->map)))
+		if (!(fill_object(&filler->map, 4)))
 			return ;
 		FILE *ID = fopen("map.txt","a");
 		fprintf(ID,"f.map.height=%d\n", filler->map.height);
@@ -127,18 +102,18 @@ void	get_mapsize(t_filler *filler)
 
 void	get_piece(t_filler *filler, char *line)
 {
-	//char 	*line;
 	char 	**size;
 
-	//get_next_line(0, &line);
 	if (line && !ft_strncmp(line, "Piece ", 6))
 	{	
 		if (!(size = ft_strsplit(line, ' ')))
 			return ;
-		filler->map.height = ft_atoi(size[1]);
-		filler->map.width = ft_atoi(size[2]);
+		filler->piece.height = ft_atoi(size[1]);
+		filler->piece.width = ft_atoi(size[2]);
 		free_tab(size, 3);
 		ft_strdel(&line);
+		if (!(fill_object(&filler->piece, 0)))
+			return ;
 		FILE *ID = fopen("map.txt","a");
 		fprintf(ID,"f.piece.height=%d\n", filler->piece.height);
 		fprintf(ID,"f.piece.width=%d\n", filler->piece.width);
@@ -156,8 +131,7 @@ void	debug2(void)
 	i = 0;
 	ID = fopen("debugi.txt","a");
 	//get_next_line(0, &line);
-	 while (get_next_line(0, &line) > -1)
-	//while (line[i])
+	 while (get_next_line(0, &line) > -1 && line)
 	{
 		//if (!line)
 		//	continue;
@@ -173,44 +147,22 @@ int	main(void)
 	t_filler	f;
 	int			i;
 	char		*line;
-	int			ret;
+	//int			ret;
 	
 	i = 0;
 	line = NULL;
 	ft_bzero(&f, sizeof(t_filler));
-	get_player(&f);
-	get_mapsize(&f);
-	//ret = 1;
-	while ((ret = debug(i)) == 1)
-	//while (get_next_line(0, &line) > -1 && ret == 1)
+	if (!(get_player(&f)))
+		return (-1);
+	//while ((ret = debug(i)) == 1)
+	FILE *ID = fopen("debugi.txt","a");
+	while (get_next_line(0, &line) > -1 && line)
 	{
-		//ret = debug(i);//, line);
+		get_map(&f, line);
+		get_piece(&f, line);
+		fprintf(ID,"line[%d]=%s\n",i, line);
+		ft_strdel(&line);
 		i++;
 	}
-	// while (!line)
-	// {
-	// 	debug(i);
-	// 	i++;
-	// }
-	// while (!line)
-	//  // while (get_next_line(0, &line) > -1)
-	// {
-	// 	debug(i);
-	// 	// if (!ft_strncmp(line, "(null)", ft_strlen(line) - 6))
-	// 	// 	return (-1);
-	// 	i++;
-	// }
-	//if (!(f = (t_filler*)ft_memalloc(sizeof(t_filler))))
-	//	return (-1);
-	//init_filler(f);
-	//fprintf("line[10]=%s\n", line[10]);
-	// while ((ret = get_next_line(0, &line)) == 1)
-	// 	{
-	// 		ft_printf("line=%s\n", line);
-	// 		ft_strdel(&line);
-	// 		count_lines++;
-	// 	}
-	// 	free(line);
-	// 	ft_printf("\n------\nRet: %d\nLines: %d\n", ret, count_lines);
 	return (0);
 }

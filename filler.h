@@ -15,7 +15,6 @@
 
 # include "libft/libft.h"
 # include <stdio.h>
-# define MAX_READ 545
 
 typedef struct	s_point
 {
@@ -37,8 +36,6 @@ typedef struct	s_object
 
 typedef struct	s_filler
 {
-	//char	**map;
-	//char	**piece;
 	char		me;
 	char		opp;
 	t_object	piece;
@@ -47,5 +44,5 @@ typedef struct	s_filler
 }				t_filler;
 
 
-int		main(void);
+int				main(void);
 #endif
