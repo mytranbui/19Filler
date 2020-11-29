@@ -78,15 +78,10 @@ int		fill_object(t_object *object, unsigned int start)
 
 void	get_map(t_filler *filler, char *line)
 {
-	char 	**size;
-
 	if (line && !ft_strncmp(line, "Plateau ", 8))
 	{	
-		if (!(size = ft_strsplit(line, ' ')))
-			return ;
-		filler->map.height = ft_atoi(size[1]);
-		filler->map.width = ft_atoi(size[2]);
-		free_tab(size, 3);
+		filler->map.height = ft_atoi(ft_strchr(line, ' '));
+		filler->map.width = ft_atoi(ft_strrchr(line, ' '));
 		ft_strdel(&line);
 		get_next_line(0, &line);// skip line lol
 		ft_strdel(&line);
@@ -102,15 +97,10 @@ void	get_map(t_filler *filler, char *line)
 
 void	get_piece(t_filler *filler, char *line)
 {
-	char 	**size;
-
 	if (line && !ft_strncmp(line, "Piece ", 6))
 	{	
-		if (!(size = ft_strsplit(line, ' ')))
-			return ;
-		filler->piece.height = ft_atoi(size[1]);
-		filler->piece.width = ft_atoi(size[2]);
-		free_tab(size, 3);
+		filler->piece.height = ft_atoi(ft_strchr(line, ' '));
+		filler->piece.width = ft_atoi(ft_strrchr(line, ' '));
 		ft_strdel(&line);
 		if (!(fill_object(&filler->piece, 0)))
 			return ;
