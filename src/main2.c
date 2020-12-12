@@ -86,7 +86,7 @@ void	init_object(t_object *object)
 	object->width = 0;
 }
 
-void	fill_object(t_object *object, unsigned int start)
+int		fill_object(t_object *object, unsigned int start)
 {
 	int		i;
 	char	*line;
@@ -94,20 +94,21 @@ void	fill_object(t_object *object, unsigned int start)
 	i = 0;
 	line = NULL;
 	FILE *ID = fopen("fillobject.txt","a");
-	//if (object->tab)
-		//free_tab(object->tab, object->height-1);
+	if (object->tab)
+		free_tab(object->tab, object->height-1);
 	if (!(object->tab = (char **)ft_memalloc(sizeof(char *) * object->height)))
-		return ;
+		return (-1);
 	while (i < object->height && get_next_line(0, &line) > -1 && line)
 	{
 		if (!(object->tab[i] = ft_strsub(line, start, object->width)))
-			return ;
+			return (-1);
 		fprintf(ID,"[%03d]=%s\n", i,object->tab[i]);
 		ft_strdel(&line);
 		i++;
 	}
-	//return (object);
+	return (1);
 }
+
 
 void	get_map(t_filler *filler, char *line)
 {
@@ -124,7 +125,8 @@ void	get_map(t_filler *filler, char *line)
 		ft_strdel(&line);
 		// if (filler->map.tab)
 		// 	free_tab(filler->map.tab, filler->map.height - 1);
-		fill_object(&filler->map, 4);
+		if (!(fill_object(&filler->map, 4)))
+			return ;
 		find_pt(filler);
 		fprintf(ID,"f.map.height=%d\n", filler->map.height);
 		fprintf(ID,"f.map.width=%d\n", filler->map.width);
@@ -152,7 +154,20 @@ void	get_piece(t_filler *filler, char *line)
 		// }
 		// if (!filler->piece.tab)
 		// fprintf(ID,"not freed\n");
-		fill_object(&filler->piece, 0);
+		if (!(fill_object(&filler->piece, 0)))
+			return ;
+		if (filler->score == 0)
+		{
+			fprintf(ID,"SCORE\n");
+			ft_printf("%d %d\n", 0, 0);
+			filler->score = 1;
+		}
+		// if (filler->score == 1)
+		// {
+		// 	fprintf(ID,"SCORE\n");
+		// 	ft_printf("%d %d\n", 12, 14);
+		// 	filler->score = 2;
+		// }
 		fprintf(ID,"f.piece.height=%d\n", filler->piece.height);
 		fprintf(ID,"f.piece.width=%d\n", filler->piece.width);
 		//return (1);
@@ -196,16 +211,26 @@ int	main(void)
 	while (get_next_line(0, &line) > -1 && line)
 	{
 		 if (line && !ft_strncmp(line, "Plateau ", 8))
-		 {
-			 fprintf(ID,"MAP\n");
-		 	get_map(&f, line);
-		 }
-		 else if (line && !ft_strncmp(line, "Piece ", 6))
-		 {
-			fprintf(ID,"PIECE\n");
-		 	get_piece(&f, line);
-		 	ft_printf("%d %d\n", 12, 15);
-		 }
+		 get_map(&f, line);
+		 if (line && !ft_strncmp(line, "Piece ", 6))
+		 get_piece(&f, line);
+	// 	ft_putnbr(0);
+	// ft_putchar(' ');
+	// ft_putnbr(0);
+	// ft_putchar('\n');
+		//ft_printf("%d %d\n", 8, 2);
+		// if (score == 0)
+		// {
+		// 	fprintf(ID,"SCORE\n");
+		// 	ft_printf("%d %d\n", 0, 0);
+		// 	score = 1;
+		// } 
+		// if (score == 1)
+		// {
+		// 	fprintf(ID,"SCORE\n");
+		// 	ft_printf("%d %d\n", 12, 14);
+		// 	score = 2;
+		// }
 		fprintf(ID,"line[%d]=%s\n",i, line);
 		ft_strdel(&line);
 		i++;

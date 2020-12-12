@@ -1,4 +1,0 @@
-f.map.height=15
-f.map.width=17
-f.piece.height=2
-f.piece.width=2

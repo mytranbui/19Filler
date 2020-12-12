@@ -14,25 +14,23 @@
 # define FILLER_H
 
 # include "libft/libft.h"
+
+//delete
 # include <stdio.h>
 
 typedef struct	s_point
 {
 	int	x;
 	int	y;
-}		t_point;
+}				t_point;
 
 typedef struct	s_object
 {
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 	char	**tab;
+	t_point	pt;
 }				t_object;
-
-/*typedef struct	s_map;
-{
-}		t_map;
-*/
 
 typedef struct	s_filler
 {
@@ -40,7 +38,7 @@ typedef struct	s_filler
 	char		opp;
 	t_object	piece;
 	t_object	map;
-	int		score;
+	int			score;
 }				t_filler;
 
 

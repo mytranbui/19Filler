@@ -1,3 +1,0 @@
-line=$$$ exec p1 : [../mbui.filler]
-f.me=O
-f.opp=X
