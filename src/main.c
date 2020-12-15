@@ -129,8 +129,7 @@ void	get_map(t_filler *filler, char *line)
 	FILE *ID = fopen("debugi.txt","a");
 	fprintf(ID, "~get_map~\n");
 	fclose(ID);
-	// if (line && !ft_strncmp(line, "Plateau ", 8))
-	if (line && ft_strstr(line, "Plateau "))
+	if (line && !ft_strncmp(line, "Plateau ", 8))
 	{
 		//init_object(&filler->map);
 		ID = fopen("debugi.txt","a");
@@ -157,8 +156,7 @@ void	get_map(t_filler *filler, char *line)
 void	get_piece(t_filler *filler, char *line)
 {
 		FILE *ID = fopen("debugi.txt","a");
-	// if (line && !ft_strncmp(line, "Piece ", 6))
-	if (line && ft_strstr(line, "Piece "))
+	if (line && !ft_strncmp(line, "Piece ", 6))
 	{
 		//init_object(&filler->piece);
 		fprintf(ID, "~get_piece~\n");
@@ -237,68 +235,75 @@ int	main(void)
 		return (-1);
 	//ft_printf("%d %d\n", 12, 14);
 
-	// while (get_next_line(0, &line) > 0)
-	// {
-	// 	ID = fopen("debugi.txt","a");
-	// 	fprintf(ID,"MAIN WHILE START line [%s]\n", line);
-	// 	fclose(ID);
-	// 	 if (line && !ft_strncmp(line, "Plateau ", 8))
-	// 	 {
-	// 		 ID = fopen("debugi.txt","a");
-	// 		 fprintf(ID,"MAP\n");
-	// 		 fclose(ID);
-	// 	 	get_map(&f, line);
-	// 		 ID = fopen("debugi.txt","a");
-	// 		 fprintf(ID,"OUT OF MAP\n");
-	// 		 fclose(ID);
-	// 	 }
-	// 	 else if (line && !ft_strncmp(line, "Piece ", 6))
-	// 	 {
-	// 		ID = fopen("debugi.txt","a");
-	// 		fprintf(ID,"PIECE\n");
-	// 		fclose(ID);
-	// 	 	get_piece(&f, line);
-	// 		ID = fopen("debugi.txt","a");
-	// 		fprintf(ID, "out of piece\n");
-	// 		// // ft_printf("0 0\n");
-	// 		// fprintf(ID,"OUT OF PIECE 0 0\n");
-	// 		// fprintf(ID,"%d %d\n", 12, 14);
-	// 	 	// ft_printf("%d %d\n", 12, 14);
-	// 		 fprintf(ID,"%d %d\n", 8, 2);
-	// 		fclose(ID);
-	// // 		 ft_putnbr(8);
-	// // ft_putchar(' ');
-	// // ft_putnbr(2);
-	// // ft_putchar('\n');
-	// 		//printres(&f);
-	// 	 }
-	// 	 	ft_printf("%d %d\n", 8, 2);
-	// 	ID = fopen("debugi.txt","a");
-	// 	fprintf(ID,"MAIN WHILE END line%d [%s]\n", i,line);
-	// 	fclose(ID);
-	// 	//if (line)
-	// 	 //ft_strdel(&line);
-	// 	i++;
-	// }
-	get_next_line(0, &line);
-	get_map(&f, line);
-	ID = fopen("debugi.txt","a");
-	fprintf(ID,"1line=%s\n", line);
-	fclose(ID);
-	//ft_strdel(&line);
-	get_next_line(0, &line);
-	ID = fopen("debugi.txt","a");
-	fprintf(ID,"2line=%s\n", line);
-	fclose(ID);
-	get_piece(&f, line);
-	ID = fopen("debugi.txt","a");
-	fprintf(ID,"3line=%s\n", line);
-	fclose(ID);
-	ft_putnbr(8);
-	ft_putchar(' ');
-	ft_putnbr(2);
-	ft_putchar('\n');
-	ft_strdel(&line);
+	while (get_next_line(0, &line) > 0)
+	{
+		ID = fopen("debugi.txt","a");
+		fprintf(ID,"MAIN WHILE START line [%s]\n", line);
+		fclose(ID);
+		 if (line && !ft_strncmp(line, "Plateau ", 8))
+		 {
+			 ID = fopen("debugi.txt","a");
+			 fprintf(ID,"MAP\n");
+			 fclose(ID);
+		 	get_map(&f, line);
+			 ID = fopen("debugi.txt","a");
+			 fprintf(ID,"OUT OF MAP\n");
+			 fclose(ID);
+		 }
+		 else if (line && !ft_strncmp(line, "Piece ", 6))
+		 {
+			ID = fopen("debugi.txt","a");
+			fprintf(ID,"PIECE\n");
+			fclose(ID);
+		 	get_piece(&f, line);
+			ID = fopen("debugi.txt","a");
+			fprintf(ID, "out of piece\n");
+			// // ft_printf("0 0\n");
+			// fprintf(ID,"OUT OF PIECE 0 0\n");
+			// fprintf(ID,"%d %d\n", 12, 14);
+		 	// ft_printf("%d %d\n", 12, 14);
+		 	ft_printf("%d %d\n", 8, 2);
+			 fprintf(ID,"%d %d\n", 8, 2);
+			fclose(ID);
+	// 		 ft_putnbr(8);
+	// ft_putchar(' ');
+	// ft_putnbr(2);
+	// ft_putchar('\n');
+			//printres(&f);
+		 }
+		ID = fopen("debugi.txt","a");
+		fprintf(ID,"MAIN WHILE END line%d [%s]\n", i,line);
+		fclose(ID);
+		//if (line)
+		 //ft_strdel(&line);
+		i++;
+	}
+	// get_next_line(0, &line);
+	// ID = fopen("debugi.txt","a");
+	// fprintf(ID,"0line=%s\n", line);
+	// fclose(ID);
+	// get_map(&f, line);
+	// ID = fopen("debugi.txt","a");
+	// fprintf(ID,"1line=%s\n", line);
+	// fclose(ID);
+	// //ft_strdel(&line);
+	// get_next_line(0, &line);
+	// ID = fopen("debugi.txt","a");
+	// fprintf(ID,"2line=%s\n", line);
+	// fclose(ID);
+	// get_piece(&f, line);
+	// ID = fopen("debugi.txt","a");
+	// fprintf(ID,"3line=%s\n", line);
+	// fclose(ID);
+	// get_next_line(0, &line);
+	// ID = fopen("debugi.txt","a");
+	// fprintf(ID,"4cline=%s\n", line);
+	// fclose(ID);
+	// ft_putnbr(8);
+	// ft_putchar(' ');
+	// ft_putnbr(2);
+	// ft_putchar('\n');
+	// ft_strdel(&line);
 	/*while ((ret = debug(i)) == 1)
 	{
 		fprintf(ID,"line[%d]=%s\n",i, line);

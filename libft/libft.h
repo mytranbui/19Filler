@@ -28,6 +28,14 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct	s_gnl
+{
+	char	buff[BUFF_SIZE + 1];
+	char	*rest[OPEN_MAX];
+	int		ret;
+	char	*ptr;
+}				t_gnl;
+
 /*
 ** functions of string.h
 */
@@ -150,5 +158,6 @@ void			sort_int_tab(int *tab, unsigned int size);
 char			**tabcpy(char **map, size_t size);
 int				get_next_line(const int fd, char **line);
 int				nbwords(char const *s, char c);
+size_t			ft_pos_i(char *str, int c);
 
 #endif
