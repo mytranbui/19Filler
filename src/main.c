@@ -60,7 +60,7 @@ int get_player(t_filler *filler)
 	return (-1);
 }
 
-void find_pt(t_filler *filler)
+void find_place(t_filler *filler)
 {
 	int i;
 	int j;
@@ -76,6 +76,8 @@ void find_pt(t_filler *filler)
 				filler->map.pt.x = i;
 				filler->map.pt.y = j;
 			}
+			//else if (filler->map.tab[j][i] == filler->opp)
+
 			i++;
 		}
 		j++;
@@ -143,7 +145,7 @@ void get_map(t_filler *filler, char *line)
 		// if (filler->map.tab)
 		// 	free_tab(filler->map.tab, filler->map.height - 1);
 		fill_object(&filler->map, 4);
-		find_pt(filler);
+		find_place(filler);
 		fprintf(ID, "f.map.height=%d\n", filler->map.height);
 		fprintf(ID, "f.map.width=%d\n", filler->map.width);
 		fprintf(ID, "f.map.pt.x=%d\n", filler->map.pt.x);
@@ -163,6 +165,7 @@ void find_stars(t_object *object)
 
 	tmp[0] = 0;
 	tmp[1] = 0;
+	object->nstar = 0;
 	j = 0;
 	while (j < object->height)
 	{
@@ -171,30 +174,34 @@ void find_stars(t_object *object)
 		{
 			if (object->tab[j][i] == '*')
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "huh\n");
-				fclose(ID);
+				object->nstar++;
+				// ID = fopen("debugi.txt", "a");
+				// fprintf(ID, "star=%d\n", object->nstar);
+				// fclose(ID);
 				if (tmp[0] == 0)
 				{
 					object->pt.x = i;
 					tmp[0] = 1;
-					ID = fopen("debugi.txt", "a");
-					fprintf(ID, "LOL\n");
-					fclose(ID);
+					// ID = fopen("debugi.txt", "a");
+					// fprintf(ID, "LOL\n");
+					// fclose(ID);
 				}
 				if (tmp[1] == 0)
 				{
 					object->pt.y = j;
 					tmp[1] = 1;
-					ID = fopen("debugi.txt", "a");
-					fprintf(ID, "HOH\n");
-					fclose(ID);
+					// ID = fopen("debugi.txt", "a");
+					// fprintf(ID, "HOH\n");
+					// fclose(ID);
 				}
 			}
 			i++;
 		}
 		j++;
 	}
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "star=%d\n", object->nstar);
+	fclose(ID);
 }
 
 void get_piece(t_filler *filler, char *line)
@@ -261,7 +268,7 @@ int main(void)
 	//int			ret;
 	int score;
 	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "\nhello\n");
+	fprintf(ID, "\n\n----------MAIN START----------\n");
 	fclose(ID);
 	score = 0;
 	i = 0;
@@ -276,25 +283,25 @@ int main(void)
 		fclose(ID);
 		if (line && !ft_strncmp(line, "Plateau ", 8))
 		{
-			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "MAP\n");
-			fclose(ID);
+			// ID = fopen("debugi.txt", "a");
+			// fprintf(ID, "MAP\n");
+			// fclose(ID);
 			get_map(&f, line);
-			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "OUT OF MAP\n");
-			fclose(ID);
+			// ID = fopen("debugi.txt", "a");
+			// fprintf(ID, "OUT OF MAP\n");
+			// fclose(ID);
 		}
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
-			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "PIECE\n");
-			fclose(ID);
+			// ID = fopen("debugi.txt", "a");
+			// fprintf(ID, "PIECE\n");
+			// fclose(ID);
 			get_piece(&f, line);
-			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "out of piece\n");
+			// ID = fopen("debugi.txt", "a");
+			// fprintf(ID, "out of piece\n");
 			//ft_printf("%d %d\n", 0, 0);
 			//fprintf(ID, "%d %d\n", 0, 0);
-			fclose(ID);
+			// fclose(ID);
 			place(&f);
 		}
 		ID = fopen("debugi.txt", "a");

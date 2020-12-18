@@ -18,29 +18,30 @@
 //delete
 #include <stdio.h>
 
-typedef struct s_point
+typedef struct	s_point
 {
 	int x;
 	int y;
-} t_point;
+}				t_point;
 
-typedef struct s_object
+typedef struct	s_object
 {
-	int width;
-	int height;
-	char **tab;
-	t_point pt;
-} t_object;
+	int 	width;
+	int 	height;
+	char 	**tab;
+	t_point	pt;
+	int		nstar;
+}				t_object;
 
-typedef struct s_filler
+typedef struct	s_filler
 {
-	char me;
-	char opp;
-	t_object piece;
-	t_object map;
-	int score;
-	t_point res;
-} t_filler;
+	char		me;
+	char		opp;
+	t_object	piece;
+	t_object	map;
+	int			score;
+	t_point		res;
+}				t_filler;
 
 int main(void);
 #endif
