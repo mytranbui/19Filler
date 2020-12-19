@@ -60,6 +60,32 @@ int get_player(t_filler *filler)
 	return (-1);
 }
 
+int		find_space(t_filler *f)
+{
+	int	l;
+	int x;
+	int y;
+
+	while (++f->map.pt.y < f->map.height)
+	{
+		while (++f->map.pt.x < f->map.width)
+		{
+			l = 1;
+			while (l < f->piece.nstar && f->map.tab[f->map.pt.y][f->map.pt.x] == '.')
+			{
+				x = f->map.pt.x + f->piece.tab[l][0] - f->piece.tab[0][0];
+				y = f->map.pt.y + f->piece.tab[l][1] - f->piece.tab[0][1];
+				l++;
+				//l = (y > f-> - 1 || x < 0 || f->map.tab[y][x] != '.') ? 5 : l + 1;
+				if (l == f->piece.nstar)
+					return (1);
+			}
+		}
+		f->map.pt.x = -1;
+	}
+	return (-1);
+}
+
 void find_place(t_filler *filler)
 {
 	int i;
@@ -311,32 +337,6 @@ int main(void)
 		//ft_strdel(&line);
 		i++;
 	}
-	// get_next_line(0, &line);
-	// ID = fopen("debugi.txt","a");
-	// fprintf(ID,"0line=%s\n", line);
-	// fclose(ID);
-	// get_map(&f, line);
-	// ID = fopen("debugi.txt","a");
-	// fprintf(ID,"1line=%s\n", line);
-	// fclose(ID);
-	// //ft_strdel(&line);
-	// get_next_line(0, &line);
-	// ID = fopen("debugi.txt","a");
-	// fprintf(ID,"2line=%s\n", line);
-	// fclose(ID);
-	// get_piece(&f, line);
-	// ID = fopen("debugi.txt","a");
-	// fprintf(ID,"3line=%s\n", line);
-	// fclose(ID);
-	// get_next_line(0, &line);
-	// ID = fopen("debugi.txt","a");
-	// fprintf(ID,"4cline=%s\n", line);
-	// fclose(ID);
-	// ft_putnbr(8);
-	// ft_putchar(' ');
-	// ft_putnbr(2);
-	// ft_putchar('\n');
-	// ft_strdel(&line);
 	/*while ((ret = debug(i)) == 1)
 	{
 		fprintf(ID,"line[%d]=%s\n",i, line);
