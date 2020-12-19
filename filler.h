@@ -41,6 +41,7 @@ typedef struct	s_filler
 	t_object	map;
 	int			score;
 	t_point		res;
+	t_point		tmp;
 }				t_filler;
 
 int main(void);

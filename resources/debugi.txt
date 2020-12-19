@@ -1,10 +1,9 @@
 
 
 ----------MAIN START----------
-~get_player~
-line=$$$ exec p1 : [../mbui.filler]
-f.me=O
-f.opp=X
+~~get_player~~
+ME=O
+OP=X
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -26,8 +25,49 @@ MAIN WHILE START line [Plateau 15 17:]
 ~fill_object~END
 f.map.height=15
 f.map.width=17
-f.map.pt.x=2
-f.map.pt.y=8
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 1 3:]
+~get_piece~
+~fill_object~
+000 **.
+~fill_object~END
+f.piece.height=1
+f.piece.width=3
+star=2
+f.piece.pt.x=0
+f.piece.pt.y=0
+~get_piece~END
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+f.map.height=15
+f.map.width=17
+f.map.pt.x=0
+f.map.pt.y=0
 MAIN WHILE END line0 []
 MAIN WHILE START line [Piece 1 3:]
 ~get_piece~
@@ -36,242 +76,16 @@ MAIN WHILE START line [Piece 1 3:]
 ~fill_object~END
 f.piece.height=1
 f.piece.width=3
-star=1
-star=2
 star=3
 f.piece.pt.x=0
 f.piece.pt.y=0
 ~get_piece~END
-
-PLACE
-8 2
-MAIN WHILE END line1 [Piece 1 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .............XX..
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=4
-f.map.pt.y=8
-MAIN WHILE END line2 []
-MAIN WHILE START line [Piece 2 2:]
-~get_piece~
-~fill_object~
-000 *.
-001 *.
-~fill_object~END
-f.piece.height=2
-f.piece.width=2
-star=1
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-8 4
-MAIN WHILE END line3 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ....O............
-010 .................
-011 .................
-012 ..............X..
-013 .............XXX.
-014 ..............XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=4
-f.map.pt.y=9
-MAIN WHILE END line4 []
-MAIN WHILE START line [Piece 1 3:]
-~get_piece~
-~fill_object~
-000 .**
-~fill_object~END
-f.piece.height=1
-f.piece.width=3
-star=1
-star=2
-f.piece.pt.x=1
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-9 3
-MAIN WHILE END line5 [Piece 1 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ....OO...........
-010 .................
-011 ..............X..
-012 ..............X..
-013 .............XXX.
-014 ..............XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=5
-f.map.pt.y=9
-MAIN WHILE END line6 []
-MAIN WHILE START line [Piece 11 11:]
-~get_piece~
-~fill_object~
-000 ...........
-001 ...........
-002 ...........
-003 ...........
-004 ...........
-005 ...........
-006 ..........*
-007 ..........*
-008 ..........*
-009 ........***
-010 .........**
-~fill_object~END
-f.piece.height=11
-f.piece.width=11
-star=1
-star=2
-star=3
-star=4
-star=5
-star=6
-star=7
-star=8
-f.piece.pt.x=10
-f.piece.pt.y=6
-~get_piece~END
-
-PLACE
-3 -5
-MAIN WHILE END line7 [Piece 11 11:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ....OO...........
-010 .....O...........
-011 .....O........X..
-012 ...OOO........X..
-013 ....OO.....XXXXX.
-014 ..............XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=5
-f.map.pt.y=13
-MAIN WHILE END line8 [Plateau 15 17:]
-MAIN WHILE START line [Piece 2 1:]
-~get_piece~
-~fill_object~
-000 *
-001 *
-~fill_object~END
-f.piece.height=2
-f.piece.width=1
-star=1
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-13 5
-MAIN WHILE END line9 [Piece 2 1:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ....OO...........
-010 .....O...........
-011 .....O........X..
-012 ...OOO........X..
-013 ....OO.....XXXXXX
-014 .....O........XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=5
-f.map.pt.y=14
-MAIN WHILE END line10 []
-MAIN WHILE START line [Piece 2 1:]
-~get_piece~
-~fill_object~
-000 *
-001 *
-~fill_object~END
-f.piece.height=2
-f.piece.width=1
-star=1
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-14 5
-MAIN WHILE END line11 [Piece 2 1:]
 
 
 ----------MAIN START----------
-~get_player~
-line=$$$ exec p1 : [../mbui.filler]
-f.me=O
-f.opp=X
+~~get_player~~
+ME=O
+OP=X
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -293,91 +107,9 @@ MAIN WHILE START line [Plateau 15 17:]
 ~fill_object~END
 f.map.height=15
 f.map.width=17
-f.map.pt.x=2
-f.map.pt.y=8
-MAIN WHILE END line0 []
-MAIN WHILE START line [Piece 1 2:]
-~get_piece~
-~fill_object~
-000 **
-~fill_object~END
-f.piece.height=1
-f.piece.width=2
-star=1
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-8 2
-MAIN WHILE END line1 [Piece 1 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 ..............X..
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=3
-f.map.pt.y=8
-MAIN WHILE END line2 []
-MAIN WHILE START line [Piece 2 2:]
-~get_piece~
-~fill_object~
-000 .*
-001 **
-~fill_object~END
-f.piece.height=2
-f.piece.width=2
-star=3
-star=4
-star=5
-f.piece.pt.x=1
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-8 2
-MAIN WHILE END line3 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OO.............
-010 .................
-011 .................
-012 ..............X..
-013 ..............XX.
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=3
-f.map.pt.y=9
-MAIN WHILE END line4 []
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 [Plateau 15 17:]
 MAIN WHILE START line [Piece 2 2:]
 ~get_piece~
 ~fill_object~
@@ -386,361 +118,20 @@ MAIN WHILE START line [Piece 2 2:]
 ~fill_object~END
 f.piece.height=2
 f.piece.width=2
-star=6
-star=7
+star=2
 f.piece.pt.x=0
 f.piece.pt.y=0
 ~get_piece~END
 
 PLACE
-9 3
-MAIN WHILE END line5 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 .................
-011 .................
-012 ..............X..
-013 ..............XXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=4
-f.map.pt.y=9
-MAIN WHILE END line6 []
-MAIN WHILE START line [Piece 2 2:]
-~get_piece~
-~fill_object~
-000 *.
-001 *.
-~fill_object~END
-f.piece.height=2
-f.piece.width=2
-star=8
-star=9
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-9 4
-MAIN WHILE END line7 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O............
-011 .................
-012 ..............X..
-013 .............XXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=4
-f.map.pt.y=10
-MAIN WHILE END line8 []
-MAIN WHILE START line [Piece 2 2:]
-~get_piece~
-~fill_object~
-000 .*
-001 **
-~fill_object~END
-f.piece.height=2
-f.piece.width=2
-star=10
-star=11
-star=12
-f.piece.pt.x=1
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-10 3
-MAIN WHILE END line9 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O............
-011 ...OO............
-012 ..............XX.
-013 .............XXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=4
-f.map.pt.y=11
-MAIN WHILE END line10 []
-MAIN WHILE START line [Piece 1 3:]
-~get_piece~
-~fill_object~
-000 .**
-~fill_object~END
-f.piece.height=1
-f.piece.width=3
-star=13
-star=14
-f.piece.pt.x=1
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-11 3
-MAIN WHILE END line11 [Piece 1 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O............
-011 ...OOO...........
-012 ..............XX.
-013 ............XXXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=5
-f.map.pt.y=11
-MAIN WHILE END line12 []
-MAIN WHILE START line [Piece 8 3:]
-~get_piece~
-~fill_object~
-000 ...
-001 ...
-002 ...
-003 ...
-004 ...
-005 ...
-006 **.
-007 ***
-~fill_object~END
-f.piece.height=8
-f.piece.width=3
-star=15
-star=16
-star=17
-star=18
-star=19
-f.piece.pt.x=0
-f.piece.pt.y=6
-~get_piece~END
-
-PLACE
-5 5
-MAIN WHILE END line13 [Piece 8 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O............
-011 ...OOOO........X.
-012 .....OOO......XX.
-013 ............XXXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=7
-f.map.pt.y=12
-MAIN WHILE END line14 []
-MAIN WHILE START line [Piece 1 2:]
-~get_piece~
-~fill_object~
-000 **
-~fill_object~END
-f.piece.height=1
-f.piece.width=2
-star=20
-star=21
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-12 7
-MAIN WHILE END line15 [Piece 1 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O............
-011 ...OOOO........X.
-012 .....OOOO.....XX.
-013 ..........XXXXXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=8
-f.map.pt.y=12
-MAIN WHILE END line16 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 ***
-001 ...
-~fill_object~END
-f.piece.height=2
-f.piece.width=3
-star=22
-star=23
-star=24
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-12 8
-MAIN WHILE END line17 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O..........XX
-011 ...OOOO........X.
-012 .....OOOOOO...XX.
-013 ..........XXXXXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=10
-f.map.pt.y=12
-MAIN WHILE END line18 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 ***
-001 ...
-~fill_object~END
-f.piece.height=2
-f.piece.width=3
-star=25
-star=26
-star=27
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-12 10
-MAIN WHILE END line19 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 ..OOO............
-010 ....O..........XX
-011 ...OOOO........X.
-012 .....OOOOOOOO.XX.
-013 .........XXXXXXXX
-014 .................
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=12
-f.map.pt.y=12
-MAIN WHILE END line20 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 ...
-001 ***
-~fill_object~END
-f.piece.height=2
-f.piece.width=3
-star=28
-star=29
-star=30
-f.piece.pt.x=0
-f.piece.pt.y=1
-~get_piece~END
-
-PLACE
-11 12
-MAIN WHILE END line21 [Piece 2 3:]
+8 3
+MAIN WHILE END line1 [Piece 2 2:]
 
 
 ----------MAIN START----------
-~get_player~
-line=$$$ exec p1 : [../mbui.filler]
-f.me=O
-f.opp=X
+~~get_player~~
+ME=O
+OP=X
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -762,25 +153,191 @@ MAIN WHILE START line [Plateau 15 17:]
 ~fill_object~END
 f.map.height=15
 f.map.width=17
-f.map.pt.x=2
-f.map.pt.y=8
-MAIN WHILE END line0 [Plateau 15 17:]
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 1 2:]
+~get_piece~
+~fill_object~
+000 **
+~fill_object~END
+f.piece.height=1
+f.piece.width=2
+star=2
+f.piece.pt.x=0
+f.piece.pt.y=0
+~get_piece~END
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+f.map.height=15
+f.map.width=17
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 []
 MAIN WHILE START line [Piece 2 3:]
 ~get_piece~
 ~fill_object~
-000 ..*
-001 ..*
+000 .**
+001 .**
 ~fill_object~END
 f.piece.height=2
 f.piece.width=3
+star=4
+f.piece.pt.x=1
+f.piece.pt.y=0
+~get_piece~END
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+f.map.height=15
+f.map.width=17
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 [.]
+MAIN WHILE START line [Piece 1 2:]
+~get_piece~
+~fill_object~
+000 **
+~fill_object~END
+f.piece.height=1
+f.piece.width=2
 star=2
-f.piece.pt.x=2
+f.piece.pt.x=0
+f.piece.pt.y=0
+~get_piece~END
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+f.map.height=15
+f.map.width=17
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 2 3:]
+~get_piece~
+~fill_object~
+000 .**
+001 .*.
+~fill_object~END
+f.piece.height=2
+f.piece.width=3
+star=3
+f.piece.pt.x=1
+f.piece.pt.y=0
+~get_piece~END
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+f.map.height=15
+f.map.width=17
+f.map.pt.x=0
+f.map.pt.y=0
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 2 1:]
+~get_piece~
+~fill_object~
+000 *
+001 *
+~fill_object~END
+f.piece.height=2
+f.piece.width=1
+star=2
+f.piece.pt.x=0
 f.piece.pt.y=0
 ~get_piece~END
 
 PLACE
-8 0
-MAIN WHILE END line1 [Piece 2 3:]
+8 2
+MAIN WHILE END line1 [Piece 2 1:]
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -802,378 +359,22 @@ MAIN WHILE START line [Plateau 15 17:]
 ~fill_object~END
 f.map.height=15
 f.map.width=17
-f.map.pt.x=2
-f.map.pt.y=9
+f.map.pt.x=3
+f.map.pt.y=8
 MAIN WHILE END line2 []
 MAIN WHILE START line [Piece 2 3:]
 ~get_piece~
 ~fill_object~
 000 *..
-001 **.
+001 *..
 ~fill_object~END
 f.piece.height=2
 f.piece.width=3
-star=3
+star=2
 f.piece.pt.x=0
 f.piece.pt.y=0
 ~get_piece~END
 
 PLACE
-9 2
+8 2
 MAIN WHILE END line3 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OO.............
-011 .................
-012 ..............XX.
-013 ..............XX.
-014 ...............XX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=3
-f.map.pt.y=10
-MAIN WHILE END line4 []
-MAIN WHILE START line [Piece 2 2:]
-~get_piece~
-~fill_object~
-000 **
-001 **
-~fill_object~END
-f.piece.height=2
-f.piece.width=2
-star=4
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-10 3
-MAIN WHILE END line5 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OO............
-012 ..............XX.
-013 ..............XXX
-014 ...............XX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=4
-f.map.pt.y=11
-MAIN WHILE END line6 []
-MAIN WHILE START line [Piece 1 3:]
-~get_piece~
-~fill_object~
-000 .**
-~fill_object~END
-f.piece.height=1
-f.piece.width=3
-star=2
-f.piece.pt.x=1
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-11 3
-MAIN WHILE END line7 [Piece 1 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOO...........
-012 .............XXX.
-013 .............XXXX
-014 ...............XX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=5
-f.map.pt.y=11
-MAIN WHILE END line8 [.]
-MAIN WHILE START line [Piece 2 2:]
-~get_piece~
-~fill_object~
-000 **
-001 **
-~fill_object~END
-f.piece.height=2
-f.piece.width=2
-star=4
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-11 5
-MAIN WHILE END line9 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOOO..........
-012 .....OO......XXXX
-013 .............XXXX
-014 ...............XX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=6
-f.map.pt.y=12
-MAIN WHILE END line10 []
-MAIN WHILE START line [Piece 1 2:]
-~get_piece~
-~fill_object~
-000 **
-~fill_object~END
-f.piece.height=1
-f.piece.width=2
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-12 6
-MAIN WHILE END line11 [Piece 1 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOOO..........
-012 .....OOO.....XXXX
-013 ............XXXXX
-014 ...............XX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=7
-f.map.pt.y=12
-MAIN WHILE END line12 [à]
-MAIN WHILE START line [Piece 1 3:]
-~get_piece~
-~fill_object~
-000 .**
-~fill_object~END
-f.piece.height=1
-f.piece.width=3
-star=2
-f.piece.pt.x=1
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-12 6
-MAIN WHILE END line13 [Piece 1 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOOO..........
-012 .....OOOO....XXXX
-013 ............XXXXX
-014 ..............XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=8
-f.map.pt.y=12
-MAIN WHILE END line14 []
-MAIN WHILE START line [Piece 2 1:]
-~get_piece~
-~fill_object~
-000 *
-001 *
-~fill_object~END
-f.piece.height=2
-f.piece.width=1
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-12 8
-MAIN WHILE END line15 [Piece 2 1:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOOO..........
-012 .....OOOO....XXXX
-013 ........O..XXXXXX
-014 ..............XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=8
-f.map.pt.y=13
-MAIN WHILE END line16 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 **.
-001 ***
-~fill_object~END
-f.piece.height=2
-f.piece.width=3
-star=5
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-13 8
-MAIN WHILE END line17 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOOO..........
-012 .....OOOO...XXXXX
-013 ........OO.XXXXXX
-014 ........OOO...XXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=10
-f.map.pt.y=14
-MAIN WHILE END line18 [.................]
-MAIN WHILE START line [Piece 1 2:]
-~get_piece~
-~fill_object~
-000 **
-~fill_object~END
-f.piece.height=1
-f.piece.width=2
-star=2
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-14 10
-MAIN WHILE END line19 [Piece 1 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 ..O..............
-010 ..OOO............
-011 ...OOOO..........
-012 .....OOOO...XXXXX
-013 ........OO.XXXXXX
-014 ........OOOOXXXXX
-~fill_object~END
-f.map.height=15
-f.map.width=17
-f.map.pt.x=11
-f.map.pt.y=14
-MAIN WHILE END line20 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 ***
-001 ...
-~fill_object~END
-f.piece.height=2
-f.piece.width=3
-star=3
-f.piece.pt.x=0
-f.piece.pt.y=0
-~get_piece~END
-
-PLACE
-14 11
-MAIN WHILE END line21 [Piece 2 3:]

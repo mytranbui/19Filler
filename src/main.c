@@ -39,20 +39,19 @@ int debug(int i) //, char *line)
 
 int get_player(t_filler *filler)
 {
-	char *line;
 	FILE *ID = fopen("debugi.txt", "a");
+	char *line;
 
 	get_next_line(0, &line);
-	fprintf(ID, "~get_player~\n");
-	fprintf(ID, "line=%s\n", line);
+	fprintf(ID, "~~get_player~~\n");
 	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
 		(line[10] == '1' || line[10] == '2'))
 	{
 		filler->me = (line[10] == '1') ? 'O' : 'X';
 		filler->opp = (line[10] == '1') ? 'X' : 'O';
 		ft_strdel(&line);
-		fprintf(ID, "f.me=%c\n", filler->me);
-		fprintf(ID, "f.opp=%c\n", filler->opp);
+		fprintf(ID, "ME=%c\n", filler->me);
+		fprintf(ID, "OP=%c\n", filler->opp);
 		fclose(ID);
 		return (1);
 	}
@@ -66,11 +65,15 @@ int		find_space(t_filler *f)
 	int x;
 	int y;
 
+	if (f->map.pt.y != 0)
+		f->map.pt.y--;
+	if (f->map.pt.x != 0)
+		f->map.pt.x--;
 	while (++f->map.pt.y < f->map.height)
 	{
 		while (++f->map.pt.x < f->map.width)
 		{
-			l = 1;
+			l = 0;
 			while (l < f->piece.nstar && f->map.tab[f->map.pt.y][f->map.pt.x] == '.')
 			{
 				x = f->map.pt.x + f->piece.tab[l][0] - f->piece.tab[0][0];
@@ -86,28 +89,29 @@ int		find_space(t_filler *f)
 	return (-1);
 }
 
-void find_place(t_filler *filler)
+int find_place(t_filler *f)
 {
 	int i;
 	int j;
 
 	j = 0;
-	while (j < filler->map.height)
+	while (j < f->map.height)
 	{
 		i = 0;
-		while (i < filler->map.width)
+		while (i < f->map.width)
 		{
-			if (filler->map.tab[j][i] == filler->me)
+			if (f->map.tab[j][i] == f->me)
 			{
-				filler->map.pt.x = i;
-				filler->map.pt.y = j;
+				f->map.pt.x = i;
+				f->map.pt.y = j;
+				if (find_space(f))
+					return (1);
 			}
-			//else if (filler->map.tab[j][i] == filler->opp)
-
 			i++;
 		}
 		j++;
 	}
+	return(-1);
 }
 
 void init_object(t_object *object)
@@ -171,7 +175,6 @@ void get_map(t_filler *filler, char *line)
 		// if (filler->map.tab)
 		// 	free_tab(filler->map.tab, filler->map.height - 1);
 		fill_object(&filler->map, 4);
-		find_place(filler);
 		fprintf(ID, "f.map.height=%d\n", filler->map.height);
 		fprintf(ID, "f.map.width=%d\n", filler->map.width);
 		fprintf(ID, "f.map.pt.x=%d\n", filler->map.pt.x);
@@ -279,7 +282,7 @@ void place(t_filler *filler)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "\nPLACE\n");
-	filler->res.x = filler->map.pt.x - filler->piece.pt.x;
+	filler->res.x = filler->map.pt.x - filler->piece.pt.x -1;
 	filler->res.y = filler->map.pt.y - filler->piece.pt.y;
 	ft_printf("%d %d\n", filler->res.y, filler->res.x);
 	fprintf(ID, "%d %d\n", filler->res.y, filler->res.x);
@@ -328,6 +331,7 @@ int main(void)
 			//ft_printf("%d %d\n", 0, 0);
 			//fprintf(ID, "%d %d\n", 0, 0);
 			// fclose(ID);
+			find_place(&f);
 			place(&f);
 		}
 		ID = fopen("debugi.txt", "a");
