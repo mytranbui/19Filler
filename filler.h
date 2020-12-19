@@ -24,6 +24,12 @@ typedef struct	s_point
 	int y;
 }				t_point;
 
+typedef struct	s_player
+{
+	char	c;
+	t_point	pt;
+}				t_player;
+
 typedef struct	s_object
 {
 	int 	width;
@@ -35,8 +41,8 @@ typedef struct	s_object
 
 typedef struct	s_filler
 {
-	char		me;
-	char		opp;
+	t_player	me;
+	t_player	opp;
 	t_object	piece;
 	t_object	map;
 	int			score;
