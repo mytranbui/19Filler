@@ -132,11 +132,11 @@ int find_place(t_filler *f)
 				f->map.pt.x = i;
 				f->map.pt.y = j;
 			}
-			if (f->map.tab[j][i] == f->opp.c)
-			{
-				f->map.pt.x = i;
-				f->map.pt.y = j;
-			}
+			// else if (f->map.tab[j][i] == f->opp.c)
+			// {
+			// 	f->map.pt.x = i;
+			// 	f->map.pt.y = j;
+			// }
 			i++;
 		}
 		j++;
@@ -146,11 +146,13 @@ int find_place(t_filler *f)
 
 void init_object(t_object *object)
 {
-	if (object->tab)
-		free_tab(object->tab, object->height - 1);
+	//if (object->tab)
+	//	free_tab(object->tab, object->height - 1);
 	object->tab = NULL;
 	object->height = 0;
 	object->width = 0;
+	object->pt.x = -1;
+	object->pt.y = -1;
 }
 
 void fill_object(t_object *object, unsigned int start)
@@ -167,20 +169,17 @@ void fill_object(t_object *object, unsigned int start)
 	//free_tab(object->tab, object->height-1);
 	if (!(object->tab = (char **)ft_memalloc(sizeof(char *) * object->height)))
 		return;
-	//fprintf(ID, "~hello~\n");
 	while (i < object->height && get_next_line(0, &line) > 0)
 	{
 		if (!(object->tab[i] = ft_strsub(line, start, object->width)))
 			return;
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "%03d %s\n", i, object->tab[i]);
-		//fprintf(ID,"line[%d]=%s\n",i, line);
 		fclose(ID);
 		ft_strdel(&line);
 		i++;
 	}
 	ID = fopen("debugi.txt", "a");
-	//fprintf(ID,"line[%d]=%s\n",i, line);
 	fprintf(ID, "~fill_object~END\n");
 	fclose(ID);
 	//return (object);
@@ -203,8 +202,8 @@ void get_map(t_filler *filler, char *line)
 		// if (filler->map.tab)
 		// 	free_tab(filler->map.tab, filler->map.height - 1);
 		fill_object(&filler->map, 4);
-		fprintf(ID, "f.map.height=%d\n", filler->map.height);
-		fprintf(ID, "f.map.width=%d\n", filler->map.width);
+		fprintf(ID, "M.height =	%d\n", filler->map.height);
+		fprintf(ID, "M.width  =	%d\n", filler->map.width);
 		fclose(ID);
 		//return (1);
 	}
@@ -221,6 +220,8 @@ void find_stars(t_object *object)
 	tmp[0] = 0;
 	tmp[1] = 0;
 	object->nstar = 0;
+	object->pt.x = object->width;
+	object->pt.y = object->height;
 	j = 0;
 	while (j < object->height)
 	{
@@ -230,24 +231,15 @@ void find_stars(t_object *object)
 			if (object->tab[j][i] == '*')
 			{
 				object->nstar++;
-				// ID = fopen("debugi.txt", "a");
-				// fprintf(ID, "star=%d\n", object->nstar);
-				// fclose(ID);
-				if (tmp[0] == 0)
+				if (i < object->pt.x)
 				{
 					object->pt.x = i;
-					tmp[0] = 1;
-					// ID = fopen("debugi.txt", "a");
-					// fprintf(ID, "LOL\n");
-					// fclose(ID);
+			//		tmp[0] = 1;
 				}
-				if (tmp[1] == 0)
+				if (j < object->pt.y)
 				{
 					object->pt.y = j;
-					tmp[1] = 1;
-					// ID = fopen("debugi.txt", "a");
-					// fprintf(ID, "HOH\n");
-					// fclose(ID);
+				//	tmp[1] = 1;
 				}
 			}
 			i++;
@@ -255,7 +247,7 @@ void find_stars(t_object *object)
 		j++;
 	}
 	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "star=%d\n", object->nstar);
+	fprintf(ID, "STARNB=%d\n", object->nstar);
 	fclose(ID);
 }
 
@@ -271,13 +263,13 @@ void get_piece(t_filler *filler, char *line)
 		filler->piece.width = ft_atoi(ft_strrchr(line, ' '));
 		fill_object(&filler->piece, 0);
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "f.piece.height=%d\n", filler->piece.height);
-		fprintf(ID, "f.piece.width=%d\n", filler->piece.width);
+		fprintf(ID, "P.height =	%d\n", filler->piece.height);
+		fprintf(ID, "P.width  =	%d\n", filler->piece.width);
 		fclose(ID);
 		find_stars(&filler->piece);
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "f.piece.pt.x=%d\n", filler->piece.pt.x);
-		fprintf(ID, "f.piece.pt.y=%d\n", filler->piece.pt.y);
+		fprintf(ID, "STAR.x=%d\n", filler->piece.pt.x);
+		fprintf(ID, "STAR.y=%d\n", filler->piece.pt.y);
 		fclose(ID);
 	}
 	ID = fopen("debugi.txt", "a");
@@ -336,25 +328,11 @@ int main(void)
 		fclose(ID);
 		if (line && !ft_strncmp(line, "Plateau ", 8))
 		{
-			// ID = fopen("debugi.txt", "a");
-			// fprintf(ID, "MAP\n");
-			// fclose(ID);
 			get_map(&f, line);
-			// ID = fopen("debugi.txt", "a");
-			// fprintf(ID, "OUT OF MAP\n");
-			// fclose(ID);
 		}
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
-			// ID = fopen("debugi.txt", "a");
-			// fprintf(ID, "PIECE\n");
-			// fclose(ID);
 			get_piece(&f, line);
-			// ID = fopen("debugi.txt", "a");
-			// fprintf(ID, "out of piece\n");
-			//ft_printf("%d %d\n", 0, 0);
-			//fprintf(ID, "%d %d\n", 0, 0);
-			// fclose(ID);
 			find_place(&f);
 			place(&f);
 		}
