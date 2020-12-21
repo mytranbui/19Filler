@@ -232,15 +232,9 @@ void find_stars(t_object *object)
 			{
 				object->nstar++;
 				if (i < object->pt.x)
-				{
 					object->pt.x = i;
-			//		tmp[0] = 1;
-				}
 				if (j < object->pt.y)
-				{
 					object->pt.y = j;
-				//	tmp[1] = 1;
-				}
 			}
 			i++;
 		}
