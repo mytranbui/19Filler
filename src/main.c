@@ -37,28 +37,6 @@ int debug(int i) //, char *line)
 	return (1);
 }
 
-int get_player(t_filler *filler)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	char *line;
-
-	get_next_line(0, &line);
-	fprintf(ID, "~~get_player~~\n");
-	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
-		(line[10] == '1' || line[10] == '2'))
-	{
-		filler->me.c = (line[10] == '1') ? 'O' : 'X';
-		filler->opp.c = (line[10] == '1') ? 'X' : 'O';
-		ft_strdel(&line);
-		fprintf(ID, "ME=%c\n", filler->me.c);
-		fprintf(ID, "OP=%c\n", filler->opp.c);
-		fclose(ID);
-		return (1);
-	}
-	fclose(ID);
-	return (-1);
-}
-
 int		find_space(t_filler *f)
 {
 	int	l;
@@ -91,6 +69,9 @@ int		find_space(t_filler *f)
 
 void	find_start(t_filler *f)
 {
+	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~find_start~\n");
+	fclose(ID);
 	int i;
 	int j;
 
@@ -114,6 +95,10 @@ void	find_start(t_filler *f)
 		}
 		j++;
 	}
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "startme: x = %d  y = %d\n", f->me.pt.x, f->me.pt.y);
+	fprintf(ID, "startopp: x = %d  y = %d\n", f->opp.pt.x, f->opp.pt.y);
+	fclose(ID);
 }
 
 int find_place(t_filler *f)
@@ -144,160 +129,14 @@ int find_place(t_filler *f)
 	return(-1);
 }
 
-void init_object(t_object *object)
-{
-	//if (object->tab)
-	//	free_tab(object->tab, object->height - 1);
-	object->tab = NULL;
-	object->height = 0;
-	object->width = 0;
-	object->pt.x = -1;
-	object->pt.y = -1;
-}
-
-void fill_object(t_object *object, unsigned int start)
-{
-	int i;
-	char *line;
-
-	i = 0;
-	line = NULL;
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~fill_object~\n");
-	fclose(ID);
-	//if (object->tab)
-	//free_tab(object->tab, object->height-1);
-	if (!(object->tab = (char **)ft_memalloc(sizeof(char *) * object->height)))
-		return;
-	while (i < object->height && get_next_line(0, &line) > 0)
-	{
-		if (!(object->tab[i] = ft_strsub(line, start, object->width)))
-			return;
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "%03d %s\n", i, object->tab[i]);
-		fclose(ID);
-		ft_strdel(&line);
-		i++;
-	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~fill_object~END\n");
-	fclose(ID);
-	//return (object);
-}
-
-void get_map(t_filler *filler, char *line)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~get_map~\n");
-	fclose(ID);
-	if (line && !ft_strncmp(line, "Plateau ", 8))
-	{
-		//init_object(&filler->map);
-		ID = fopen("debugi.txt", "a");
-		filler->map.height = ft_atoi(ft_strchr(line, ' '));
-		filler->map.width = ft_atoi(ft_strrchr(line, ' '));
-		ft_strdel(&line);
-		get_next_line(0, &line); // skip line lol
-		ft_strdel(&line);
-		// if (filler->map.tab)
-		// 	free_tab(filler->map.tab, filler->map.height - 1);
-		fill_object(&filler->map, 4);
-		fprintf(ID, "M.height =	%d\n", filler->map.height);
-		fprintf(ID, "M.width  =	%d\n", filler->map.width);
-		fclose(ID);
-		//return (1);
-	}
-	//	return (-1);
-}
-
-void find_stars(t_object *object)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	int i;
-	int j;
-	int tmp[2];
-
-	tmp[0] = 0;
-	tmp[1] = 0;
-	object->nstar = 0;
-	object->pt.x = object->width;
-	object->pt.y = object->height;
-	j = 0;
-	while (j < object->height)
-	{
-		i = 0;
-		while (i < object->width)
-		{
-			if (object->tab[j][i] == '*')
-			{
-				object->nstar++;
-				if (i < object->pt.x)
-					object->pt.x = i;
-				if (j < object->pt.y)
-					object->pt.y = j;
-			}
-			i++;
-		}
-		j++;
-	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "STARNB=%d\n", object->nstar);
-	fclose(ID);
-}
-
-void get_piece(t_filler *filler, char *line)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	if (line && !ft_strncmp(line, "Piece ", 6))
-	{
-		//init_object(&filler->piece);
-		fprintf(ID, "~get_piece~\n");
-		fclose(ID);
-		filler->piece.height = ft_atoi(ft_strchr(line, ' '));
-		filler->piece.width = ft_atoi(ft_strrchr(line, ' '));
-		fill_object(&filler->piece, 0);
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "P.height =	%d\n", filler->piece.height);
-		fprintf(ID, "P.width  =	%d\n", filler->piece.width);
-		fclose(ID);
-		find_stars(&filler->piece);
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "STAR.x=%d\n", filler->piece.pt.x);
-		fprintf(ID, "STAR.y=%d\n", filler->piece.pt.y);
-		fclose(ID);
-	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~get_piece~END\n");
-	fclose(ID);
-	//	return (-1);
-}
-
-void debug2(void)
-{
-	char *line;
-	int i;
-	FILE *ID;
-
-	i = 0;
-	ID = fopen("debugi.txt", "a");
-	//get_next_line(0, &line);
-	while (get_next_line(0, &line) > -1 && line)
-	{
-		fprintf(ID, "line[%d]=%s\n", i, line);
-		i++;
-		ft_strdel(&line);
-	}
-	fclose(ID);
-}
-
-void place(t_filler *filler)
+void place(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "\nPLACE\n");
-	filler->res.x = filler->map.pt.x - filler->piece.pt.x;
-	filler->res.y = filler->map.pt.y - filler->piece.pt.y;
-	ft_printf("%d %d\n", filler->res.y, filler->res.x);
-	fprintf(ID, "%d %d\n", filler->res.y, filler->res.x);
+	f->res.x = f->map.pt.x - f->piece.pt.x;
+	f->res.y = f->map.pt.y - f->piece.pt.y;
+	ft_printf("%d %d\n", f->res.y, f->res.x);
+	fprintf(ID, "%d %d\n", f->res.y, f->res.x);
 	fclose(ID);
 }
 

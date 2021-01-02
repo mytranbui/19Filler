@@ -14,7 +14,7 @@ NAME = mbui.filler
 CC = gcc
 FLG = -Wall -Wextra -Werror
 SRC_DIR = src/
-SRC = main.c 
+SRC = main.c parse.c
 LIB = libft/libft.a
 OBJ = $(SRC:.c=.o)
 
