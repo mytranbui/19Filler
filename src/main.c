@@ -37,6 +37,7 @@ int debug(int i) //, char *line)
 	return (1);
 }
 
+//kk fillit ag
 int		find_space(t_filler *f)
 {
 	int	l;
@@ -81,23 +82,23 @@ void	find_start(t_filler *f)
 		i = 0;
 		while (i < f->map.width)
 		{
-			if (f->map.tab[j][i] == f->me.c)
+			if (f->map.tab[j][i] == f->me.let)
 			{
-				f->me.pt.x = i;
-				f->me.pt.y = j;
+				f->me.init.x = i;
+				f->me.init.y = j;
 			}
-			else if (f->map.tab[j][i] == f->opp.c)
+			else if (f->map.tab[j][i] == f->opp.let)
 			{
-				f->opp.pt.x = i;
-				f->opp.pt.y = j;
+				f->opp.init.x = i;
+				f->opp.init.y = j;
 			}
 			i++;
 		}
 		j++;
 	}
 	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "startme: x = %d  y = %d\n", f->me.pt.x, f->me.pt.y);
-	fprintf(ID, "startopp: x = %d  y = %d\n", f->opp.pt.x, f->opp.pt.y);
+	fprintf(ID, "INITme: x = %d  y = %d\n", f->me.init.x, f->me.init.y);
+	fprintf(ID, "INITopp: x = %d  y = %d\n", f->opp.init.x, f->opp.init.y);
 	fclose(ID);
 }
 
@@ -112,10 +113,11 @@ int find_place(t_filler *f)
 		i = 0;
 		while (i < f->map.width)
 		{
-			if (f->map.tab[j][i] == f->me.c)
+			if (f->map.tab[j][i] == f->me.let)
 			{
 				f->map.pt.x = i;
 				f->map.pt.y = j;
+				return (1);
 			}
 			// else if (f->map.tab[j][i] == f->opp.c)
 			// {
@@ -126,7 +128,83 @@ int find_place(t_filler *f)
 		}
 		j++;
 	}
+
 	return(-1);
+}
+
+
+t_point findgap(t_object *o, int j, int i)
+{
+	t_point	gap;
+
+	gap.x = 0;
+	gap.y = 0;
+	while (j < o->height && o->tab[j][i] != '*')
+	{
+		i = 0;
+		while (i < o->width && o->tab[j][i] != '*')
+		{
+			gap.x++;
+			i++;
+		}
+		gap.y++;
+		j++;
+	}
+	return (gap);
+}
+
+t_point	stars(t_object *o)
+{
+	int	i;
+	int	j;
+	t_point gap;
+
+	j = 0;
+	while (j < o->height)
+	{
+		i = 0;
+		while (i < o->width)
+		{
+			if (o->tab[j][i] == '*')
+			{
+				return(gap = findgap(o, j, i))
+			}
+			i++;
+		}
+		j++;
+	}
+	return (-1);
+}
+
+int	check_place(t_filler *f)
+{
+	int i;
+	int j;
+	t_point	gap;
+
+	i = f->map.pt.x;
+	j = f->map.pt.y;
+	gap = stars(&f->piece);
+	while (j < f->map.height)
+	{
+		while (i < f->map.width)
+		{
+			if (f->map.tab[j][i] == f->me.let)
+			{
+				f->map.pt.x = i;
+				f->map.pt.y = j;
+				if (f->map.tab[j + gap.y][i + gap.x] == '.')
+				while (f->map.tab[j][i] == '.')
+				{
+
+				}
+				return (1);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (-1);
 }
 
 void place(t_filler *f)
@@ -136,7 +214,7 @@ void place(t_filler *f)
 	f->res.x = f->map.pt.x - f->piece.pt.x;
 	f->res.y = f->map.pt.y - f->piece.pt.y;
 	ft_printf("%d %d\n", f->res.y, f->res.x);
-	fprintf(ID, "%d %d\n", f->res.y, f->res.x);
+	fprintf(ID, "==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
 }
 

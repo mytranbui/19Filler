@@ -15,7 +15,7 @@
 
 #include "libft/libft.h"
 
-//delete
+//delete fprintf
 #include <stdio.h>
 
 typedef struct	s_point
@@ -26,8 +26,8 @@ typedef struct	s_point
 
 typedef struct	s_player
 {
-	char	c;
-	t_point	pt;
+	char	let;
+	t_point	init;
 }				t_player;
 
 typedef struct	s_object

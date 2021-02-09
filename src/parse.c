@@ -17,16 +17,20 @@ int get_player(t_filler *f)
 	FILE *ID = fopen("debugi.txt", "a");
 	char *line;
 
+	f->me.init.x = -1;
+	f->me.init.y = -1;
+	f->opp.init.x = -1;
+	f->opp.init.y = -1;
 	get_next_line(0, &line);
 	fprintf(ID, "~~get_player~~\n");
 	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
 		(line[10] == '1' || line[10] == '2'))
 	{
-		f->me.c = (line[10] == '1') ? 'O' : 'X';
-		f->opp.c = (line[10] == '1') ? 'X' : 'O';
+		f->me.let = (line[10] == '1') ? 'O' : 'X';
+		f->opp.let = (line[10] == '1') ? 'X' : 'O';
 		ft_strdel(&line);
-		fprintf(ID, "ME=%c\n", f->me.c);
-		fprintf(ID, "OP=%c\n", f->opp.c);
+		fprintf(ID, "ME=%c\n", f->me.let);
+		fprintf(ID, "OP=%c\n", f->opp.let);
 		fclose(ID);
 		return (1);
 	}
@@ -92,7 +96,8 @@ void get_map(t_filler *f, char *line)
 		// if (f->map.tab)
 		// 	free_tab(f->map.tab, f->map.height - 1);
 		fill_object(&f->map, 4);
-		find_start(f);
+		if (f->me.init.x == -1 && f->me.init.y == -1 && f->opp.init.x == -1 && f->opp.init.y == -1)
+			find_start(f);
 		fprintf(ID, "M.height =	%d\n", f->map.height);
 		fprintf(ID, "M.width  =	%d\n", f->map.width);
 		fclose(ID);
