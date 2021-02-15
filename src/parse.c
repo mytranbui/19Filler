@@ -207,7 +207,7 @@ t_star *find_stars(t_object *o)
 void get_piece(t_filler *f, char *line)
 {
 	FILE *ID = fopen("debugi.txt", "a");
-	t_star	*head;
+	//t_star	*head;
 
 	if (line && !ft_strncmp(line, "Piece ", 6))
 	{
@@ -221,8 +221,10 @@ void get_piece(t_filler *f, char *line)
 		fprintf(ID, "P.height =	%d\n", f->piece.height);
 		fprintf(ID, "P.width  =	%d\n", f->piece.width);
 		fclose(ID);
-		head = find_stars(&f->piece);
-		printlst(head);
+		f->s = find_stars(&f->piece);
+		//head = find_stars(&f->piece);
+		//f->s = head;
+		printlst(f->s);
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "STAR.x=%d\n", f->piece.pt.x);
 		fprintf(ID, "STAR.y=%d\n", f->piece.pt.y);

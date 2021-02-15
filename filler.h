@@ -55,7 +55,7 @@ typedef struct	s_filler
 	int			score;
 	t_point		res;
 	t_point		tmp;
-	t_star		s;
+	t_star		*s;
 }				t_filler;
 
 int main(void);

@@ -128,65 +128,67 @@ int find_place(t_filler *f)
 		}
 		j++;
 	}
-
 	return(-1);
 }
 
 
-t_point findgap(t_object *o, int j, int i)
-{
-	t_point	gap;
+// t_point findgap(t_object *o, int j, int i)
+// {
+// 	t_point	gap;
 
-	gap.x = 0;
-	gap.y = 0;
-	while (j < o->height && o->tab[j][i] != '*')
-	{
-		i = 0;
-		while (i < o->width && o->tab[j][i] != '*')
-		{
-			gap.x++;
-			i++;
-		}
-		gap.y++;
-		j++;
-	}
-	return (gap);
-}
+// 	gap.x = 0;
+// 	gap.y = 0;
+// 	while (j < o->height && o->tab[j][i] != '*')
+// 	{
+// 		i = 0;
+// 		while (i < o->width && o->tab[j][i] != '*')
+// 		{
+// 			gap.x++;
+// 			i++;
+// 		}
+// 		gap.y++;
+// 		j++;
+// 	}
+// 	return (gap);
+// }
 
-t_point	stars(t_object *o)
-{
-	int	i;
-	int	j;
-	t_point gap;
+// t_point	stars(t_object *o)
+// {
+// 	int	i;
+// 	int	j;
+// 	t_point gap;
 
-	j = 0;
-	gap.x = 0;
-	gap.y = 0;
-	while (j < o->height)
-	{
-		i = 0;
-		while (i < o->width)
-		{
-			if (o->tab[j][i] == '*')
-			{
-				return(gap = findgap(o, j, i));
-			}
-			i++;
-		}
-		j++;
-	}
-	return (gap);
-}
+// 	j = 0;
+// 	gap.x = 0;
+// 	gap.y = 0;
+// 	while (j < o->height)
+// 	{
+// 		i = 0;
+// 		while (i < o->width)
+// 		{
+// 			if (o->tab[j][i] == '*')
+// 			{
+// 				return(gap = findgap(o, j, i));
+// 			}
+// 			i++;
+// 		}
+// 		j++;
+// 	}
+// 	return (gap);
+// }
 
 int	check_place(t_filler *f)
 {
+	FILE *ID = fopen("debugi.txt", "a");
 	int i;
 	int j;
-	t_point	gap;
+	int kk;
+	//t_point	gap;
 
 	i = f->map.pt.x;
 	j = f->map.pt.y;
-	gap = stars(&f->piece);
+	kk = 0;
+	//gap = stars(&f->piece);
 	while (j < f->map.height)
 	{
 		while (i < f->map.width)
@@ -195,20 +197,29 @@ int	check_place(t_filler *f)
 			{
 				f->map.pt.x = i;
 				f->map.pt.y = j;
-				while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
-				//while (f->map.tab[j][i] == '.')
+				while (f->s != NULL)
 				{
-					f->piece.nstar--;
+					i = i + f->s->gap.x;
+					i = i + f->s->gap.y;
+					fprintf(ID, "%dDOT ?%c %d %d\n", kk,f->map.tab[j][i], j, i);
+					kk++;
+					f->s = f->s->next;
 				}
-				if (f->piece.nstar != 0)
-					return (check_place(f));
-				else
-					return (1);
+				// while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
+				// //while (f->map.tab[j][i] == '.')
+				// {
+				// 	f->piece.nstar--;
+				// }
+				// if (f->piece.nstar != 0)
+				// 	return (check_place(f));
+				// else
+				// 	return (1);
 			}
 			i++;
 		}
 		j++;
 	}
+	fclose(ID);
 	return (-1);
 }
 
@@ -249,6 +260,7 @@ int main(void)
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
 			get_piece(&f, line);
+			check_place(&f);
 			find_place(&f);
 			place(&f);
 		}
