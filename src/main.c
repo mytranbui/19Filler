@@ -180,6 +180,8 @@ int find_place(t_filler *f)
 int	check_place(t_filler *f, int j, int i)
 {
 	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "CHECK_PLACE\n");
+	fclose(ID);
 	//int i;
 	//int j;
 	int nb;
@@ -188,6 +190,10 @@ int	check_place(t_filler *f, int j, int i)
 	//i = f->map.pt.x;
 	//j = f->map.pt.y;
 	nb = f->s->nb;
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "======NB=%d\n", nb);
+	fprintf(ID, "enter J=%d & I=%d & %c", j, i,f->map.tab[j][i]);
+	fclose(ID);
 	//gap = stars(&f->piece);
 	while (j < f->map.height)
 	{
@@ -195,6 +201,9 @@ int	check_place(t_filler *f, int j, int i)
 		{
 			if (f->map.tab[j][i] == f->me.let)
 			{
+							ID = fopen("debugi.txt", "a");
+	fprintf(ID, "IFO\n");
+	fclose(ID);
 				f->map.pt.x = i;
 				f->map.pt.y = j;
 				ID = fopen("debugi.txt", "a");
@@ -205,6 +214,7 @@ int	check_place(t_filler *f, int j, int i)
 					i = i + f->s->gap.x;
 					j = j + f->s->gap.y;
 					ID = fopen("debugi.txt", "a");
+					fprintf(ID, "????gap.x=%d\ngap.y=%d\n", f->s->gap.x, f->s->gap.y);
 					fprintf(ID, "%dDOT ?%c %d %d\n", nb,f->map.tab[j][i], j, i);
 					fclose(ID);
 					if (f->map.tab[j][i] == '.')
@@ -254,10 +264,12 @@ int	check_place(t_filler *f, int j, int i)
 			}
 			i++;
 		}
+		i=0;
 		j++;
 	}
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID,"STOPNO nb=%d \n",nb);
+	fprintf(ID, "CHECK_PLACE--END\n");
 	fclose(ID);
 	return (-1);
 }
@@ -279,8 +291,10 @@ int main(void)
 	char *line;
 	int	i;
 	int k;
+	int lol;
 
 	k = 0;
+	lol = 0;
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "\n\n----------MAIN START----------\n");
 	fclose(ID);
@@ -305,9 +319,14 @@ int main(void)
 			fclose(ID);
 			k++;
 			get_piece(&f, line);
-			if (check_place(&f, f.me.init.y, f.me.init.x))
-			//find_place(&f);
+			if ((lol = (check_place(&f, f.me.init.y, f.me.init.x))))
+			{
+				ID = fopen("debugi.txt", "a");
+			fprintf(ID, "lol%d\n", lol);
+			fclose(ID);
 				place(&f);
+			}
+			//find_place(&f);
 		}
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "MAIN WHILE END line%d [%s]\n", i, line);
