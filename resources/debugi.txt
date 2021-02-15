@@ -1058,3 +1058,685 @@ lol1
 PLACE
 ==> 7 1 <==
 MAIN WHILE END line5 [Piece 2 3:]
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+~find_start~
+INITme: x = 2  y = 8
+INITopp: x = 14  y = 12
+M.height =	15
+M.width  =	17
+MAIN WHILE END line0 [Plateau 15 17:]
+MAIN WHILE START line [Piece 2 3:]
+PIECE0
+~get_piece~
+~fill_object~
+000 ...
+001 **.
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=2
+gap.x=3
+gap.y=1
+i=1
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=1
+~get_piece~END
+CHECK_PLACE
+======NB=2
+enter J=8 & I=2 & OWHILEI
+IFO
+[O 8 2]
+????gap.x=3
+gap.y=1
+2DOT ?. 9 5
+------ifnb=1
+_______whilenb=1
+????gap.x=1
+gap.y=0
+1DOT ?. 9 6
+------ifnb=0
+_______whilenb=0
+STOPOK
+lol1
+
+PLACE
+==> 7 2 <==
+MAIN WHILE END line1 [Piece 2 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OO.............
+009 .................
+010 .................
+011 .................
+012 ............XXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line2 []
+MAIN WHILE START line [Piece 2 3:]
+PIECE1
+~get_piece~
+~fill_object~
+000 ..*
+001 .**
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=3
+gap.x=2
+gap.y=0
+i=1
+gap.x=2
+gap.y=1
+i=2
+gap.x=1
+gap.y=0
+i=3
+STAR.x=1
+STAR.y=0
+~get_piece~END
+CHECK_PLACE
+======NB=3
+enter J=8 & I=2 & OWHILEI
+IFO
+[O 8 2]
+????gap.x=2
+gap.y=0
+3DOT ?. 8 4
+------ifnb=2
+_______whilenb=2
+????gap.x=2
+gap.y=1
+2DOT ?. 9 6
+------ifnb=1
+_______whilenb=1
+????gap.x=1
+gap.y=0
+1DOT ?. 9 7
+------ifnb=0
+_______whilenb=0
+STOPOK
+lol1
+
+PLACE
+==> 8 1 <==
+MAIN WHILE END line3 [Piece 2 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OO.............
+009 ..OO.............
+010 .................
+011 .................
+012 ...........XXXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line4 []
+MAIN WHILE START line [Piece 1 2:]
+PIECE2
+~get_piece~
+~fill_object~
+000 **
+~fill_object~END
+P.height =	1
+P.width  =	2
+STARNB=2
+gap.x=0
+gap.y=0
+i=1
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+CHECK_PLACE
+======NB=2
+enter J=8 & I=2 & OWHILEI
+IFO
+[O 8 2]
+????gap.x=0
+gap.y=0
+2DOT ?O 8 2
+recu2
+CHECK_PLACE
+======NB=2
+enter J=8 & I=3 & OWHILEI
+IFO
+[O 8 3]
+????gap.x=0
+gap.y=0
+2DOT ?O 8 3
+recu2
+CHECK_PLACE
+======NB=2
+enter J=8 & I=4 & .WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+IFO
+[O 9 2]
+????gap.x=0
+gap.y=0
+2DOT ?O 9 2
+recu2
+CHECK_PLACE
+======NB=2
+enter J=9 & I=3 & OWHILEI
+IFO
+[O 9 3]
+????gap.x=0
+gap.y=0
+2DOT ?O 9 3
+recu2
+CHECK_PLACE
+======NB=2
+enter J=9 & I=4 & .WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+STOPNO nb=2 
+CHECK_PLACE--END
+lol-1
+
+PLACE
+==> 9 3 <==
+MAIN WHILE END line5 [Piece 1 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OO.............
+009 ..OOO............
+010 .................
+011 ...........X.....
+012 ...........XXXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line6 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE3
+~get_piece~
+~fill_object~
+000 ***
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=3
+gap.x=0
+gap.y=0
+i=1
+gap.x=1
+gap.y=0
+i=2
+gap.x=1
+gap.y=0
+i=3
+STAR.x=0
+STAR.y=0
+~get_piece~END
+CHECK_PLACE
+======NB=3
+enter J=8 & I=2 & OWHILEI
+IFO
+[O 8 2]
+????gap.x=0
+gap.y=0
+3DOT ?O 8 2
+recu2
+CHECK_PLACE
+======NB=3
+enter J=8 & I=3 & OWHILEI
+IFO
+[O 8 3]
+????gap.x=0
+gap.y=0
+3DOT ?O 8 3
+recu2
+CHECK_PLACE
+======NB=3
+enter J=8 & I=4 & .WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+IFO
+[O 9 2]
+????gap.x=0
+gap.y=0
+3DOT ?O 9 2
+recu2
+CHECK_PLACE
+======NB=3
+enter J=9 & I=3 & OWHILEI
+IFO
+[O 9 3]
+????gap.x=0
+gap.y=0
+3DOT ?O 9 3
+recu2
+CHECK_PLACE
+======NB=3
+enter J=9 & I=4 & OWHILEI
+IFO
+[O 9 4]
+????gap.x=0
+gap.y=0
+3DOT ?O 9 4
+recu2
+CHECK_PLACE
+======NB=3
+enter J=9 & I=5 & .WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+STOPNO nb=3 
+CHECK_PLACE--END
+lol-1
+
+PLACE
+==> 9 4 <==
+MAIN WHILE END line7 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OO.............
+009 ..OOOOO..........
+010 .................
+011 ..........XX.....
+012 ...........XXXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line8 [>]
+MAIN WHILE START line [Piece 5 4:]
+PIECE4
+~get_piece~
+~fill_object~
+000 ....
+001 ..*.
+002 ...*
+003 ..**
+004 ....
+~fill_object~END
+P.height =	5
+P.width  =	4
+STARNB=4
+gap.x=6
+gap.y=1
+i=1
+gap.x=5
+gap.y=1
+i=2
+gap.x=3
+gap.y=1
+i=3
+gap.x=1
+gap.y=0
+i=4
+STAR.x=2
+STAR.y=1
+~get_piece~END
+CHECK_PLACE
+======NB=4
+enter J=8 & I=2 & OWHILEI
+IFO
+[O 8 2]
+????gap.x=6
+gap.y=1
+4DOT ?. 9 8
+------ifnb=3
+_______whilenb=3
+????gap.x=5
+gap.y=1
+3DOT ?. 10 13
+------ifnb=2
+_______whilenb=2
+????gap.x=3
+gap.y=1
+2DOT ?. 11 16
+------ifnb=1
+_______whilenb=1
+????gap.x=1
+gap.y=0
+1DOT ?  11 17
+recu2
+CHECK_PLACE
+======NB=0
+enter J=11 & I=18 &  WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+WHILEI
+STOPNO nb=0 
+CHECK_PLACE--END
+lol-1
+
+PLACE
+==> 7 0 <==
+MAIN WHILE END line9 [Piece 5 4:]

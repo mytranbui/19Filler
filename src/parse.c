@@ -131,7 +131,7 @@ void	printlst(t_star *head)
 	while (head->next != NULL)
 	{
 		i++;
-		fprintf(ID, "head->nb=%d\n", head->nb);
+		//fprintf(ID, "head->nb=%d\n", head->nb);
 		fprintf(ID, "gap.x=%d\ngap.y=%d\ni=%d\n", head->gap.x, head->gap.y, i);
 		head = head->next;
 	}

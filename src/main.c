@@ -199,6 +199,9 @@ int	check_place(t_filler *f, int j, int i)
 	{
 		while (i < f->map.width)
 		{
+			ID = fopen("debugi.txt", "a");
+			fprintf(ID, "WHILEI\n");
+			fclose(ID);
 			if (f->map.tab[j][i] == f->me.let)
 			{
 							ID = fopen("debugi.txt", "a");
