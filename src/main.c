@@ -219,7 +219,10 @@ int	check_place(t_filler *f, int j, int i)
 					f->s = f->s->next;
 				}
 				if (nb == 0)
+				{
+					fprintf(ID,"STOPOK\n");
 					return (1);
+				}
 				// while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
 				// //while (f->map.tab[j][i] == '.')
 				// {
@@ -234,6 +237,7 @@ int	check_place(t_filler *f, int j, int i)
 		}
 		j++;
 	}
+	fprintf(ID,"STOPNO nb=%d \n",nb);
 	fclose(ID);
 	return (-1);
 }
