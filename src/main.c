@@ -197,6 +197,7 @@ int	check_place(t_filler *f, int j, int i)
 			{
 				f->map.pt.x = i;
 				f->map.pt.y = j;
+				fprintf(ID, "[%c %d %d]\n", f->map.tab[j][i], j, i);
 				while (f->s->next != NULL)
 				{
 					i = i + f->s->gap.x;
@@ -204,9 +205,15 @@ int	check_place(t_filler *f, int j, int i)
 					fprintf(ID, "%dDOT ?%c %d %d\n", nb,f->map.tab[j][i], j, i);
 					nb--;
 					if (f->map.tab[j][i] != '.' && i == f->map.width - 1 && (j + 1) < f->map.height)
+					{
+						fprintf(ID,"recu1\n");
 						return (check_place(f, j + 1, i));
+					}
 					else if (f->map.tab[j][i] != '.' && i < f->map.width)
+					{
+						fprintf(ID,"recu2\n");
 						return (check_place(f, j, i + 1));
+					}
 					//else
 					//	return (-1);
 					f->s = f->s->next;
