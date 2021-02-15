@@ -197,30 +197,49 @@ int	check_place(t_filler *f, int j, int i)
 			{
 				f->map.pt.x = i;
 				f->map.pt.y = j;
+				ID = fopen("debugi.txt", "a");
 				fprintf(ID, "[%c %d %d]\n", f->map.tab[j][i], j, i);
+				fclose(ID);
 				while (f->s->next != NULL)
 				{
 					i = i + f->s->gap.x;
 					j = j + f->s->gap.y;
+					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "%dDOT ?%c %d %d\n", nb,f->map.tab[j][i], j, i);
-					nb--;
-					if (f->map.tab[j][i] != '.' && i == f->map.width - 1 && (j + 1) < f->map.height)
+					fclose(ID);
+					if (f->map.tab[j][i] == '.')
 					{
+						nb--;
+						ID = fopen("debugi.txt", "a");
+						fprintf(ID, "------ifnb=%d\n", nb);
+						fclose(ID);
+					}
+					if (f->map.tab[j][i] != '.' && i == f->map.width - 1) //&& (j + 1) < f->map.height)
+					{
+						ID = fopen("debugi.txt", "a");
 						fprintf(ID,"recu1\n");
+						fclose(ID);
 						return (check_place(f, j + 1, i));
 					}
-					else if (f->map.tab[j][i] != '.' && i < f->map.width)
+					else if (f->map.tab[j][i] != '.')// && i < f->map.width)
 					{
+						ID = fopen("debugi.txt", "a");
 						fprintf(ID,"recu2\n");
+						fclose(ID);
 						return (check_place(f, j, i + 1));
 					}
 					//else
 					//	return (-1);
+					ID = fopen("debugi.txt", "a");
+					fprintf(ID, "_______whilenb=%d\n", nb);
+					fclose(ID);
 					f->s = f->s->next;
 				}
 				if (nb == 0)
 				{
+					ID = fopen("debugi.txt", "a");
 					fprintf(ID,"STOPOK\n");
+					fclose(ID);
 					return (1);
 				}
 				// while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
@@ -237,6 +256,7 @@ int	check_place(t_filler *f, int j, int i)
 		}
 		j++;
 	}
+	ID = fopen("debugi.txt", "a");
 	fprintf(ID,"STOPNO nb=%d \n",nb);
 	fclose(ID);
 	return (-1);
@@ -258,7 +278,9 @@ int main(void)
 	t_filler f;
 	char *line;
 	int	i;
+	int k;
 
+	k = 0;
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "\n\n----------MAIN START----------\n");
 	fclose(ID);
@@ -278,6 +300,10 @@ int main(void)
 		}
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
+			ID = fopen("debugi.txt", "a");
+			fprintf(ID, "PIECE%d\n", k);
+			fclose(ID);
+			k++;
 			get_piece(&f, line);
 			if (check_place(&f, f.me.init.y, f.me.init.x))
 			//find_place(&f);

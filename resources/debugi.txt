@@ -29,97 +29,8 @@ INITopp: x = 14  y = 12
 M.height =	15
 M.width  =	17
 MAIN WHILE END line0 []
-MAIN WHILE START line [Piece 1 2:]
-~get_piece~
-~fill_object~
-000 **
-~fill_object~END
-P.height =	1
-P.width  =	2
-STARNB=2
-head->nb=2
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=1
-gap.y=0
-i=2
-STAR.x=0
-STAR.y=0
-~get_piece~END
-
-PLACE
-==> 8 2 <==
-MAIN WHILE END line1 [Piece 1 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OO.............
-009 .................
-010 .................
-011 .................
-012 .............XX..
-013 .................
-014 .................
-~fill_object~END
-M.height =	15
-M.width  =	17
-MAIN WHILE END line2 [yD´ü]
-MAIN WHILE START line [Piece 1 2:]
-~get_piece~
-~fill_object~
-000 **
-~fill_object~END
-P.height =	1
-P.width  =	2
-STARNB=2
-head->nb=2
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=1
-gap.y=0
-i=2
-STAR.x=0
-STAR.y=0
-~get_piece~END
-
-PLACE
-==> 8 3 <==
-MAIN WHILE END line3 [Piece 1 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 .................
-010 .................
-011 .................
-012 ............XXX..
-013 .................
-014 .................
-~fill_object~END
-M.height =	15
-M.width  =	17
-MAIN WHILE END line4 []
 MAIN WHILE START line [Piece 2 2:]
+PIECE0
 ~get_piece~
 ~fill_object~
 000 *.
@@ -139,192 +50,14 @@ i=2
 STAR.x=0
 STAR.y=0
 ~get_piece~END
-
-PLACE
-==> 8 4 <==
-MAIN WHILE END line5 [Piece 2 2:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ....O............
-010 .................
-011 .................
-012 ..........XXXXX..
-013 .................
-014 .................
-~fill_object~END
-M.height =	15
-M.width  =	17
-MAIN WHILE END line6 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 ..*
-001 .**
-~fill_object~END
-P.height =	2
-P.width  =	3
-STARNB=3
-head->nb=3
-gap.x=2
-gap.y=0
-i=1
-head->nb=0
-gap.x=2
-gap.y=1
-i=2
-head->nb=0
-gap.x=1
-gap.y=0
-i=3
-STAR.x=1
-STAR.y=0
-~get_piece~END
-
-PLACE
-==> 8 1 <==
-MAIN WHILE END line7 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ..OOO............
-010 .................
-011 .................
-012 .........XXXXXX..
-013 .................
-014 .................
-~fill_object~END
-M.height =	15
-M.width  =	17
-MAIN WHILE END line8 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 *..
-001 *..
-~fill_object~END
-P.height =	2
-P.width  =	3
-STARNB=2
-head->nb=2
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=3
-gap.y=1
-i=2
-STAR.x=0
-STAR.y=0
-~get_piece~END
-
-PLACE
-==> 8 4 <==
-MAIN WHILE END line9 [Piece 2 3:]
 [O 8 2]
 2DOT ?O 8 2
 recu2
-[O 8 2]
-2DOT ?O 8 2
-recu2
-[O 8 3]
-2DOT ?O 8 3
-recu2
-[O 8 2]
-2DOT ?O 8 2
-recu2
-[O 8 3]
-2DOT ?O 8 3
-recu2
-[O 8 4]
-2DOT ?O 8 4
-recu2
-[O 8 2]
-3DOT ?O 8 4
-recu2
-[O 8 2]
-2DOT ?O 8 2
-recu2
-[O 8 3]
-2DOT ?O 8 3
-recu2
-[O 8 4]
-2DOT ?O 8 4
-recu2
-
-
-----------MAIN START----------
-~~get_player~~
-ME=O
-OP=X
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-~fill_object~END
-~find_start~
-INITme: x = 2  y = 8
-INITopp: x = 14  y = 12
-M.height =	15
-M.width  =	17
-MAIN WHILE END line0 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 *..
-001 *..
-~fill_object~END
-P.height =	2
-P.width  =	3
-STARNB=2
-head->nb=2
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=3
-gap.y=1
-i=2
-STAR.x=0
-STAR.y=0
-~get_piece~END
-STOPNO
+STOPNO nb=2 
 
 PLACE
 ==> 8 2 <==
-MAIN WHILE END line1 [Piece 2 3:]
+MAIN WHILE END line1 [Piece 2 2:]
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -339,7 +72,7 @@ MAIN WHILE START line [Plateau 15 17:]
 008 ..O..............
 009 ..O..............
 010 .................
-011 .............X...
+011 .................
 012 .............XX..
 013 .................
 014 .................
@@ -347,64 +80,13 @@ MAIN WHILE START line [Plateau 15 17:]
 M.height =	15
 M.width  =	17
 MAIN WHILE END line2 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 ***
-001 ...
-~fill_object~END
-P.height =	2
-P.width  =	3
-STARNB=3
-head->nb=3
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=1
-gap.y=0
-i=2
-head->nb=0
-gap.x=1
-gap.y=0
-i=3
-STAR.x=0
-STAR.y=0
-~get_piece~END
-STOPNO
-
-PLACE
-==> 8 2 <==
-MAIN WHILE END line3 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOO............
-009 ..O..............
-010 .................
-011 ............XX...
-012 .............XX..
-013 .................
-014 .................
-~fill_object~END
-M.height =	15
-M.width  =	17
-MAIN WHILE END line4 []
-MAIN WHILE START line [Piece 2 2:]
+MAIN WHILE START line [Piece 1 2:]
+PIECE1
 ~get_piece~
 ~fill_object~
 000 **
-001 ..
 ~fill_object~END
-P.height =	2
+P.height =	1
 P.width  =	2
 STARNB=2
 head->nb=2
@@ -418,11 +100,14 @@ i=2
 STAR.x=0
 STAR.y=0
 ~get_piece~END
-STOPNO
+[O 8 2]
+2DOT ?O 8 2
+recu2
+STOPNO nb=2 
 
 PLACE
-==> 8 4 <==
-MAIN WHILE END line5 [Piece 2 2:]
+==> 8 2 <==
+MAIN WHILE END line3 [Piece 1 2:]
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -434,171 +119,19 @@ MAIN WHILE START line [Plateau 15 17:]
 005 .................
 006 .................
 007 .................
-008 ..OOOO...........
+008 ..OO.............
 009 ..O..............
 010 .................
-011 ...........XXX...
+011 .............X...
 012 .............XX..
 013 .................
 014 .................
 ~fill_object~END
 M.height =	15
 M.width  =	17
-MAIN WHILE END line6 []
-MAIN WHILE START line [Piece 2 3:]
-~get_piece~
-~fill_object~
-000 **.
-001 .**
-~fill_object~END
-P.height =	2
-P.width  =	3
-STARNB=4
-head->nb=4
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=1
-gap.y=0
-i=2
-head->nb=0
-gap.x=3
-gap.y=1
-i=3
-head->nb=0
-gap.x=1
-gap.y=0
-i=4
-STAR.x=0
-STAR.y=0
-~get_piece~END
-STOPNO
-
-PLACE
-==> 8 5 <==
-MAIN WHILE END line7 [Piece 2 3:]
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..OOOOO..........
-009 ..O...OO.........
-010 ..........XX.....
-011 ...........XXX...
-012 .............XX..
-013 .................
-014 .................
-~fill_object~END
-M.height =	15
-M.width  =	17
-MAIN WHILE END line8 []
-MAIN WHILE START line [Piece 2 1:]
-~get_piece~
-~fill_object~
-000 *
-001 *
-~fill_object~END
-P.height =	2
-P.width  =	1
-STARNB=2
-head->nb=2
-gap.x=0
-gap.y=0
-i=1
-head->nb=0
-gap.x=1
-gap.y=1
-i=2
-STAR.x=0
-STAR.y=0
-~get_piece~END
-STOPNO
-
-PLACE
-==> 8 6 <==
-MAIN WHILE END line9 [Piece 2 1:]
-[O 8 2]
-2DOT ?O 8 2
-recu2
-[O 8 2]
-3DOT ?O 8 2
-recu2
-[O 8 2]
-2DOT ?O 8 2
-recu2
-[O 8 3]
-2DOT ?O 8 3
-recu2
-[O 8 4]
-2DOT ?O 8 4
-recu2
-[O 8 2]
-4DOT ?O 8 2
-recu2
-[O 8 3]
-4DOT ?O 8 3
-recu2
-[O 8 4]
-4DOT ?O 8 4
-recu2
-[O 8 5]
-4DOT ?O 8 5
-recu2
-[O 8 2]
-2DOT ?O 8 2
-recu2
-[O 8 3]
-2DOT ?O 8 3
-recu2
-[O 8 4]
-2DOT ?O 8 4
-recu2
-[O 8 5]
-2DOT ?O 8 5
-recu2
-[O 8 6]
-2DOT ?O 8 6
-recu2
-
-
-----------MAIN START----------
-~~get_player~~
-ME=O
-OP=X
-MAIN WHILE START line [Plateau 15 17:]
-~get_map~
-~fill_object~
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-~fill_object~END
-~find_start~
-INITme: x = 2  y = 8
-INITopp: x = 14  y = 12
-M.height =	15
-M.width  =	17
-MAIN WHILE END line0 []
+MAIN WHILE END line4 []
 MAIN WHILE START line [Piece 2 2:]
+PIECE2
 ~get_piece~
 ~fill_object~
 000 **
@@ -626,11 +159,17 @@ i=4
 STAR.x=0
 STAR.y=0
 ~get_piece~END
+[O 8 2]
+4DOT ?O 8 2
+recu2
+[O 8 3]
+4DOT ?O 8 3
+recu2
 STOPNO nb=4 
 
 PLACE
-==> 8 2 <==
-MAIN WHILE END line1 [Piece 2 2:]
+==> 8 3 <==
+MAIN WHILE END line5 [Piece 2 2:]
 MAIN WHILE START line [Plateau 15 17:]
 ~get_map~
 ~fill_object~
@@ -642,18 +181,310 @@ MAIN WHILE START line [Plateau 15 17:]
 005 .................
 006 .................
 007 .................
-008 ..OO.............
-009 ..OO.............
-010 .................
-011 .................
+008 ..OOO............
+009 ..OOO............
+010 ............X....
+011 ............XX...
 012 .............XX..
 013 .................
 014 .................
 ~fill_object~END
 M.height =	15
 M.width  =	17
-MAIN WHILE END line2 []
+MAIN WHILE END line6 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE3
+~get_piece~
+~fill_object~
+000 .**
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=1
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?. 8 5
+_______whilenb=1
+1DOT ?. 8 6
+_______whilenb=0
+STOPOK
+
+PLACE
+==> 8 3 <==
+MAIN WHILE END line7 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOO...........
+009 ..OOO.....XXX....
+010 ..........XXX....
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line8 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE4
+~get_piece~
+~fill_object~
+000 **.
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 5
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 5 <==
+MAIN WHILE END line9 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOO..........
+009 ..OOO....XXXX....
+010 ..........XXX....
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line10 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE5
+~get_piece~
+~fill_object~
+000 .*
+001 .*
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=2
+gap.y=1
+i=2
+STAR.x=1
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 5
+recu2
+[O 8 6]
+2DOT ?. 8 7
+_______whilenb=1
+1DOT ?X 9 9
+recu2
+STOPNO nb=0 
+
+PLACE
+==> 8 5 <==
+MAIN WHILE END line11 [Piece 2 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOO..X.......
+009 ..OOO.O.XXXXX....
+010 ..........XXX....
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line12 []
+MAIN WHILE START line [Piece 2 3:]
+PIECE6
+~get_piece~
+~fill_object~
+000 ..*
+001 ..*
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=2
+gap.y=0
+i=1
+head->nb=0
+gap.x=3
+gap.y=1
+i=2
+STAR.x=2
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?. 8 7
+_______whilenb=1
+1DOT ?X 9 10
+recu2
+STOPNO nb=0 
+
+PLACE
+==> 8 3 <==
+MAIN WHILE END line13 [Piece 2 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOO.XX.......
+009 ..OOOOO.XXXXX....
+010 ..........XXX....
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line14 []
+MAIN WHILE START line [Piece 1 2:]
+PIECE7
+~get_piece~
+~fill_object~
+000 **
+~fill_object~END
+P.height =	1
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 5
+recu2
+[O 8 6]
+2DOT ?O 8 6
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 6 <==
+MAIN WHILE END line15 [Piece 1 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOOOXXX......
+009 ..OOOOO.XXXXX....
+010 ..........XXX....
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line16 []
 MAIN WHILE START line [Piece 2 1:]
+PIECE8
 ~get_piece~
 ~fill_object~
 000 *
@@ -673,17 +504,1109 @@ i=2
 STAR.x=0
 STAR.y=0
 ~get_piece~END
-STOPNO nb=2 
-
-PLACE
-==> 8 3 <==
-MAIN WHILE END line3 [Piece 2 1:]
-[O 8 2]
-4DOT ?O 8 2
-recu2
 [O 8 2]
 2DOT ?O 8 2
 recu2
 [O 8 3]
 2DOT ?O 8 3
 recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 5
+recu2
+[O 8 6]
+2DOT ?O 8 6
+recu2
+[O 8 7]
+2DOT ?O 8 7
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 7 <==
+MAIN WHILE END line17 [Piece 2 1:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOOOXXXX.....
+009 ..OOOOOOXXXXX....
+010 ..........XXX....
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line18 [[]
+MAIN WHILE START line [Piece 2 3:]
+PIECE9
+~get_piece~
+~fill_object~
+000 ..*
+001 ..*
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=2
+gap.y=0
+i=1
+head->nb=0
+gap.x=3
+gap.y=1
+i=2
+STAR.x=2
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 7
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 3 <==
+MAIN WHILE END line19 [Piece 2 3:]
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+~find_start~
+INITme: x = 2  y = 8
+INITopp: x = 14  y = 12
+M.height =	15
+M.width  =	17
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE0
+~get_piece~
+~fill_object~
+000 .*
+001 **
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=3
+head->nb=3
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=1
+i=2
+head->nb=0
+gap.x=1
+gap.y=0
+i=3
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+3DOT ?. 8 3
+_______whilenb=2
+2DOT ?. 9 4
+_______whilenb=1
+1DOT ?. 9 5
+_______whilenb=0
+STOPOK
+
+PLACE
+==> 8 2 <==
+MAIN WHILE END line1 [Piece 2 2:]
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+~find_start~
+INITme: x = 2  y = 8
+INITopp: x = 14  y = 12
+M.height =	15
+M.width  =	17
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 2 3:]
+PIECE0
+~get_piece~
+~fill_object~
+000 ***
+001 ...
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=3
+head->nb=3
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+head->nb=0
+gap.x=1
+gap.y=0
+i=3
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+3DOT ?O 8 2
+recu2
+STOPNO nb=3 
+
+PLACE
+==> 8 2 <==
+MAIN WHILE END line1 [Piece 2 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOO............
+009 .................
+010 .................
+011 .................
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line2 []
+MAIN WHILE START line [Piece 1 2:]
+PIECE1
+~get_piece~
+~fill_object~
+000 **
+~fill_object~END
+P.height =	1
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 4 <==
+MAIN WHILE END line3 [Piece 1 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOO...........
+009 .................
+010 .................
+011 .............X...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line4 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE2
+~get_piece~
+~fill_object~
+000 *.
+001 *.
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=2
+gap.y=1
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 5
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 5 <==
+MAIN WHILE END line5 [Piece 2 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOO...........
+009 .....O...........
+010 .................
+011 ............XX...
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line6 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE3
+~get_piece~
+~fill_object~
+000 *.
+001 *.
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=2
+gap.y=1
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 5
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 5 <==
+MAIN WHILE END line7 [Piece 2 2:]
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+~find_start~
+INITme: x = 2  y = 8
+INITopp: x = 14  y = 12
+M.height =	15
+M.width  =	17
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE0
+~get_piece~
+~fill_object~
+000 ***
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=3
+head->nb=3
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+head->nb=0
+gap.x=1
+gap.y=0
+i=3
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+3DOT ?O 8 2
+recu2
+STOPNO nb=3 
+
+PLACE
+==> 8 2 <==
+MAIN WHILE END line1 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOO............
+009 .................
+010 .................
+011 .................
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line2 [.............XX..]
+MAIN WHILE START line [Piece 1 3:]
+PIECE1
+~get_piece~
+~fill_object~
+000 **.
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 4 <==
+MAIN WHILE END line3 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOO...........
+009 .................
+010 .................
+011 .................
+012 ...........XXXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line4 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE2
+~get_piece~
+~fill_object~
+000 .**
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=1
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 5
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 3 <==
+MAIN WHILE END line5 [Piece 1 3:]
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+~find_start~
+INITme: x = 2  y = 8
+INITopp: x = 14  y = 12
+M.height =	15
+M.width  =	17
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE0
+~get_piece~
+~fill_object~
+000 **
+001 ..
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 2 <==
+MAIN WHILE END line1 [Piece 2 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OO.............
+009 .................
+010 .................
+011 .................
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line2 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE1
+~get_piece~
+~fill_object~
+000 .**
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=1
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 3
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 1 <==
+MAIN WHILE END line3 [Piece 1 3:]
+
+
+----------MAIN START----------
+~~get_player~~
+ME=O
+OP=X
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..O..............
+009 .................
+010 .................
+011 .................
+012 ..............X..
+013 .................
+014 .................
+~fill_object~END
+~find_start~
+INITme: x = 2  y = 8
+INITopp: x = 14  y = 12
+M.height =	15
+M.width  =	17
+MAIN WHILE END line0 []
+MAIN WHILE START line [Piece 2 3:]
+PIECE0
+~get_piece~
+~fill_object~
+000 .**
+001 ...
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=1
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?. 8 3
+------ifnb=1
+_______whilenb=1
+1DOT ?. 8 4
+------ifnb=0
+_______whilenb=0
+STOPOK
+
+PLACE
+==> 8 1 <==
+MAIN WHILE END line1 [Piece 2 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OO.............
+009 .................
+010 .................
+011 .................
+012 .............XX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line2 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE1
+~get_piece~
+~fill_object~
+000 **.
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 3 <==
+MAIN WHILE END line3 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOO............
+009 .................
+010 .................
+011 .................
+012 ............XXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line4 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE2
+~get_piece~
+~fill_object~
+000 *.
+001 *.
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=2
+gap.y=1
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 4 <==
+MAIN WHILE END line5 [Piece 2 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOO............
+009 ....O............
+010 .................
+011 ............X....
+012 ............XXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line6 []
+MAIN WHILE START line [Piece 1 3:]
+PIECE3
+~get_piece~
+~fill_object~
+000 ***
+~fill_object~END
+P.height =	1
+P.width  =	3
+STARNB=3
+head->nb=3
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+head->nb=0
+gap.x=1
+gap.y=0
+i=3
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+3DOT ?O 8 2
+recu2
+[O 8 3]
+3DOT ?O 8 3
+recu2
+[O 8 4]
+3DOT ?O 8 4
+recu2
+STOPNO nb=3 
+
+PLACE
+==> 8 4 <==
+MAIN WHILE END line7 [Piece 1 3:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOO..........
+009 ....O............
+010 .................
+011 ...........XX....
+012 ............XXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line8 [0(ÐÉà]
+MAIN WHILE START line [Piece 1 2:]
+PIECE4
+~get_piece~
+~fill_object~
+000 **
+~fill_object~END
+P.height =	1
+P.width  =	2
+STARNB=2
+head->nb=2
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+2DOT ?O 8 2
+recu2
+[O 8 3]
+2DOT ?O 8 3
+recu2
+[O 8 4]
+2DOT ?O 8 4
+recu2
+[O 8 5]
+2DOT ?O 8 5
+recu2
+[O 8 6]
+2DOT ?O 8 6
+recu2
+STOPNO nb=2 
+
+PLACE
+==> 8 6 <==
+MAIN WHILE END line9 [Piece 1 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOOO.........
+009 ....O............
+010 ...........X.....
+011 ...........XX....
+012 ............XXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line10 []
+MAIN WHILE START line [Piece 2 2:]
+PIECE5
+~get_piece~
+~fill_object~
+000 .*
+001 **
+~fill_object~END
+P.height =	2
+P.width  =	2
+STARNB=3
+head->nb=3
+gap.x=1
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=1
+i=2
+head->nb=0
+gap.x=1
+gap.y=0
+i=3
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+3DOT ?O 8 3
+recu2
+[O 8 4]
+3DOT ?O 8 5
+recu2
+[O 8 6]
+3DOT ?O 8 7
+recu2
+STOPNO nb=3 
+
+PLACE
+==> 8 6 <==
+MAIN WHILE END line11 [Piece 2 2:]
+MAIN WHILE START line [Plateau 15 17:]
+~get_map~
+~fill_object~
+000 .................
+001 .................
+002 .................
+003 .................
+004 .................
+005 .................
+006 .................
+007 .................
+008 ..OOOOOO.........
+009 ....O.OO...X.....
+010 ...........X.....
+011 ...........XX....
+012 ............XXX..
+013 .................
+014 .................
+~fill_object~END
+M.height =	15
+M.width  =	17
+MAIN WHILE END line12 []
+MAIN WHILE START line [Piece 2 3:]
+PIECE6
+~get_piece~
+~fill_object~
+000 ***
+001 ***
+~fill_object~END
+P.height =	2
+P.width  =	3
+STARNB=6
+head->nb=6
+gap.x=0
+gap.y=0
+i=1
+head->nb=0
+gap.x=1
+gap.y=0
+i=2
+head->nb=0
+gap.x=1
+gap.y=0
+i=3
+head->nb=0
+gap.x=1
+gap.y=1
+i=4
+head->nb=0
+gap.x=1
+gap.y=0
+i=5
+head->nb=0
+gap.x=1
+gap.y=0
+i=6
+STAR.x=0
+STAR.y=0
+~get_piece~END
+[O 8 2]
+6DOT ?O 8 2
+recu2
+[O 8 3]
+6DOT ?O 8 3
+recu2
+[O 8 4]
+6DOT ?O 8 4
+recu2
+[O 8 5]
+6DOT ?O 8 5
+recu2
+[O 8 6]
+6DOT ?O 8 6
+recu2
+[O 8 7]
+6DOT ?O 8 7
+recu2
+STOPNO nb=6 
+
+PLACE
+==> 8 7 <==
+MAIN WHILE END line13 [Piece 2 3:]
