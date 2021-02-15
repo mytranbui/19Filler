@@ -39,6 +39,13 @@ typedef struct	s_object
 	int		nstar;
 }				t_object;
 
+typedef struct	s_star
+{
+	t_point	gap;
+	int		nb;
+	struct s_star	*next;
+}				t_star;
+
 typedef struct	s_filler
 {
 	t_player	me;
@@ -48,6 +55,7 @@ typedef struct	s_filler
 	int			score;
 	t_point		res;
 	t_point		tmp;
+	t_star		s;
 }				t_filler;
 
 int main(void);
@@ -58,6 +66,6 @@ int get_player(t_filler *f);
 void init_object(t_object *o);
 void fill_object(t_object *o, unsigned int start);
 void get_piece(t_filler *f, char *line);
-void find_stars(t_object *o);
+t_star *find_stars(t_object *o);
 void get_map(t_filler *f, char *line);
 void	find_start(t_filler *f);

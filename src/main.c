@@ -160,6 +160,8 @@ t_point	stars(t_object *o)
 	t_point gap;
 
 	j = 0;
+	gap.x = 0;
+	gap.y = 0;
 	while (j < o->height)
 	{
 		i = 0;
@@ -167,13 +169,13 @@ t_point	stars(t_object *o)
 		{
 			if (o->tab[j][i] == '*')
 			{
-				return(gap = findgap(o, j, i))
+				return(gap = findgap(o, j, i));
 			}
 			i++;
 		}
 		j++;
 	}
-	return (-1);
+	return (gap);
 }
 
 int	check_place(t_filler *f)
@@ -193,12 +195,15 @@ int	check_place(t_filler *f)
 			{
 				f->map.pt.x = i;
 				f->map.pt.y = j;
-				if (f->map.tab[j + gap.y][i + gap.x] == '.')
-				while (f->map.tab[j][i] == '.')
+				while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
+				//while (f->map.tab[j][i] == '.')
 				{
-
+					f->piece.nstar--;
 				}
-				return (1);
+				if (f->piece.nstar != 0)
+					return (check_place(f));
+				else
+					return (1);
 			}
 			i++;
 		}

@@ -106,12 +106,52 @@ void get_map(t_filler *f, char *line)
 	//	return (-1);
 }
 
-void find_stars(t_object *o)
+t_star	*lstdel_star(t_star **head)
+{
+	t_star	*curr;
+	t_star	*next;
+
+	curr = *head;
+	while (curr != NULL)
+	{
+		next = curr->next;
+		free(curr);
+		curr = next;
+	}
+	*head = NULL;
+	return (NULL);
+}
+
+void	printlst(t_star *head)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	int i;
+
+	i = 0;
+	while (head != NULL)
+	{
+		i++;
+		fprintf(ID, "head->nb=%d\n", head->nb);
+		fprintf(ID, "gap.x=%d\ngap.y=%d\ni=%d\n", head->gap.x, head->gap.y, i);
+		head = head->next;
+	}
+	fclose(ID);
+}
+
+t_star *find_stars(t_object *o)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	int i;
 	int j;
+	t_star	*head;
+	t_star	*new;
 
+	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
+		return (NULL);
+	head->gap.x = 0;
+	head->gap.y = 0;
+	head->nb = 0;
+	new = head;
 	o->nstar = 0;
 	o->pt.x = o->width;
 	o->pt.y = o->height;
@@ -123,6 +163,15 @@ void find_stars(t_object *o)
 		{
 			if (o->tab[j][i] == '*')
 			{
+				if (!(new->next = (t_star*)ft_memalloc(sizeof(t_star))))
+				{
+					lstdel_star(&head);
+					return (NULL);
+				}
+				head->nb++;
+				new->gap.x = i;
+				new->gap.y = j;
+				new = new->next;
 				o->nstar++;
 				if (i < o->pt.x)
 					o->pt.x = i;
@@ -136,11 +185,30 @@ void find_stars(t_object *o)
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "STARNB=%d\n", o->nstar);
 	fclose(ID);
+	new->next = NULL;
+	return (head);
 }
+
+// t_star	store_stars(t_object *o)
+// {
+// 	t_star	*head;
+// 	t_star	*new;
+	
+// 	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
+// 		return (NULL);
+// 	head->gap.x = 0;
+// 	head->gap.y = 0;
+// 	head->nb = 0;
+// 	new = head;
+// 	new->next = NULL;
+// 	return (head);
+// }
 
 void get_piece(t_filler *f, char *line)
 {
 	FILE *ID = fopen("debugi.txt", "a");
+	t_star	*head;
+
 	if (line && !ft_strncmp(line, "Piece ", 6))
 	{
 		//init_object(&f->piece);
@@ -153,7 +221,8 @@ void get_piece(t_filler *f, char *line)
 		fprintf(ID, "P.height =	%d\n", f->piece.height);
 		fprintf(ID, "P.width  =	%d\n", f->piece.width);
 		fclose(ID);
-		find_stars(&f->piece);
+		head = find_stars(&f->piece);
+		printlst(head);
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "STAR.x=%d\n", f->piece.pt.x);
 		fprintf(ID, "STAR.y=%d\n", f->piece.pt.y);
