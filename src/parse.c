@@ -128,7 +128,7 @@ void	printlst(t_star *head)
 	int i;
 
 	i = 0;
-	while (head != NULL)
+	while (head->next != NULL)
 	{
 		i++;
 		fprintf(ID, "head->nb=%d\n", head->nb);
@@ -145,6 +145,7 @@ t_star *find_stars(t_object *o)
 	int j;
 	t_star	*head;
 	t_star	*new;
+	t_point	gap;
 
 	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
 		return (NULL);
@@ -155,6 +156,8 @@ t_star *find_stars(t_object *o)
 	o->nstar = 0;
 	o->pt.x = o->width;
 	o->pt.y = o->height;
+	gap.x = 0;
+	gap.y = 0;
 	j = 0;
 	while (j < o->height)
 	{
@@ -169,17 +172,23 @@ t_star *find_stars(t_object *o)
 					return (NULL);
 				}
 				head->nb++;
-				new->gap.x = i;
-				new->gap.y = j;
+				new->gap.x = gap.x;
+				new->gap.y = gap.y;
+				//ID = fopen("debugi.txt", "a");
+				//fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
 				new = new->next;
 				o->nstar++;
 				if (i < o->pt.x)
 					o->pt.x = i;
 				if (j < o->pt.y)
 					o->pt.y = j;
+				gap.x = 0;
+				gap.y = 0;
 			}
+			gap.x++;
 			i++;
 		}
+		gap.y++;
 		j++;
 	}
 	ID = fopen("debugi.txt", "a");

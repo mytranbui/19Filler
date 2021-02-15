@@ -177,17 +177,17 @@ int find_place(t_filler *f)
 // 	return (gap);
 // }
 
-int	check_place(t_filler *f)
+int	check_place(t_filler *f, int j, int i)
 {
 	FILE *ID = fopen("debugi.txt", "a");
-	int i;
-	int j;
-	int kk;
+	//int i;
+	//int j;
+	int nb;
 	//t_point	gap;
 
-	i = f->map.pt.x;
-	j = f->map.pt.y;
-	kk = 0;
+	//i = f->map.pt.x;
+	//j = f->map.pt.y;
+	nb = f->s->nb;
 	//gap = stars(&f->piece);
 	while (j < f->map.height)
 	{
@@ -197,14 +197,22 @@ int	check_place(t_filler *f)
 			{
 				f->map.pt.x = i;
 				f->map.pt.y = j;
-				while (f->s != NULL)
+				while (f->s->next != NULL)
 				{
 					i = i + f->s->gap.x;
-					i = i + f->s->gap.y;
-					fprintf(ID, "%dDOT ?%c %d %d\n", kk,f->map.tab[j][i], j, i);
-					kk++;
+					j = j + f->s->gap.y;
+					fprintf(ID, "%dDOT ?%c %d %d\n", nb,f->map.tab[j][i], j, i);
+					nb--;
+					if (f->map.tab[j][i] != '.' && i == f->map.width - 1 && (j + 1) < f->map.height)
+						return (check_place(f, j + 1, i));
+					else if (f->map.tab[j][i] != '.' && i < f->map.width)
+						return (check_place(f, j, i + 1));
+					//else
+					//	return (-1);
 					f->s = f->s->next;
 				}
+				if (nb == 0)
+					return (1);
 				// while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
 				// //while (f->map.tab[j][i] == '.')
 				// {
@@ -260,9 +268,9 @@ int main(void)
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
 			get_piece(&f, line);
-			check_place(&f);
-			find_place(&f);
-			place(&f);
+			if (check_place(&f, f.me.init.y, f.me.init.x))
+			//find_place(&f);
+				place(&f);
 		}
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "MAIN WHILE END line%d [%s]\n", i, line);
