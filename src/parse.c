@@ -45,8 +45,8 @@ void init_object(t_object *o)
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;
-	o->pt.x = -1;
-	o->pt.y = -1;
+	o->min.x = -1;
+	o->min.y = -1;
 }
 
 void fill_object(t_object *o, unsigned int start)
@@ -154,8 +154,8 @@ t_star *find_stars(t_object *o)
 	head->nb = 0;
 	new = head;
 	o->nstar = 0;
-	o->pt.x = o->width;
-	o->pt.y = o->height;
+	o->min.x = o->width;
+	o->min.y = o->height;
 	gap.x = 0;
 	gap.y = 0;
 	j = 0;
@@ -178,10 +178,10 @@ t_star *find_stars(t_object *o)
 				//fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
 				new = new->next;
 				o->nstar++;
-				if (i < o->pt.x)
-					o->pt.x = i;
-				if (j < o->pt.y)
-					o->pt.y = j;
+				if (i < o->min.x)
+					o->min.x = i;
+				if (j < o->min.y)
+					o->min.y = j;
 				gap.x = 0;
 				gap.y = 0;
 			}
@@ -235,8 +235,8 @@ void get_piece(t_filler *f, char *line)
 		//f->s = head;
 		printlst(f->s);
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "STAR.x=%d\n", f->piece.pt.x);
-		fprintf(ID, "STAR.y=%d\n", f->piece.pt.y);
+		fprintf(ID, "STAR.x=%d\n", f->piece.min.x);
+		fprintf(ID, "STAR.y=%d\n", f->piece.min.y);
 		fclose(ID);
 	}
 	ID = fopen("debugi.txt", "a");

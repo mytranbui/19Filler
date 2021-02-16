@@ -65,26 +65,26 @@ int		find_space(t_filler *f)
 	int x;
 	int y;
 
-	if (f->map.pt.y != 0)
-		f->map.pt.y--;
-	if (f->map.pt.x != 0)
-		f->map.pt.x--;
-	while (++f->map.pt.y < f->map.height)
+	if (f->map.min.y != 0)
+		f->map.min.y--;
+	if (f->map.min.x != 0)
+		f->map.min.x--;
+	while (++f->map.min.y < f->map.height)
 	{
-		while (++f->map.pt.x < f->map.width)
+		while (++f->map.min.x < f->map.width)
 		{
 			l = 0;
-			while (l < f->piece.nstar && f->map.tab[f->map.pt.y][f->map.pt.x] == '.')
+			while (l < f->piece.nstar && f->map.tab[f->map.min.y][f->map.min.x] == '.')
 			{
-				x = f->map.pt.x + f->piece.tab[l][0] - f->piece.tab[0][0];
-				y = f->map.pt.y + f->piece.tab[l][1] - f->piece.tab[0][1];
+				x = f->map.min.x + f->piece.tab[l][0] - f->piece.tab[0][0];
+				y = f->map.min.y + f->piece.tab[l][1] - f->piece.tab[0][1];
 				l++;
 				//l = (y > f-> - 1 || x < 0 || f->map.tab[y][x] != '.') ? 5 : l + 1;
 				if (l == f->piece.nstar)
 					return (1);
 			}
 		}
-		f->map.pt.x = -1;
+		f->map.min.x = -1;
 	}
 	return (-1);
 }
@@ -129,13 +129,13 @@ int find_place(t_filler *f)
 		{
 			if (f->map.tab[j][i] == f->me.c)
 			{
-				f->map.pt.x = i;
-				f->map.pt.y = j;
+				f->map.min.x = i;
+				f->map.min.y = j;
 			}
 			// else if (f->map.tab[j][i] == f->opp.c)
 			// {
-			// 	f->map.pt.x = i;
-			// 	f->map.pt.y = j;
+			// 	f->map.min.x = i;
+			// 	f->map.min.y = j;
 			// }
 			i++;
 		}
@@ -259,8 +259,8 @@ void get_piece(t_filler *filler, char *line)
 		fclose(ID);
 		find_stars(&filler->piece);
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "STAR.x=%d\n", filler->piece.pt.x);
-		fprintf(ID, "STAR.y=%d\n", filler->piece.pt.y);
+		fprintf(ID, "STAR.x=%d\n", filler->piece.min.x);
+		fprintf(ID, "STAR.y=%d\n", filler->piece.min.y);
 		fclose(ID);
 	}
 	ID = fopen("debugi.txt", "a");
@@ -273,8 +273,8 @@ void place(t_filler *filler)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "\nPLACE\n");
-	filler->res.x = filler->map.pt.x - filler->piece.pt.x;
-	filler->res.y = filler->map.pt.y - filler->piece.pt.y;
+	filler->res.x = filler->map.min.x - filler->piece.min.x;
+	filler->res.y = filler->map.min.y - filler->piece.min.y;
 	ft_printf("%d %d\n", filler->res.y, filler->res.x);
 	fprintf(ID, "%d %d\n", filler->res.y, filler->res.x);
 	fclose(ID);

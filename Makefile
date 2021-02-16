@@ -6,7 +6,7 @@
 #    By: mbui <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 17:37:13 by mbui              #+#    #+#              #
-#    Updated: 2020/11/23 10:00:34 by mbui             ###   ########.fr        #
+#    Updated: 2021/02/16 15:53:28 by mbui             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = mbui.filler
 CC = gcc
 FLG = -Wall -Wextra -Werror
 SRC_DIR = src/
-SRC = main.c parse.c
+SRC = main.c parse.c utils.c
 LIB = libft/libft.a
 OBJ = $(SRC:.c=.o)
 

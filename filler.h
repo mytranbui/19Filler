@@ -35,7 +35,7 @@ typedef struct	s_object
 	int 	width;
 	int 	height;
 	char 	**tab;
-	t_point	pt;
+	t_point	min;
 	int		nstar;
 }				t_object;
 
@@ -69,3 +69,5 @@ void get_piece(t_filler *f, char *line);
 t_star *find_stars(t_object *o);
 void get_map(t_filler *f, char *line);
 void	find_start(t_filler *f);
+
+void print_tab(t_object *o);
