@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:53:46 by mbui              #+#    #+#             */
-/*   Updated: 2021/02/16 15:54:07 by mbui             ###   ########.fr       */
+/*   Updated: 2021/02/17 15:44:33 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void print_tab(t_object *o)
 		fclose(ID);
 		j++;
 	}
-    ID = fopen("debugi.txt", "a");
+	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~print_tab~END\n");
 	fclose(ID);
 }

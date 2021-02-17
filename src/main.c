@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:22:10 by mbui              #+#    #+#             */
-/*   Updated: 2020/12/12 17:20:22 by rhoorntj         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:44:00 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,9 @@ int checkcheck(t_filler *f, int j, int i)
 	fclose(ID);
 	if (f->s->gap.y == 0 && f->s->gap.x == 0)
 	{
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECKCHECK 00\n");
+		fclose(ID);
 		nb--;
 		f->s = f->s->next;
 	}
@@ -196,23 +199,23 @@ int checkcheck(t_filler *f, int j, int i)
 		i = i + f->s->gap.x;
 		j = j + f->s->gap.y;
 		ID = fopen("debugi.txt", "a");
-	fprintf(ID, "[%c]\n", f->map.tab[j][i]);
-	fclose(ID);
+		fprintf(ID, "[j=%d][i=%d][%c] nb=%d\n",j,i, f->map.tab[j][i],nb);
+		fclose(ID);
 		f->s = f->s->next;
 	}
 	if (nb == 0)
 	{
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "CHECKCHECK OK\n");
-	fclose(ID);
-	return (1);
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECKCHECK OK\n");
+		fclose(ID);
+		return (1);
 	}
 	else
 	{
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "CHECKCHECK NO nb=%d\n",nb);
-	fclose(ID);
-	return (-1);
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECKCHECK NO nb=%d\n",nb);
+		fclose(ID);
+		return (-1);
 	}
 }
 
@@ -221,16 +224,9 @@ int	check_place(t_filler *f, int j, int i)
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "CHECK_PLACE\n");
 	fclose(ID);
-	//int i;
-	//int j;
-	int nb;
 	//t_point	gap;
 
-	//i = f->map.min.x;
-	//j = f->map.min.y;
-	nb = f->s->nb;
 	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "======NB=%d\n", nb);
 	fprintf(ID, "enter J=%d & I=%d & %c", j, i,f->map.tab[j][i]);
 	fclose(ID);
 	//gap = stars(&f->piece);
@@ -238,98 +234,14 @@ int	check_place(t_filler *f, int j, int i)
 	{
 		while (i < f->map.width)
 		{
-			// ID = fopen("debugi.txt", "a");
-			// fprintf(ID, "WHILEI\n");
-			// fclose(ID);
 			if (f->map.tab[j][i] == f->me.let)
 			{
 				f->map.min.x = i;
 				f->map.min.y = j;
 				if (checkcheck(f, j, i)==1)
-				 	return (1);
-				// ID = fopen("debugi.txt", "a");
-				// fprintf(ID, "[%c %d %d]\n", f->map.tab[j][i], j, i);
-				// fclose(ID);
-				// while (f->s->next != NULL)
-				// {
-				// 	i = i + f->s->gap.x;
-				// 	j = j + f->s->gap.y;
-				// 	ID = fopen("debugi.txt", "a");
-				// 	fprintf(ID, "????gap.x=%d\ngap.y=%d\n", f->s->gap.x, f->s->gap.y);
-				// 	fprintf(ID, "%dDOT ?%c %d %d\n", nb,f->map.tab[j][i], j, i);
-				// 	fclose(ID);
-				// 	if (f->map.tab[j][i] == '.')
-				// 	{
-				// 		nb--;
-				// 		ID = fopen("debugi.txt", "a");
-				// 		fprintf(ID, "------ifnb=%d\n", nb);
-				// 		fclose(ID);
-				// 	}
-				// 	if (f->map.tab[j][i] != '.' && i == f->map.width - 1) //&& (j + 1) < f->map.height)
-				// 	{
-				// 		ID = fopen("debugi.txt", "a");
-				// 		fprintf(ID,"recu1\n");
-				// 		fclose(ID);
-				// 		return (check_place(f, j + 1, i));
-				// 	}
-				// 	else if (f->map.tab[j][i] != '.')// && i < f->map.width)
-				// 	{
-				// 		ID = fopen("debugi.txt", "a");
-				// 		fprintf(ID,"recu2\n");
-				// 		fclose(ID);
-				// 		return (check_place(f, j, i + 1));
-				// 	}
-				// 	//else
-				// 	//	return (-1);
-				// 	ID = fopen("debugi.txt", "a");
-				// 	fprintf(ID, "_______whilenb=%d\n", nb);
-				// 	fclose(ID);
-				// 	f->s = f->s->next;
-				// }
-				// f->s = f->s->next;
-				// i = i + f->s->gap.x;
-				// j = j + f->s->gap.y;
-				// ID = fopen("debugi.txt", "a");
-				// fprintf(ID, "[%c %d %d]\n", f->map.tab[j][i], j, i);
-				// fclose(ID);
-				// while (f->map.tab[j][i] == '.' && f->s->next != NULL)
-				// {
-				// 	nb--;
-				// 	ID = fopen("debugi.txt", "a");
-				// 	fprintf(ID, "gapy=%d gapx=%d[%c]\n", f->s->gap.y,f->s->gap.x,f->map.tab[j+f->s->gap.y][i+f->s->gap.x]);
-				// 	fprintf(ID, "j=%d i=%d\n", j, i);
-				// 	fprintf(ID, "nb=%d\n", nb);
-				// 	fclose(ID);
-				// 	j=j+f->s->gap.y;
-				// 	i=i+f->s->gap.x;
-				// 	f->s = f->s->next;
-				// }
-				// ID = fopen("debugi.txt", "a");
-				// 	fprintf(ID, "ENDnb=%d\n", nb);
-				// 	fclose(ID);
-				// if (nb == 0)
-				// {
-				// 	ID = fopen("debugi.txt", "a");
-				// 	fprintf(ID,"STOPOK\n");
-				// 	fclose(ID);
-				// 	return (1);
-				// }
-				// else if (nb != 0)
-				// {
-				// 		ID = fopen("debugi.txt", "a");
-				// 		fprintf(ID,"recu1\n");
-				// 		fclose(ID);
-				// 		return (check_place(f, j, i+ 1));
-				// 	}
-				// while ((f->map.tab[j + gap.y][i + gap.x] == '.') && (f->piece.nstar > 0))
-				// //while (f->map.tab[j][i] == '.')
-				// {
-				// 	f->piece.nstar--;
-				// }
-				// if (f->piece.nstar != 0)
-				// 	return (check_place(f));
-				// else
-				// 	return (1);
+					return (1);
+				else
+					return (check_place(f, j, i + 1));
 			}
 			i++;
 		}
@@ -337,7 +249,6 @@ int	check_place(t_filler *f, int j, int i)
 		j++;
 	}
 	ID = fopen("debugi.txt", "a");
-	fprintf(ID,"STOPNO nb=%d \n",nb);
 	fprintf(ID, "CHECK_PLACE--END\n");
 	fclose(ID);
 	return (-1);
@@ -350,6 +261,7 @@ void place(t_filler *f)
 	f->res.x = f->map.min.x - f->piece.min.x;
 	f->res.y = f->map.min.y - f->piece.min.y;
 	ft_printf("%d %d\n", f->res.y, f->res.x);
+	fprintf(ID, "minY=%d minX=%d \n", f->piece.min.y, f->piece.min.x);
 	fprintf(ID, "==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
 }
@@ -391,21 +303,21 @@ int main(void)
 			if ((lol = (check_place(&f, f.me.init.y, f.me.init.x))))
 			{
 				ID = fopen("debugi.txt", "a");
-			fprintf(ID, "lol%d\n", lol);
-			fclose(ID);
-			if (lol == 1)
-			{
-				print_tab(&f.piece);
-				place(&f);
-			}
-			else if (lol != 1)
-			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "lolno%d\n", lol);
+				fprintf(ID, "lol%d\n", lol);
 				fclose(ID);
-				print_tab(&f.piece);
-				place(&f);
-			}
+				if (lol == 1)
+				{
+					print_tab(&f.piece);
+					place(&f);
+				}
+				else if (lol != 1)
+				{
+					ID = fopen("debugi.txt", "a");
+					fprintf(ID, "lolno%d\n", lol);
+					fclose(ID);
+					print_tab(&f.piece);
+					place(&f);
+				}
 			}
 			//find_place(&f);
 		}
@@ -417,10 +329,10 @@ int main(void)
 		i++;
 	}
 	/*while ((ret = debug(i)) == 1)
-	{
-		fprintf(ID,"line[%d]=%s\n",i, line);
-		ft_strdel(&line);
-		i++;
-	}*/
+	  {
+	  fprintf(ID,"line[%d]=%s\n",i, line);
+	  ft_strdel(&line);
+	  i++;
+	  }*/
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:55:26 by mbui              #+#    #+#             */
-/*   Updated: 2021/01/02 18:55:33 by mbui             ###   ########.fr       */
+/*   Updated: 2021/02/17 15:44:25 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int get_player(t_filler *f)
 	get_next_line(0, &line);
 	fprintf(ID, "~~get_player~~\n");
 	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
-		(line[10] == '1' || line[10] == '2'))
+			(line[10] == '1' || line[10] == '2'))
 	{
 		f->me.let = (line[10] == '1') ? 'O' : 'X';
 		f->opp.let = (line[10] == '1') ? 'X' : 'O';
@@ -202,7 +202,7 @@ t_star *find_stars(t_object *o)
 // {
 // 	t_star	*head;
 // 	t_star	*new;
-	
+
 // 	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
 // 		return (NULL);
 // 	head->gap.x = 0;
