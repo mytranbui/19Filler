@@ -146,6 +146,8 @@ t_star *find_stars(t_object *o)
 	t_star	*head;
 	t_star	*new;
 	t_point	gap;
+	t_point	tmp;
+	t_point	kk;
 
 	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
 		return (NULL);
@@ -158,6 +160,10 @@ t_star *find_stars(t_object *o)
 	o->min.y = o->height;
 	gap.x = 0;
 	gap.y = 0;
+	kk.x = 0;
+	kk.y = 0;
+	tmp.x = -1;
+	tmp.y = -1;
 	j = 0;
 	while (j < o->height)
 	{
@@ -172,10 +178,25 @@ t_star *find_stars(t_object *o)
 					return (NULL);
 				}
 				head->nb++;
-				new->gap.x = gap.x;
-				new->gap.y = gap.y;
-				//ID = fopen("debugi.txt", "a");
-				//fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
+				gap.x = i;
+				gap.y = j;
+				if (i > tmp.x && j > tmp.y)
+				{
+					tmp.x = i;
+					tmp.y = j;
+					new->gap.x = tmp.x;
+					new->gap.y = tmp.y;
+				}
+				else
+				{
+					new->gap.x = i - tmp.x;
+					new->gap.y = j - tmp.y;
+				}
+				tmp.x = new->gap.x;
+				tmp.y = new->gap.y;
+				ID = fopen("debugi.txt", "a");
+				fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
+				fclose(ID);
 				new = new->next;
 				o->nstar++;
 				if (i < o->min.x)
