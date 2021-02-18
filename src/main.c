@@ -177,7 +177,51 @@ int find_place(t_filler *f)
 // 	return (gap);
 // }
 
-int checkcheck(t_filler *f, int j, int i)
+int checkcheck(t_filler *f, t_star **head, int j, int i)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	t_star	*curr;
+	int nb;
+
+	curr = *head;
+	nb = curr->nb;
+	fprintf(ID, "CHECKCHECK BF nb=%d\n",nb);
+	fclose(ID);
+	if (curr->gap.y == 0 && curr->gap.x == 0)
+	{
+		nb--;
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECKCHECK 00 nb=%d\n", nb);
+		fclose(ID);
+		curr = curr->next;
+	}
+	while (f->map.tab[j + curr->gap.y][i + curr->gap.x] == '.' && curr->next != NULL)
+	{
+		nb--;
+		i = i + curr->gap.x;
+		j = j + curr->gap.y;
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "[j=%d][i=%d][%c] nb=%d\n",j,i, f->map.tab[j][i],nb);
+		fclose(ID);
+		curr = curr->next;
+	}
+	if (nb == 0)
+	{
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECKCHECK OK\n");
+		fclose(ID);
+		return (1);
+	}
+	else
+	{
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECKCHECK NO nb=%d\n",nb);
+		fclose(ID);
+		return (-1);
+	}
+}
+
+int checkcheck2(t_filler *f, int j, int i)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	int nb;
@@ -238,7 +282,7 @@ int	check_place(t_filler *f, int j, int i)
 			{
 				f->map.min.x = i;
 				f->map.min.y = j;
-				if (checkcheck(f, j, i)==1)
+				if (checkcheck(f, &f->s, j, i)==1)
 					return (1);
 				else
 					return (check_place(f, j, i + 1));
