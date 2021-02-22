@@ -159,9 +159,9 @@ t_star *find_stars(t_object *o)
 				}
 				tmp.x = new->gap.x;
 				tmp.y = new->gap.y;
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
-				fclose(ID);
+				// ID = fopen("debugi.txt", "a");
+				// fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
+				// fclose(ID);
 				new = new->next;
 			}
 			i++;

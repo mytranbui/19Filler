@@ -156,6 +156,7 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		i = i + curr->gap.x;
 		j = j + curr->gap.y;
 		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "GAP.x=%d GAP.y=%d\n", curr->gap.x, curr->gap.y);
 		fprintf(ID, "[j=%d][i=%d][%c] nb=%d\n",j,i, f->map.tab[j][i],nb);
 		fclose(ID);
 		curr = curr->next;
@@ -184,6 +185,9 @@ int	check_place(t_filler *f, int j, int i)
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "enter J=%d & I=%d & %c\n", j, i,f->map.tab[j][i]);
 	fclose(ID);
+	int kk;
+
+	kk = 0; 
 	while (j < f->map.height)
 	{
 		while (i < f->map.width)
@@ -195,7 +199,8 @@ int	check_place(t_filler *f, int j, int i)
 				ID = fopen("debugi.txt", "a");
 	fprintf(ID, "map.minY=%d map.minX=%d\n", f->map.min.y, f->map.min.x);
 	fclose(ID);
-				if (checkcheck(f, &f->s, j, i)==1)
+				kk = checkcheck(f, &f->s, j, i);
+				if (kk==1)
 					return (1);
 				else
 				{
