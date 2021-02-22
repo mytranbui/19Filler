@@ -38,35 +38,35 @@ int debug(int i) //, char *line)
 }
 
 //kk fillit ag
-int		find_space(t_filler *f)
-{
-	int	l;
-	int x;
-	int y;
+// int		find_space(t_filler *f)
+// {
+// 	int	l;
+// 	int x;
+// 	int y;
 
-	if (f->map.min.y != 0)
-		f->map.min.y--;
-	if (f->map.min.x != 0)
-		f->map.min.x--;
-	while (++f->map.min.y < f->map.height)
-	{
-		while (++f->map.min.x < f->map.width)
-		{
-			l = 0;
-			while (l < f->piece.nstar && f->map.tab[f->map.min.y][f->map.min.x] == '.')
-			{
-				x = f->map.min.x + f->piece.tab[l][0] - f->piece.tab[0][0];
-				y = f->map.min.y + f->piece.tab[l][1] - f->piece.tab[0][1];
-				l++;
-				//l = (y > f-> - 1 || x < 0 || f->map.tab[y][x] != '.') ? 5 : l + 1;
-				if (l == f->piece.nstar)
-					return (1);
-			}
-		}
-		f->map.min.x = -1;
-	}
-	return (-1);
-}
+// 	if (f->map.min.y != 0)
+// 		f->map.min.y--;
+// 	if (f->map.min.x != 0)
+// 		f->map.min.x--;
+// 	while (++f->map.min.y < f->map.height)
+// 	{
+// 		while (++f->map.min.x < f->map.width)
+// 		{
+// 			l = 0;
+// 			while (l < f->piece.nstar && f->map.tab[f->map.min.y][f->map.min.x] == '.')
+// 			{
+// 				x = f->map.min.x + f->piece.tab[l][0] - f->piece.tab[0][0];
+// 				y = f->map.min.y + f->piece.tab[l][1] - f->piece.tab[0][1];
+// 				l++;
+// 				//l = (y > f-> - 1 || x < 0 || f->map.tab[y][x] != '.') ? 5 : l + 1;
+// 				if (l == f->piece.nstar)
+// 					return (1);
+// 			}
+// 		}
+// 		f->map.min.x = -1;
+// 	}
+// 	return (-1);
+// }
 
 void	find_start(t_filler *f)
 {
@@ -96,6 +96,7 @@ void	find_start(t_filler *f)
 		}
 		j++;
 	}
+	//if (f->me.init.x > f->opp.init.y)
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "INITme: x = %d  y = %d\n", f->me.init.x, f->me.init.y);
 	fprintf(ID, "INITopp: x = %d  y = %d\n", f->opp.init.x, f->opp.init.y);
@@ -130,52 +131,6 @@ int find_place(t_filler *f)
 	}
 	return(-1);
 }
-
-
-// t_point findgap(t_object *o, int j, int i)
-// {
-// 	t_point	gap;
-
-// 	gap.x = 0;
-// 	gap.y = 0;
-// 	while (j < o->height && o->tab[j][i] != '*')
-// 	{
-// 		i = 0;
-// 		while (i < o->width && o->tab[j][i] != '*')
-// 		{
-// 			gap.x++;
-// 			i++;
-// 		}
-// 		gap.y++;
-// 		j++;
-// 	}
-// 	return (gap);
-// }
-
-// t_point	stars(t_object *o)
-// {
-// 	int	i;
-// 	int	j;
-// 	t_point gap;
-
-// 	j = 0;
-// 	gap.x = 0;
-// 	gap.y = 0;
-// 	while (j < o->height)
-// 	{
-// 		i = 0;
-// 		while (i < o->width)
-// 		{
-// 			if (o->tab[j][i] == '*')
-// 			{
-// 				return(gap = findgap(o, j, i));
-// 			}
-// 			i++;
-// 		}
-// 		j++;
-// 	}
-// 	return (gap);
-// }
 
 int checkcheck(t_filler *f, t_star **head, int j, int i)
 {
@@ -226,12 +181,9 @@ int	check_place(t_filler *f, int j, int i)
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "CHECK_PLACE\n");
 	fclose(ID);
-	//t_point	gap;
-
 	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "enter J=%d & I=%d & %c", j, i,f->map.tab[j][i]);
+	fprintf(ID, "enter J=%d & I=%d & %c\n", j, i,f->map.tab[j][i]);
 	fclose(ID);
-	//gap = stars(&f->piece);
 	while (j < f->map.height)
 	{
 		while (i < f->map.width)
@@ -240,15 +192,30 @@ int	check_place(t_filler *f, int j, int i)
 			{
 				f->map.min.x = i;
 				f->map.min.y = j;
+				ID = fopen("debugi.txt", "a");
+	fprintf(ID, "map.minY=%d map.minX=%d\n", f->map.min.y, f->map.min.x);
+	fclose(ID);
 				if (checkcheck(f, &f->s, j, i)==1)
 					return (1);
 				else
+				{
+ID = fopen("debugi.txt", "a");
+					fprintf(ID, "-----RECUR\n");
+					fclose(ID);
 					return (check_place(f, j, i + 1));
+				}
 			}
 			i++;
 		}
 		i = 0;
 		j++;
+	}
+	if (i >= f->map.width && j < f->map.height)
+	{
+		ID = fopen("debugi.txt", "a");
+					fprintf(ID, "-----RECURJJJ\n");
+					fclose(ID);
+		return (check_place(f, j + 1, 0));
 	}
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "CHECK_PLACE--END\n");
@@ -262,6 +229,17 @@ void place(t_filler *f)
 	fprintf(ID, "\nPLACE\n");
 	f->res.x = f->map.min.x - f->piece.min.x;
 	f->res.y = f->map.min.y - f->piece.min.y;
+	ft_printf("%d %d\n", f->res.y, f->res.x);
+	fprintf(ID, "minY=%d minX=%d \n", f->piece.min.y, f->piece.min.x);
+	fprintf(ID, "==> %d %d <==\n", f->res.y, f->res.x);
+	fclose(ID);
+}
+void place2(t_filler *f)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "\nPLACE2\n");
+	f->res.x = f->map.min.x; //- f->piece.min.x;
+	f->res.y = f->map.min.y;// - f->piece.min.y;
 	ft_printf("%d %d\n", f->res.y, f->res.x);
 	fprintf(ID, "minY=%d minX=%d \n", f->piece.min.y, f->piece.min.x);
 	fprintf(ID, "==> %d %d <==\n", f->res.y, f->res.x);
