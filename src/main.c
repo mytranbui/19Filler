@@ -142,7 +142,7 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 	nb = curr->nb;
 	fprintf(ID, "CHECKCHECK BF nb=%d\n",nb);
 	fclose(ID);
-	if (curr->gap.y == 0 && curr->gap.x == 0)
+	if ((curr->gap.y == 0 && curr->gap.x == 0) || f->map.tab[j][i] == 'O')
 	{
 		nb--;
 		ID = fopen("debugi.txt", "a");
@@ -153,10 +153,15 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 	while (f->map.tab[j + curr->gap.y][i + curr->gap.x] == '.' && curr->next != NULL)
 	{
 		nb--;
+		if (f->piece.min.y != 0 && f->piece.min.x != 0 && f->map.tab[j][i] == 'O')
+		{
+			curr->gap.x = 0;
+			curr->gap.y = 0;
+		}
 		i = i + curr->gap.x;
 		j = j + curr->gap.y;
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "GAP.x=%d GAP.y=%d\n", curr->gap.x, curr->gap.y);
+		fprintf(ID, "GAP.y=%d GAP.x=%d\n", curr->gap.y, curr->gap.x);
 		fprintf(ID, "[j=%d][i=%d][%c] nb=%d\n",j,i, f->map.tab[j][i],nb);
 		fclose(ID);
 		curr = curr->next;
