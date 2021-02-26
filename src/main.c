@@ -150,14 +150,16 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		fclose(ID);
 		curr = curr->next;
 	}
+	else 
+		curr = curr->next;
 	while (f->map.tab[j + curr->gap.y][i + curr->gap.x] == '.' && curr->next != NULL)
 	{
 		nb--;
-		if (f->piece.min.y != 0 && f->piece.min.x != 0 && f->map.tab[j][i] == 'O')
-		{
-			curr->gap.x = 0;
-			curr->gap.y = 0;
-		}
+		// if (f->piece.min.y != 0 && f->piece.min.x != 0 && f->map.tab[j][i] == 'O')
+		// {
+		// 	curr->gap.x = 0;
+		// 	curr->gap.y = 0;
+		// }
 		i = i + curr->gap.x;
 		j = j + curr->gap.y;
 		ID = fopen("debugi.txt", "a");
