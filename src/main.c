@@ -142,7 +142,7 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 	nb = curr->nb;
 	fprintf(ID, "CHECKCHECK BF nb=%d\n",nb);
 	fclose(ID);
-	if ((curr->gap.y == 0 && curr->gap.x == 0) || f->map.tab[j][i] == 'O')
+	if ((curr->gap.y == 0 && curr->gap.x == 0) && f->map.tab[j][i] == 'O')
 	{
 		nb--;
 		ID = fopen("debugi.txt", "a");

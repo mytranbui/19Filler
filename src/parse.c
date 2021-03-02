@@ -139,13 +139,14 @@ t_star *find_stars(t_object *o)
 					return (NULL);
 				}
 				head->nb++;
-				if (i > tmp.x && j > tmp.y)
+				if (head->nb==1)
 				{
 					tmp.x = i;
 					tmp.y = j;
 					o->min.x = i;
 					o->min.y = j;
 					ID = fopen("debugi.txt", "a");
+					fprintf(ID,"YO\n");
 					fprintf(ID, "TMP.x=%d\n TMP.y=%d\n", tmp.x, tmp.y);
 					fprintf(ID, "o->min.x=%d\n o->min.y=%d\n", o->min.x, o->min.y);
 					fclose(ID);
@@ -155,8 +156,9 @@ t_star *find_stars(t_object *o)
 				else
 				{
 					new->gap.x = (tmp.x < 0) ? i + tmp.x : i - tmp.x;
-					new->gap.y = (tmp.y < 0) ? i + tmp.y : i - tmp.y;
+					new->gap.y = (tmp.y < 0) ? j + tmp.y : j - tmp.y;
 				ID = fopen("debugi.txt", "a");
+				fprintf(ID,"AH\n");
 					fprintf(ID, "TMP.x=%d\n TMP.y=%d\n", tmp.x, tmp.y);
 				fprintf(ID, "GAP.x=%d\n GAP.y=%d\n", new->gap.x, new->gap.y);
 				fclose(ID);
