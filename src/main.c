@@ -150,8 +150,13 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		fclose(ID);
 		curr = curr->next;
 	}
-	else 
+	else
+	{
+		i = i + curr->gap.x;
+		j = j + curr->gap.y;
+		nb--;
 		curr = curr->next;
+	}
 	while (f->map.tab[j + curr->gap.y][i + curr->gap.x] == '.' && curr->next != NULL)
 	{
 		nb--;
