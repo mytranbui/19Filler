@@ -157,7 +157,7 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		nb--;
 		curr = curr->next;
 	}
-	while (f->map.tab[j + curr->gap.y][i + curr->gap.x] == '.' && curr->next != NULL)
+	while (f->map.tab[j][i] == '.' && curr->next != NULL)
 	{
 		nb--;
 		// if (f->piece.min.y != 0 && f->piece.min.x != 0 && f->map.tab[j][i] == 'O')
