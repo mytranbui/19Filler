@@ -142,29 +142,30 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 	nb = curr->nb;
 	fprintf(ID, "CHECKCHECK BF nb=%d\n",nb);
 	fclose(ID);
-	if ((curr->gap.y == 0 && curr->gap.x == 0) && f->map.tab[j][i] == 'O')
-	{
-		nb--;
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "CHECKCHECK 00 nb=%d\n", nb);
-		fclose(ID);
-		curr = curr->next;
-	}
-	else
-	{
+	 nb--;
+	ID = fopen("debugi.txt", "a");
+		fprintf(ID, "===j=%d i=%d====\n", j,i);
+	 	curr = curr->next;
 		i = i + curr->gap.x;
 		j = j + curr->gap.y;
-		nb--;
-		curr = curr->next;
-	}
-	while (f->map.tab[j][i] == '.' && curr->next != NULL)
+		fprintf(ID, "===j=%d i=%d====\n", j,i);
+	 	// curr = curr->next;
+		fprintf(ID, "GAP.y=%d GAP.x=%d\n", curr->gap.y, curr->gap.x);
+		fclose(ID);
+	while (curr->next != NULL && nb >0)
 	{
-		nb--;
-		// if (f->piece.min.y != 0 && f->piece.min.x != 0 && f->map.tab[j][i] == 'O')
-		// {
-		// 	curr->gap.x = 0;
-		// 	curr->gap.y = 0;
-		// }
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "===while\n");
+		fprintf(ID, "===j=%d i=%d====\n", j,i);
+		fprintf(ID, "GAP.y=%d GAP.x=%d\n", curr->gap.y, curr->gap.x);
+		fclose(ID);
+		if (f->map.tab[j][i] == '.')
+		{
+			ID = fopen("debugi.txt", "a");
+		fprintf(ID, "IF[j=%d][i=%d][%c]nb=%d\n",j,i, f->map.tab[j][i],nb);
+		fclose(ID);
+			nb--;
+		}
 		i = i + curr->gap.x;
 		j = j + curr->gap.y;
 		ID = fopen("debugi.txt", "a");
