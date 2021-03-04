@@ -228,8 +228,16 @@ t_star *find_stars(t_object *o)
 				}
 				else
 				{
+					if (tmp.x < 0)
+						ft_abs(tmp.x);
+					if (tmp.y < 0)
+						ft_abs(tmp.y);
 					new->gap.x = i - tmp.x;
 					new->gap.y = j - tmp.y;
+					ID = fopen("debugi.txt", "a");
+					fprintf(ID, "+++j=%d i=%d+++\n", j,i);
+					fprintf(ID, "TMP.y=%d TMP.x=%d\n", tmp.y, tmp.x);
+					fclose(ID);
 				}
 				tmp.x = new->gap.x;
 				tmp.y = new->gap.y;
