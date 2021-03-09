@@ -56,21 +56,21 @@ void	printlst(t_star *head)
 	while (head->next != NULL)
 	{
 		i++;
-		//fprintf(ID, "head->nb=%d\n", head->nb);
-		//fprintf(ID, "gap.x=%d\ngap.y=%d\ni=%d\n", head->gap.x, head->gap.y, i);
+		fprintf(ID, "head->nb=%d\n", head->nb);
+		fprintf(ID, "gap.x=%d\ngap.y=%d\ni=%d\n", head->gap.x, head->gap.y, i);
 		head = head->next;
 	}
 	fclose(ID);
 }
 
-t_point	*init_point(t_point *p)
+t_point	*init_pt(t_point *p)
 {
 	p->x = 0;
 	p->y = 0;
 	return (p);
 }
 
-t_point	*assign_point(t_point *p, int x, int y)
+t_point	*assign_pt(t_point *p, int x, int y)
 {
 	p->x = x;
 	p->y = y;

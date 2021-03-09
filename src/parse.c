@@ -45,7 +45,7 @@ void init_object(t_object *o)
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;
-	init_point(&o->min);
+	init_pt(&o->min);
 }
 
 void fill_object(t_object *o, unsigned int start)
@@ -113,14 +113,13 @@ t_star *find_stars(t_object *o)
 	t_star	*head;
 	t_star	*new;
 	t_point	tmp;
-	int kk=0;
 
 	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
 		return (NULL);
-	init_point(&head->gap);
+	init_pt(&head->gap);
 	head->nb = 0;
 	new = head;
-	init_point(&tmp);
+	init_pt(&tmp);
 	j = 0;
 	while (j < o->height)
 	{
@@ -131,28 +130,26 @@ t_star *find_stars(t_object *o)
 			{
 				if (!(new->next = (t_star*)ft_memalloc(sizeof(t_star))))
 					return (lstdel_star(&head));
-				head->nb++;
-				if (head->nb == 1)
+				if (++head->nb == 1)
 				{
-					assign_point(&tmp, i, j);
-					assign_point(&o->min, i, j);
+					o->min = *assign_pt(&tmp, i, j);
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "TMP.y=%d TMP.x=%d\n", tmp.y, tmp.x);
 					fprintf(ID, "o->min.y=%d o->min.x=%d\n", o->min.y, o->min.x);
 					fclose(ID);
-					assign_point(&new->gap, tmp.x, tmp.y);
+					assign_pt(&new->gap, tmp.x, tmp.y);
 				}
 				else
 				{
-					assign_point(&new->gap, i - tmp.x, j - tmp.y);
+					assign_pt(&new->gap, i - tmp.x, j - tmp.y);
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID,"%d(gap.x) = %d(i) - %d(tmp.x)\n",new->gap.x, i, tmp.x);
 					fprintf(ID,"%d(gap.y) = %d(j) - %d(tmp.y)\n",new->gap.y, j, tmp.y);
 					fclose(ID);
 				}
-				assign_point(&tmp, i, j);
+				assign_pt(&tmp, i, j);
 				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "[%d]GAP.y=%d GAP.x=%d\n",kk++, new->gap.y, new->gap.x);
+				fprintf(ID, "[%d]GAP.y=%d GAP.x=%d\n", head->nb, new->gap.y, new->gap.x);
 				fclose(ID);
 				new = new->next;
 			}
@@ -185,11 +182,7 @@ void get_piece(t_filler *f, char *line)
 		fprintf(ID, "P.width  =	%d\n", f->piece.width);
 		fclose(ID);
 		f->s = find_stars(&f->piece);
-		printlst(f->s);
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "STAR.x=%d\n", f->piece.min.x);
-		fprintf(ID, "STAR.y=%d\n", f->piece.min.y);
-		fclose(ID);
+		//printlst(f->s);
 	}
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~get_piece~END\n");

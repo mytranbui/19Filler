@@ -71,7 +71,8 @@ void get_map(t_filler *f, char *line);
 void	find_start(t_filler *f);
 
 void print_tab(t_object *o);
-t_star	*lstdel_star(t_star **head);
 void	printlst(t_star *head);
-t_point	*init_point(t_point *p);
-t_point	*assign_point(t_point *p, int x, int y);
+
+t_star	*lstdel_star(t_star **head);
+t_point	*init_pt(t_point *p);
+t_point	*assign_pt(t_point *p, int x, int y);
