@@ -99,7 +99,7 @@ void	find_start(t_filler *f)
 	//if (f->me.init.x > f->opp.init.y)
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "INITme: x = %d  y = %d\n", f->me.init.x, f->me.init.y);
-	fprintf(ID, "INITopp: x = %d  y = %d\n", f->opp.init.x, f->opp.init.y);
+	fprintf(ID, "INITop: x = %d  y = %d\n", f->opp.init.x, f->opp.init.y);
 	fclose(ID);
 }
 
@@ -176,10 +176,6 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		fprintf(ID, "IF[j=%d][i=%d][%c]nb=%d\n",j,i, f->map.tab[j][i],nb);
 		fclose(ID);
 		}
-		// ID = fopen("debugi.txt", "a");
-		// fprintf(ID, "GAP.y=%d GAP.x=%d\n", curr->gap.y, curr->gap.x);
-		//fprintf(ID, "[j=%d][i=%d][%c] nb=%d\n",j,i, f->map.tab[j][i],nb);
-		// fclose(ID);
 		curr = curr->next;
 	}
 	if (nb == 0)
@@ -236,6 +232,7 @@ ID = fopen("debugi.txt", "a");
 		i = 0;
 		j++;
 	}
+	//not go there ever
 	if (i >= f->map.width && j < f->map.height)
 	{
 		ID = fopen("debugi.txt", "a");

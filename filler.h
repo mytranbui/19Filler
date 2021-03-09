@@ -73,3 +73,4 @@ void	find_start(t_filler *f);
 void print_tab(t_object *o);
 t_star	*lstdel_star(t_star **head);
 void	printlst(t_star *head);
+t_point	*init_point(t_point *p);

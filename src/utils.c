@@ -62,3 +62,10 @@ void	printlst(t_star *head)
 	}
 	fclose(ID);
 }
+
+t_point	*init_point(t_point *p)
+{
+	p->x = 0;
+	p->y = 0;
+	return (p);
+}
