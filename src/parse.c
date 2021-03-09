@@ -85,7 +85,7 @@ void get_map(t_filler *f, char *line)
 	fclose(ID);
 	if (line && !ft_strncmp(line, "Plateau ", 8))
 	{
-		//init_object(&f->map);
+		//init_object(&f->map); working fine without it
 		ID = fopen("debugi.txt", "a");
 		f->map.height = ft_atoi(ft_strchr(line, ' '));
 		f->map.width = ft_atoi(ft_strrchr(line, ' '));
@@ -167,21 +167,6 @@ t_star *find_stars(t_object *o)
 	return (head);
 }
 
-// t_star	store_stars(t_object *o)
-// {
-// 	t_star	*head;
-// 	t_star	*new;
-
-// 	if (!(head = (t_star*)ft_memalloc(sizeof(t_star))))
-// 		return (NULL);
-// 	head->gap.x = 0;
-// 	head->gap.y = 0;
-// 	head->nb = 0;
-// 	new = head;
-// 	new->next = NULL;
-// 	return (head);
-// }
-
 void get_piece(t_filler *f, char *line)
 {
 	FILE *ID = fopen("debugi.txt", "a");
@@ -189,7 +174,7 @@ void get_piece(t_filler *f, char *line)
 
 	if (line && !ft_strncmp(line, "Piece ", 6))
 	{
-		//init_object(&f->piece);
+		//init_object(&f->piece); working fine without it
 		fprintf(ID, "~get_piece~\n");
 		fclose(ID);
 		f->piece.height = ft_atoi(ft_strchr(line, ' '));
@@ -200,8 +185,6 @@ void get_piece(t_filler *f, char *line)
 		fprintf(ID, "P.width  =	%d\n", f->piece.width);
 		fclose(ID);
 		f->s = find_stars(&f->piece);
-		//head = find_stars(&f->piece);
-		//f->s = head;
 		printlst(f->s);
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "STAR.x=%d\n", f->piece.min.x);
