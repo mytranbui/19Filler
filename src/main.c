@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:22:10 by mbui              #+#    #+#             */
-/*   Updated: 2021/02/17 15:44:00 by mbui             ###   ########.fr       */
+/*   Updated: 2021/03/09 14:01:34 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 	nb = curr->nb;
 	fprintf(ID, "CHECKCHECK BF nb=%d\n",nb);
 	fclose(ID);
-	 nb--;
+	nb--;
 	// ID = fopen("debugi.txt", "a");
 	// 	fprintf(ID, "===j=%d i=%d====\n", j,i);
 	//  	curr = curr->next;
@@ -157,7 +157,7 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "SKIP\n");
 		fclose(ID);
-	  	curr = curr->next;
+		curr = curr->next;
 	}
 	while (curr->next != NULL && nb >0)
 	{
@@ -173,8 +173,8 @@ int checkcheck(t_filler *f, t_star **head, int j, int i)
 		{
 			nb--;
 			ID = fopen("debugi.txt", "a");
-		fprintf(ID, "IF[j=%d][i=%d][%c]nb=%d\n",j,i, f->map.tab[j][i],nb);
-		fclose(ID);
+			fprintf(ID, "IF[j=%d][i=%d][%c]nb=%d\n",j,i, f->map.tab[j][i],nb);
+			fclose(ID);
 		}
 		curr = curr->next;
 	}
@@ -214,14 +214,14 @@ int	check_place(t_filler *f, int j, int i)
 				f->map.min.x = i;
 				f->map.min.y = j;
 				ID = fopen("debugi.txt", "a");
-	fprintf(ID, "map.minY=%d map.minX=%d\n", f->map.min.y, f->map.min.x);
-	fclose(ID);
+				fprintf(ID, "map.minY=%d map.minX=%d\n", f->map.min.y, f->map.min.x);
+				fclose(ID);
 				kk = checkcheck(f, &f->s, j, i);
 				if (kk==1)
 					return (1);
 				else
 				{
-ID = fopen("debugi.txt", "a");
+					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "-----RECUR\n");
 					fclose(ID);
 					return (check_place(f, j, i + 1));
@@ -236,8 +236,8 @@ ID = fopen("debugi.txt", "a");
 	if (i >= f->map.width && j < f->map.height)
 	{
 		ID = fopen("debugi.txt", "a");
-					fprintf(ID, "-----RECURJJJ\n");
-					fclose(ID);
+		fprintf(ID, "-----RECURJJJ\n");
+		fclose(ID);
 		return (check_place(f, j + 1, 0));
 	}
 	ID = fopen("debugi.txt", "a");

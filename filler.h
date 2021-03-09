@@ -74,3 +74,4 @@ void print_tab(t_object *o);
 t_star	*lstdel_star(t_star **head);
 void	printlst(t_star *head);
 t_point	*init_point(t_point *p);
+t_point	*assign_point(t_point *p, int x, int y);

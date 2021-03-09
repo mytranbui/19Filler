@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:55:26 by mbui              #+#    #+#             */
-/*   Updated: 2021/02/17 15:44:25 by mbui             ###   ########.fr       */
+/*   Updated: 2021/03/09 14:02:04 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,28 +134,23 @@ t_star *find_stars(t_object *o)
 				head->nb++;
 				if (head->nb == 1)
 				{
-					tmp.x = i;
-					tmp.y = j;
-					o->min.x = i;
-					o->min.y = j;
+					assign_point(&tmp, i, j);
+					assign_point(&o->min, i, j);
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "TMP.y=%d TMP.x=%d\n", tmp.y, tmp.x);
 					fprintf(ID, "o->min.y=%d o->min.x=%d\n", o->min.y, o->min.x);
 					fclose(ID);
-					new->gap.x = tmp.x;
-					new->gap.y = tmp.y;
+					assign_point(&new->gap, tmp.x, tmp.y);
 				}
 				else
 				{
-					new->gap.x = i - tmp.x;
-					new->gap.y = j - tmp.y;
+					assign_point(&new->gap, i - tmp.x, j - tmp.y);
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID,"%d(gap.x) = %d(i) - %d(tmp.x)\n",new->gap.x, i, tmp.x);
 					fprintf(ID,"%d(gap.y) = %d(j) - %d(tmp.y)\n",new->gap.y, j, tmp.y);
 					fclose(ID);
 				}
-				tmp.x = i;
-				tmp.y = j;
+				assign_point(&tmp, i, j);
 				ID = fopen("debugi.txt", "a");
 				fprintf(ID, "[%d]GAP.y=%d GAP.x=%d\n",kk++, new->gap.y, new->gap.x);
 				fclose(ID);

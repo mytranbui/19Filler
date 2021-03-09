@@ -69,3 +69,10 @@ t_point	*init_point(t_point *p)
 	p->y = 0;
 	return (p);
 }
+
+t_point	*assign_point(t_point *p, int x, int y)
+{
+	p->x = x;
+	p->y = y;
+	return (p);
+}
