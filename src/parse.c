@@ -15,26 +15,23 @@
 int get_player(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
+	fclose(ID);
 	char *line;
 
-	f->me.init.x = -1;
-	f->me.init.y = -1;
-	f->opp.init.x = -1;
-	f->opp.init.y = -1;
+	assign_pt(&f->me.init, -1, -1);
+	assign_pt(&f->opp.init, -1, -1);
 	get_next_line(0, &line);
-	fprintf(ID, "~~get_player~~\n");
 	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
 			(line[10] == '1' || line[10] == '2'))
 	{
 		f->me.let = (line[10] == '1') ? 'O' : 'X';
 		f->opp.let = (line[10] == '1') ? 'X' : 'O';
 		ft_strdel(&line);
-		fprintf(ID, "ME=%c\n", f->me.let);
-		fprintf(ID, "OP=%c\n", f->opp.let);
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "ME=%c\nOP=%c\n", f->me.let, f->opp.let);
 		fclose(ID);
 		return (1);
 	}
-	fclose(ID);
 	return (-1);
 }
 

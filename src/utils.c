@@ -76,3 +76,15 @@ t_point	*assign_pt(t_point *p, int x, int y)
 	p->y = y;
 	return (p);
 }
+
+void	place(t_filler *f)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "\nPLACE\n");
+	f->res.x = f->map.min.x - f->piece.min.x;
+	f->res.y = f->map.min.y - f->piece.min.y;
+	ft_printf("%d %d\n", f->res.y, f->res.x);
+	fprintf(ID, "minY=%d minX=%d \n", f->piece.min.y, f->piece.min.x);
+	fprintf(ID, "==> %d %d <==\n", f->res.y, f->res.x);
+	fclose(ID);
+}

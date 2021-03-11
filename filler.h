@@ -76,3 +76,4 @@ void	printlst(t_star *head);
 t_star	*lstdel_star(t_star **head);
 t_point	*init_pt(t_point *p);
 t_point	*assign_pt(t_point *p, int x, int y);
+void	place(t_filler *f);

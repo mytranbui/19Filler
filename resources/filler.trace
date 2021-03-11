@@ -1,6 +1,6 @@
-seed = 9608
+seed = 222
 O: error on input
-../mbui.filler: Segfault at 42
+../mbui.filler: Segfault at 14
 players/abanlin.filler won
 Score:
-42AGAINST96
+14AGAINST127
