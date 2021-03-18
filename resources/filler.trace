@@ -1,6 +1,5 @@
-seed = 222
-O: error on input
-../mbui.filler: Segfault at 14
+seed = 8108
+O: timedout
 players/abanlin.filler won
 Score:
-14AGAINST127
+46AGAINST123

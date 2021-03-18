@@ -68,7 +68,7 @@ int debug(int i) //, char *line)
 // 	return (-1);
 // }
 
-int check_sp_pc(t_filler *f, t_star **head, int j, int i)
+int check_sp_pc2(t_filler *f, t_star **head, int j, int i)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	t_star	*curr;
@@ -120,6 +120,59 @@ int check_sp_pc(t_filler *f, t_star **head, int j, int i)
 	}
 }
 
+int check_sp_pc(t_filler *f, t_star **head, int j, int i)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	int nb;
+	int nb2;
+	int i2;
+	int j2;
+	//to make it work
+	t_star *tmp;
+
+	tmp = *head;
+	fprintf(ID, "CHECK_SP_PC\n");
+	fprintf(ID, "TRY j=[%d] i=[%d]\n" ,j ,i);
+	fclose(ID);
+	nb = 0;
+	nb2 = 0;
+	j2 = 0;
+	if (j + f->piece.height > f->map.height || i + f->piece.width > f->map.width)
+		return (-1);
+	while (j2 < f->piece.height)
+	{
+		i2 = 0;
+		while (i2 < f->piece.width)
+		{
+			if (f->piece.tab[j2][i2] == '*' &&
+			f->map.tab[j + j2][i + i2] == '.')
+				nb++;
+			if (f->piece.tab[j2][i2] == '*' &&
+			f->map.tab[j + j2][i + i2] == f->me.let)
+				nb2++;
+			i2++;
+		}
+		j2++;
+	}
+	ID = fopen("debugi.txt", "a");
+		fprintf(ID, "nstar=%d =? nb=%d & nb2=%d\n",f->piece.nstar, nb, nb2);
+		fclose(ID);
+	if (nb == f->piece.nstar - 1 && nb2 == 1)
+	{
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECK_SP_PC OK\n");
+		fclose(ID);
+		return (1);
+	}
+	else
+	{
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "CHECK_SP_PC NO nb=%d\n",nb);
+		fclose(ID);
+		return (-1);
+	}
+}
+
 void	find_start(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
@@ -155,20 +208,23 @@ int find_possible_sp1bis(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
+	int	ret;
 
+	ret = 0;
 	j = 0;
 	while (j < f->map.height)
 	{
 		i = f->map.width - 1;
 		while (i > 0)
 		{
-			if ((f->map.tab[j][i] == f->me.let) &&
-					(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
-					 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
-					 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
-					 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
-			{
-				if (check_sp_pc(f, &f->s, j, i) == 1)
+			// if ((f->map.tab[j][i] == f->me.let) &&
+			// 		(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
+			// 		 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
+			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
+			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
+			// {
+				ret = check_sp_pc(f, &f->s, j, i);
+				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
@@ -177,7 +233,7 @@ int find_possible_sp1bis(t_filler *f)
 					place(f);
 					return (1);
 				}
-			}
+			// }
 			i--;
 		}
 		j++;
@@ -192,20 +248,23 @@ int find_possible_sp1(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
+	int	ret;
 
+	ret = 0;
 	j = 0;
 	while (j < f->map.height)
 	{
 		i = 0;
 		while (i < f->map.width)
 		{
-			if ((f->map.tab[j][i] == f->me.let) &&
-					(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
-					 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
-					 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
-					 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
-			{
-				if (check_sp_pc(f, &f->s, j, i) == 1)
+			// if ((f->map.tab[j][i] == f->me.let) &&
+			// 		(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
+			// 		 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
+			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
+			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
+			// {
+				ret = check_sp_pc(f, &f->s, j, i);
+				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
@@ -214,7 +273,7 @@ int find_possible_sp1(t_filler *f)
 					place(f);
 					return (1);
 				}
-			}
+			// }
 			i++;
 		}
 		j++;
@@ -231,20 +290,23 @@ int find_possible_sp2bis(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
+	int	ret;
 
+	ret = 0;
 	j = f->map.height - 1;
 	while (j > 0)
 	{
 		i = 0;
 		while (i < f->map.width)
 		{
-			if ((f->map.tab[j][i] == f->me.let) &&
-					(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
-					 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
-					 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
-					 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
-			{
-				if (check_sp_pc(f, &f->s, j, i) == 1)
+			// if ((f->map.tab[j][i] == f->me.let) &&
+			// 		(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
+			// 		 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
+			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
+			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
+			// {
+				ret = check_sp_pc(f, &f->s, j, i);
+				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
@@ -253,7 +315,7 @@ int find_possible_sp2bis(t_filler *f)
 					place(f);
 					return (1);
 				}
-			}
+			// }
 			i++;
 		}
 		j--;
@@ -268,20 +330,23 @@ int find_possible_sp2(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
+	int	ret;
 
+	ret = 0;
 	j = f->map.height - 1;
 	while (j > 0)
 	{
 		i = f->map.width - 1;
 		while (i > 0)
 		{
-			if ((f->map.tab[j][i] == f->me.let) &&
-					(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
-					 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
-					 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
-					 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
-			{
-				if (check_sp_pc(f, &f->s, j, i) == 1)
+			// if ((f->map.tab[j][i] == f->me.let) &&
+			// 		(f->map.tab[j][i + 1] == '.' || f->map.tab[j + 1][i] == '.' ||
+			// 		 f->map.tab[j][i - 1] == '.' || f->map.tab[j - 1][i] == '.' ||
+			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
+			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
+			// {
+				ret = check_sp_pc(f, &f->s, j, i);
+				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
@@ -290,7 +355,7 @@ int find_possible_sp2(t_filler *f)
 					place(f);
 					return (1);
 				}
-			}
+			// }
 			i--;
 		}
 		j--;
@@ -317,7 +382,7 @@ void	which_algo(t_filler *f)
 		ID = fopen("debugi.txt", "a");
 	fprintf(ID, "GOING UP\n");
 	fclose(ID);
-		find_possible_sp1(f);
+	find_possible_sp1(f);
 	}
 }
 
