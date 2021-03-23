@@ -131,6 +131,10 @@ int find_possible_sp2bis(t_filler *f)
 		}
 		j--;
 	}
+    ID = fopen("debugi.txt", "a");
+		fprintf(ID, "STOPBIS\n");
+		fclose(ID);
+      //  exit(1);
 	return(-1);
 }
 
@@ -180,6 +184,7 @@ int find_possible_sp3(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "FD_POS_SP_3\n");
+	fprintf(ID, "GOING_RIGHT\n");
 	fclose(ID);
 	int i;
 	int j;
@@ -213,8 +218,8 @@ int find_possible_sp3(t_filler *f)
 		}
 			i--;
 	}
-	if (find_possible_sp2bis(f) == 1)
-		return (1);
+	// if (find_possible_sp2bis(f) == 1)
+	// 	return (1);
 	return(-1);
 }
 
@@ -226,9 +231,9 @@ void	which_algo(t_filler *f)
 	if (f->me.init.y < f->opp.init.y)
 	{
 		ID = fopen("debugi.txt", "a");
-	fprintf(ID, "GOING DOWN\n");
+	fprintf(ID, "GOING DOWNkk\n");
 	fclose(ID);
-		if (!find_possible_sp3(f))
+		if (!find_possible_sp2bis(f))
         {
             ID = fopen("debugi.txt", "a");
 	        fprintf(ID, "EXIT\n");
