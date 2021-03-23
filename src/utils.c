@@ -12,6 +12,7 @@
 
 #include "../filler.h"
 
+//to delete
 void print_tab(t_object *o)
 {
 	FILE *ID = fopen("debugi.txt", "a");
@@ -31,36 +32,15 @@ void print_tab(t_object *o)
 	fclose(ID);
 }
 
-t_star	*lstdel_star(t_star **head)
+//no use rn
+void init_object(t_object *o)
 {
-	t_star	*curr;
-	t_star	*next;
-
-	curr = *head;
-	while (curr != NULL)
-	{
-		next = curr->next;
-		free(curr);
-		curr = next;
-	}
-	*head = NULL;
-	return (NULL);
-}
-
-void	printlst(t_star *head)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	int i;
-
-	i = 0;
-	while (head->next != NULL)
-	{
-		i++;
-		fprintf(ID, "head->nb=%d\n", head->nb);
-		fprintf(ID, "gap.x=%d\ngap.y=%d\ni=%d\n", head->gap.x, head->gap.y, i);
-		head = head->next;
-	}
-	fclose(ID);
+	//if (o->tab)
+	//	free_tab(o->tab, o->height - 1);
+	o->tab = NULL;
+	o->height = 0;
+	o->width = 0;
+	init_pt(&o->min);
 }
 
 t_point	*init_pt(t_point *p)
@@ -75,6 +55,30 @@ t_point	*assign_pt(t_point *p, int x, int y)
 	p->x = x;
 	p->y = y;
 	return (p);
+}
+
+void	get_nbstars(t_object *o)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	int i;
+	int j;
+
+	j = 0;
+	while (j < o->height)
+	{
+		i = 0;
+		while (i < o->width)
+		{
+			if (o->tab[j][i] == '*')
+				o->nstar++;
+			i++;
+		}
+		j++;
+	}
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "nstar=%d\n", o->nstar);
+	fprintf(ID, "~find_star~END\n");
+	fclose(ID);
 }
 
 void	place(t_filler *f)
