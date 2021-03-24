@@ -70,7 +70,7 @@ int		find_possible_sp1bis(t_filler *f);
 int		find_possible_sp2(t_filler *f);
 int		find_possible_sp2bis(t_filler *f);
 
-t_point	*init_pt(t_point *p);
+// t_point	*init_pt(t_point *p);
 t_point	*assign_pt(t_point *p, int x, int y);
 void	place(t_filler *f);
 #endif

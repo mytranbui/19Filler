@@ -32,23 +32,12 @@ void print_tab(t_object *o)
 	fclose(ID);
 }
 
-//no use rn
-void init_object(t_object *o)
-{
-	//if (o->tab)
-	//	free_tab(o->tab, o->height - 1);
-	o->tab = NULL;
-	o->height = 0;
-	o->width = 0;
-	init_pt(&o->min);
-}
-
-t_point	*init_pt(t_point *p)
-{
-	p->x = 0;
-	p->y = 0;
-	return (p);
-}
+// t_point	*init_pt(t_point *p)
+// {
+// 	p->x = 0;
+// 	p->y = 0;
+// 	return (p);
+// }
 
 t_point	*assign_pt(t_point *p, int x, int y)
 {
@@ -57,9 +46,20 @@ t_point	*assign_pt(t_point *p, int x, int y)
 	return (p);
 }
 
+//no use rn
+void init_object(t_object *o)
+{
+	//if (o->tab)
+	//	free_tab(o->tab, o->height - 1);
+	o->tab = NULL;
+	o->height = 0;
+	o->width = 0;
+	assign_pt(&o->min, 0, 0);
+}
+
 void	get_nbstars(t_object *o)
 {
-	FILE *ID = fopen("debugi.txt", "a");
+	// FILE *ID = fopen("debugi.txt", "a");
 	int i;
 	int j;
 
@@ -75,20 +75,19 @@ void	get_nbstars(t_object *o)
 		}
 		j++;
 	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "nstar=%d\n", o->nstar);
-	fprintf(ID, "~find_star~END\n");
-	fclose(ID);
+	// ID = fopen("debugi.txt", "a");
+	// fprintf(ID, "nstar=%d\n", o->nstar);
+	// fprintf(ID, "~find_star~END\n");
+	// fclose(ID);
 }
 
 void	place(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "\nPLACE\n");
 	f->res.x = f->map.min.x - f->piece.min.x;
 	f->res.y = f->map.min.y - f->piece.min.y;
 	ft_printf("%d %d\n", f->res.y, f->res.x);
 	fprintf(ID, "minY=%d minX=%d \n", f->piece.min.y, f->piece.min.x);
-	fprintf(ID, "==> %d %d <==\n", f->res.y, f->res.x);
+	fprintf(ID, "P L A C E ==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
 }

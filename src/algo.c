@@ -278,12 +278,16 @@ void	which_algo(t_filler *f)
 	fclose(ID);
 		if (find_possible_sp3(f) == -1)
         {
+		    if (find_possible_sp1(f) == -1)
+            {
             ID = fopen("debugi.txt", "a");
 	        fprintf(ID, "EXIT\n");
 	        fclose(ID);
             assign_pt(&f->map.min, 0, 0);
 			place(f);
             exit(1);
+            //exit useful ?
+            }
         }
 	}
 	else if (f->me.init.y >= f->opp.init.y)
