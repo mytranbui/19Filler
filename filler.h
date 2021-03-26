@@ -35,7 +35,6 @@ typedef struct	s_object
 	int 	width;
 	int 	height;
 	char 	**tab;
-	t_point	min;
 	int		nstar;
 }				t_object;
 

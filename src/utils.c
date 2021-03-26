@@ -54,7 +54,6 @@ void init_object(t_object *o)
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;
-	assign_pt(&o->min, 0, 0);
 }
 
 void	get_nbstars(t_object *o)
@@ -84,10 +83,9 @@ void	get_nbstars(t_object *o)
 void	place(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
-	f->res.x = f->map.min.x - f->piece.min.x;
-	f->res.y = f->map.min.y - f->piece.min.y;
 	ft_printf("%d %d\n", f->res.y, f->res.x);
-	fprintf(ID, "minY=%d minX=%d \n", f->piece.min.y, f->piece.min.x);
 	fprintf(ID, "P L A C E ==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
+	f->map.tab = free_tab(f->map.tab, f->map.height - 1);
+	f->piece.tab = free_tab(f->piece.tab, f->piece.height - 1);
 }

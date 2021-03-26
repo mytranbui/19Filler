@@ -1,6 +1,4 @@
-seed = 4564
-O: error on input
-../mbui.filler: Segfault at 126
+seed = 1332
 ../mbui.filler won
 Score:
-126AGAINST1
+305AGAINST0

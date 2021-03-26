@@ -65,26 +65,26 @@ int		find_space(t_filler *f)
 	int x;
 	int y;
 
-	if (f->map.min.y != 0)
-		f->map.min.y--;
-	if (f->map.min.x != 0)
-		f->map.min.x--;
-	while (++f->map.min.y < f->map.height)
+	if (f->res.y != 0)
+		f->res.y--;
+	if (f->res.x != 0)
+		f->res.x--;
+	while (++f->res.y < f->map.height)
 	{
-		while (++f->map.min.x < f->map.width)
+		while (++f->res.x < f->map.width)
 		{
 			l = 0;
-			while (l < f->piece.nstar && f->map.tab[f->map.min.y][f->map.min.x] == '.')
+			while (l < f->piece.nstar && f->map.tab[f->res.y][f->res.x] == '.')
 			{
-				x = f->map.min.x + f->piece.tab[l][0] - f->piece.tab[0][0];
-				y = f->map.min.y + f->piece.tab[l][1] - f->piece.tab[0][1];
+				x = f->res.x + f->piece.tab[l][0] - f->piece.tab[0][0];
+				y = f->res.y + f->piece.tab[l][1] - f->piece.tab[0][1];
 				l++;
 				//l = (y > f-> - 1 || x < 0 || f->map.tab[y][x] != '.') ? 5 : l + 1;
 				if (l == f->piece.nstar)
 					return (1);
 			}
 		}
-		f->map.min.x = -1;
+		f->res.x = -1;
 	}
 	return (-1);
 }
@@ -129,13 +129,13 @@ int find_place(t_filler *f)
 		{
 			if (f->map.tab[j][i] == f->me.c)
 			{
-				f->map.min.x = i;
-				f->map.min.y = j;
+				f->res.x = i;
+				f->res.y = j;
 			}
 			// else if (f->map.tab[j][i] == f->opp.c)
 			// {
-			// 	f->map.min.x = i;
-			// 	f->map.min.y = j;
+			// 	f->res.x = i;
+			// 	f->res.y = j;
 			// }
 			i++;
 		}

@@ -53,9 +53,10 @@ void fill_object(t_object *o, unsigned int start)
 	{
 		if (!(o->tab[i] = ft_strsub(line, start, o->width)))
 			return;
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "%03d %s\n", i, o->tab[i]);
-		fclose(ID);
+		// ID = fopen("debugi.txt", "a");
+		// fprintf(ID, "%03d %s\n", i, o->tab[i]);
+		// fclose(ID);
+		if (line)
 		ft_strdel(&line);
 		i++;
 	}
@@ -100,8 +101,10 @@ void get_map(t_filler *f, char *line)
 	fclose(ID);
 	if (line && !ft_strncmp(line, "Plateau ", 8))
 	{
-		//init_object(&f->map); working fine without it
 		ID = fopen("debugi.txt", "a");
+	fprintf(ID, "KKK\n");
+	fclose(ID);
+		//init_object(&f->map); working fine without it
 		f->map.height = ft_atoi(ft_strchr(line, ' '));
 		f->map.width = ft_atoi(ft_strrchr(line, ' '));
 		ft_strdel(&line);
@@ -112,17 +115,23 @@ void get_map(t_filler *f, char *line)
 		fill_object(&f->map, 4);
 		if (f->me.init.x == -1 && f->me.init.y == -1 && f->opp.init.x == -1 && f->opp.init.y == -1)
 			find_start(f);
+		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "M.height =	%d\n", f->map.height);
 		fprintf(ID, "M.width  =	%d\n", f->map.width);
 		fclose(ID);
 		//return (1);
 	}
 	//	return (-1);
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~get_map~END\n");
+	fclose(ID);
 }
 
 void get_piece(t_filler *f, char *line)
 {
 	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~get_piece~\n");
+	fclose(ID);
 	if (line && !ft_strncmp(line, "Piece ", 6))
 	{
 		//init_object(&f->piece); working fine without it
@@ -140,8 +149,8 @@ void get_piece(t_filler *f, char *line)
 		get_nbstars(&f->piece);
 		//printlst(f->s);
 	}
-	// ID = fopen("debugi.txt", "a");
-	// fprintf(ID, "~get_piece~END\n");
-	// fclose(ID);
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~get_piece~END\n");
+	fclose(ID);
 	//	return (-1);
 }

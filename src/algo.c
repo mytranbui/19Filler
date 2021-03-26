@@ -40,7 +40,7 @@ int find_possible_sp1bis(t_filler *f)
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
 					fclose(ID);
-					assign_pt(&f->map.min, i, j);
+					assign_pt(&f->res, i, j);
 					place(f);
 					return (1);
 				}
@@ -80,7 +80,7 @@ int find_possible_sp1(t_filler *f)
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
 					fclose(ID);
-					assign_pt(&f->map.min, i, j);
+					assign_pt(&f->res, i, j);
 					place(f);
 					return (1);
 				}
@@ -122,7 +122,7 @@ int find_possible_sp2bis(t_filler *f)
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
 					fclose(ID);
-					assign_pt(&f->map.min, i, j);
+					assign_pt(&f->res, i, j);
 					place(f);
 					return (1);
 				}
@@ -166,7 +166,7 @@ int find_possible_sp2(t_filler *f)
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
 					fclose(ID);
-					assign_pt(&f->map.min, i, j);
+					assign_pt(&f->res, i, j);
 					place(f);
 					return (1);
 				}
@@ -209,7 +209,7 @@ int find_possible_sp3(t_filler *f)
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
 					fclose(ID);
-					assign_pt(&f->map.min, i, j);
+					assign_pt(&f->res, i, j);
 					place(f);
 					return (1);
 				}
@@ -252,7 +252,7 @@ int find_possible_sp4(t_filler *f)
 					ID = fopen("debugi.txt", "a");
 					fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
 					fclose(ID);
-					assign_pt(&f->map.min, i, j);
+					assign_pt(&f->res, i, j);
 					place(f);
 					return (1);
 				}
@@ -283,7 +283,7 @@ void	which_algo(t_filler *f)
             ID = fopen("debugi.txt", "a");
 	        fprintf(ID, "EXIT\n");
 	        fclose(ID);
-            assign_pt(&f->map.min, 0, 0);
+            assign_pt(&f->res, 0, 0);
 			place(f);
             exit(1);
             //exit useful ?
