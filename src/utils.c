@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:53:46 by mbui              #+#    #+#             */
-/*   Updated: 2021/02/17 15:44:33 by mbui             ###   ########.fr       */
+/*   Updated: 2021/03/27 16:26:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,14 @@ void	get_nbstars(t_object *o)
 
 void	place(t_filler *f)
 {
+	//static int i = 0;
 	FILE *ID = fopen("debugi.txt", "a");
 	ft_printf("%d %d\n", f->res.y, f->res.x);
 	fprintf(ID, "P L A C E ==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
 	f->map.tab = free_tab(f->map.tab, f->map.height - 1);
 	f->piece.tab = free_tab(f->piece.tab, f->piece.height - 1);
+//	i++;
+//	if (i == 2)
+//		exit(1);
 }

@@ -12,7 +12,7 @@
 
 NAME = mbui.filler
 CC = gcc
-FLG = -Wall -Wextra -Werror
+FLG = -Wall -Wextra -Werror #-fsanitize=address
 SRC_DIR = src/
 SRC = main.c parse.c algo.c utils.c
 LIB = libft/libft.a
