@@ -37,7 +37,7 @@
 // 	return (1);
 // }
 
-int check_sp_pc(t_filler *f, int j, int i)
+int check_place(t_filler *f, int j, int i)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	int nb;
@@ -79,17 +79,14 @@ int check_sp_pc(t_filler *f, int j, int i)
 	if (nb == f->piece.nb - 1 && nb2 == 1)
 	{
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "CHECK_SP_PC OK\n");
+		fprintf(ID, "check_place OK\n");
 		fclose(ID);
 		return (1);
 	}
-	else
-	{
 		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "CHECK_SP_PC NO nb=%d\n",nb);
+		fprintf(ID, "check_place NO nb=%d\n",nb);
 		fclose(ID);
 		return (-1);
-	}
 }
 
 int main(void)

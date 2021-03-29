@@ -34,7 +34,7 @@ int find_possible_sp1bis(t_filler *f)
 			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
 			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
 			// {
-				ret = check_sp_pc(f, j, i);
+				ret = check_place(f, j, i);
 				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
@@ -74,7 +74,7 @@ int find_possible_sp1(t_filler *f)
 			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
 			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
 			// {
-				ret = check_sp_pc(f, j, i);
+				ret = check_place(f, j, i);
 				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
@@ -116,7 +116,7 @@ int find_possible_sp2bis(t_filler *f)
 			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
 			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
 			// {
-				ret = check_sp_pc(f, j, i);
+				ret = check_place(f, j, i);
 				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
@@ -160,7 +160,7 @@ int find_possible_sp2(t_filler *f)
 			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
 			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
 			// {
-				ret = check_sp_pc(f, j, i);
+				ret = check_place(f, j, i);
 				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
@@ -203,7 +203,7 @@ int find_possible_sp3(t_filler *f)
 			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
 			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
 			// {
-				ret = check_sp_pc(f, j, i);
+				ret = check_place(f, j, i);
 				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");
@@ -246,7 +246,7 @@ int find_possible_sp4(t_filler *f)
 			// 		 f->map.tab[j + 1][i + 1] == '.' || f->map.tab[j - 1][i + 1] == '.' ||
 			// 		 f->map.tab[j - 1][i - 1] == '.' || f->map.tab[j + 1][i - 1] == '.'))
 			// {
-				ret = check_sp_pc(f, j, i);
+				ret = check_place(f, j, i);
 				if (ret == 1)
 				{
 					ID = fopen("debugi.txt", "a");

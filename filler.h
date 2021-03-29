@@ -59,7 +59,7 @@ void	find_start(t_filler *f);
 //to delete
 void	print_tab(t_object *o);
 
-int		check_sp_pc(t_filler *f, int j, int i);
+int		check_place(t_filler *f, int j, int i);
 
 void	which_algo(t_filler *f);
 int		find_possible_sp1(t_filler *f);
