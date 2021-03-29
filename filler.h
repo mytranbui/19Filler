@@ -52,7 +52,7 @@ int		get_player(t_filler *f);
 void	init_object(t_object *o);
 void	fill_object(t_object *o, unsigned int start);
 void	get_piece(t_filler *f, char *line);
-void	get_nbstars(t_object *o);
+void	get_nb_chartab(t_object *o, char c);
 void	get_map(t_filler *f, char *line);
 void	find_start(t_filler *f);
 

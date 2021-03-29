@@ -6,21 +6,21 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:55:26 by mbui              #+#    #+#             */
-/*   Updated: 2021/03/09 14:02:04 by mbui             ###   ########.fr       */
+/*   Updated: 2021/03/29 10:23:27 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../filler.h"
 
-int get_player(t_filler *f)
+int		get_player(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~get_player~\n");
 	fclose(ID);
 	char *line;
 
-	assign_pt(&f->me.init, -1, -1);
-	assign_pt(&f->opp.init, -1, -1);
-	get_next_line(0, &line);
+	if (!(get_next_line(0, &line)))
+		return (-1);
 	if (line && !ft_strncmp(line, "$$$ exec p", 10) &&
 			(line[10] == '1' || line[10] == '2'))
 	{
@@ -33,37 +33,6 @@ int get_player(t_filler *f)
 		return (1);
 	}
 	return (-1);
-}
-
-void fill_object(t_object *o, unsigned int start)
-{
-	int i;
-	char *line;
-
-	i = 0;
-	line = NULL;
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~fill_object~\n");
-	fclose(ID);
-	//if (o->tab)
-	//free_tab(o->tab, o->height-1);
-	if (!(o->tab = (char **)ft_memalloc(sizeof(char *) * o->height)))
-		return;
-	while (i < o->height && get_next_line(0, &line) > 0)
-	{
-		if (!(o->tab[i] = ft_strsub(line, start, o->width)))
-			return;
-		// ID = fopen("debugi.txt", "a");
-		// fprintf(ID, "%03d %s\n", i, o->tab[i]);
-		// fclose(ID);
-		if (line)
-		ft_strdel(&line);
-		i++;
-	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~fill_object~END\n");
-	fclose(ID);
-	//return (object);
 }
 
 void	find_start(t_filler *f)
@@ -94,63 +63,81 @@ void	find_start(t_filler *f)
 	fclose(ID);
 }
 
-void get_map(t_filler *f, char *line)
+void	fill_object(t_object *o, unsigned int start)
+{
+	int i;
+	char *line;
+
+	i = 0;
+	line = NULL;
+	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~fill_object~\n");
+	fclose(ID);
+	//if (o->tab)
+	//free_tab(o->tab, o->height-1);
+	if (!(o->tab = (char **)ft_memalloc(sizeof(char *) * o->height)))
+		return;
+	while (i < o->height && get_next_line(0, &line) > 0)
+	{
+		if (!(o->tab[i] = ft_strsub(line, start, o->width)))
+			return;
+		ID = fopen("debugi.txt", "a");
+		fprintf(ID, "%03d %s\n", i, o->tab[i]);
+		fclose(ID);
+		if (line)
+			ft_strdel(&line);
+		i++;
+	}
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "~fill_object~END\n");
+	fclose(ID);
+	//return (object);
+}
+
+void	get_map(t_filler *f, char *line)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~get_map~\n");
 	fclose(ID);
-	if (line && !ft_strncmp(line, "Plateau ", 8))
-	{
-		ID = fopen("debugi.txt", "a");
-	fprintf(ID, "KKK\n");
+	//init_object(&f->map); working fine without it
+	f->map.height = ft_atoi(ft_strchr(line, ' '));
+	f->map.width = ft_atoi(ft_strrchr(line, ' '));
+	// ft_strdel(&line);
+	if (!(get_next_line(0, &line)))
+		return ; // skip line lol
+	if (line)
+		ft_strdel(&line);
+	// ft_strdel(&line);
+	// if (f->map.tab)
+	// 	free_tab(f->map.tab, f->map.height - 1);
+	fill_object(&f->map, 4);
+	if (f->me.init.x == -1 && f->me.init.y == -1 && f->opp.init.x == -1 && f->opp.init.y == -1)
+		find_start(f);
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "M.height =	%d\n", f->map.height);
+	fprintf(ID, "M.width  =	%d\n", f->map.width);
 	fclose(ID);
-		//init_object(&f->map); working fine without it
-		f->map.height = ft_atoi(ft_strchr(line, ' '));
-		f->map.width = ft_atoi(ft_strrchr(line, ' '));
-		ft_strdel(&line);
-		get_next_line(0, &line); // skip line lol
-		ft_strdel(&line);
-		// if (f->map.tab)
-		// 	free_tab(f->map.tab, f->map.height - 1);
-		fill_object(&f->map, 4);
-		if (f->me.init.x == -1 && f->me.init.y == -1 && f->opp.init.x == -1 && f->opp.init.y == -1)
-			find_start(f);
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "M.height =	%d\n", f->map.height);
-		fprintf(ID, "M.width  =	%d\n", f->map.width);
-		fclose(ID);
-		//return (1);
-	}
-	//	return (-1);
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~get_map~END\n");
 	fclose(ID);
 }
 
-void get_piece(t_filler *f, char *line)
+void	get_piece(t_filler *f, char *line)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~get_piece~\n");
 	fclose(ID);
-	if (line && !ft_strncmp(line, "Piece ", 6))
-	{
-		//init_object(&f->piece); working fine without it
-		// fprintf(ID, "~get_piece~\n");
-		// fclose(ID);
-		f->piece.height = ft_atoi(ft_strchr(line, ' '));
-		f->piece.width = ft_atoi(ft_strrchr(line, ' '));
-		fill_object(&f->piece, 0);
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "P.height =	%d\n", f->piece.height);
-		fprintf(ID, "P.width  =	%d\n", f->piece.width);
-		fclose(ID);
-		f->piece.nb = 0;
-		// f->s = find_stars(&f->piece);
-		get_nbstars(&f->piece);
-		//printlst(f->s);
-	}
+	//init_object(&f->piece); working fine without it
+	//ft_strdel(&line); // still reachable leak
+	f->piece.height = ft_atoi(ft_strchr(line, ' '));
+	f->piece.width = ft_atoi(ft_strrchr(line, ' '));
+	fill_object(&f->piece, 0);
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "P.height =	%d\n", f->piece.height);
+	fprintf(ID, "P.width  =	%d\n", f->piece.width);
+	fclose(ID);
+	get_nb_chartab(&f->piece, '*');
 	ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~get_piece~END\n");
 	fclose(ID);
-	//	return (-1);
 }

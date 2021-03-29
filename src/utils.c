@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:53:46 by mbui              #+#    #+#             */
-/*   Updated: 2021/03/27 16:26:57 by mbui             ###   ########.fr       */
+/*   Updated: 2021/03/29 10:23:04 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ void init_object(t_object *o)
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;
+	o->nb = 0;
 }
 
-void	get_nbstars(t_object *o)
+void	get_nb_chartab(t_object *o, char c)
 {
-	// FILE *ID = fopen("debugi.txt", "a");
+	FILE *ID = fopen("debugi.txt", "a");
 	int i;
 	int j;
 
@@ -68,28 +69,28 @@ void	get_nbstars(t_object *o)
 		i = 0;
 		while (i < o->width)
 		{
-			if (o->tab[j][i] == '*')
+			if (o->tab[j][i] == c)
 				o->nb++;
 			i++;
 		}
 		j++;
 	}
-	// ID = fopen("debugi.txt", "a");
-	// fprintf(ID, "nb=%d\n", o->nb);
-	// fprintf(ID, "~find_star~END\n");
-	// fclose(ID);
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "nb=%d\n", o->nb);
+	fprintf(ID, "~find_star~END\n");
+	fclose(ID);
 }
 
 void	place(t_filler *f)
 {
-	//static int i = 0;
+	static int i = 0;
 	FILE *ID = fopen("debugi.txt", "a");
-	ft_printf("%d %d\n", f->res.y, f->res.x);
 	fprintf(ID, "P L A C E ==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
+	ft_printf("%d %d\n", f->res.y, f->res.x);
 	f->map.tab = free_tab(f->map.tab, f->map.height - 1);
 	f->piece.tab = free_tab(f->piece.tab, f->piece.height - 1);
-//	i++;
-//	if (i == 2)
-//		exit(1);
+	i++;
+	if (i == 3)
+		exit(1);
 }

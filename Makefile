@@ -14,7 +14,7 @@ NAME = mbui.filler
 CC = gcc
 FLG = -Wall -Wextra -Werror #-fsanitize=address
 SRC_DIR = src/
-SRC = main.c parse.c algo.c utils.c
+SRC = main.c parse.c algo.c algo2.c utils.c
 LIB = libft/libft.a
 OBJ = $(SRC:.c=.o)
 
