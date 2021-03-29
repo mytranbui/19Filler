@@ -42,8 +42,8 @@ t_point	*assign_pt(t_point *p, int x, int y)
 
 void	init_object(t_object *o)
 {
-	if (o->tab) //works fine without it
-		free_tab(o->tab, o->height - 1);
+	// if (o->tab) //works fine without it
+	// 	free_tab(o->tab, o->height - 1);
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;

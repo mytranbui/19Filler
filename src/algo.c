@@ -19,17 +19,14 @@ int find_possible_sp1bis(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
-	int	ret;
 
-	ret = 0;
 	j = 0;
 	while (j < f->map.height)
 	{
 		i = f->map.width - 1;
 		while (i > 0)
 		{
-			ret = check_place(f, j, i);
-			if (ret == 1)
+			if (check_place(f, j, i) == 1)
 			{
 				place_and_free(f, j, i);
 				return (1);
@@ -48,17 +45,14 @@ int find_possible_sp1(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
-	int	ret;
 
-	ret = 0;
 	j = 0;
 	while (j < f->map.height)
 	{
 		i = 0;
 		while (i < f->map.width)
 		{
-			ret = check_place(f, j, i);
-			if (ret == 1)
+			if (check_place(f, j, i) == 1)
 			{
 				place_and_free(f, j, i);
 				return (1);
@@ -79,17 +73,14 @@ int find_possible_sp2bis(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
-	int	ret;
 
-	ret = 0;
 	j = f->map.height - 1;
 	while (j > 0)
 	{
 		i = 0;
 		while (i < f->map.width)
 		{
-			ret = check_place(f, j, i);
-			if (ret == 1)
+			if (check_place(f, j, i) == 1)
 			{
 				place_and_free(f, j, i);
 				return (1);
@@ -112,17 +103,14 @@ int find_possible_sp2(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
-	int	ret;
 
-	ret = 0;
 	j = f->map.height - 1;
 	while (j > 0)
 	{
 		i = f->map.width - 1;
 		while (i > 0)
 		{
-			ret = check_place(f, j, i);
-			if (ret == 1)
+			if (check_place(f, j, i) == 1)
 			{
 				place_and_free(f, j, i);
 				return (1);
@@ -144,17 +132,14 @@ int find_possible_sp3(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
-	int	ret;
 
-	ret = 0;
 	i = f->map.width - 1;
 	while (i > 0)
 	{
 		j = f->map.height - 1;
 		while (j > 0)
 		{
-			ret = check_place(f, j, i);
-			if (ret == 1)
+			if (check_place(f, j, i) == 1)
 			{
 				place_and_free(f, j, i);
 				return (1);
@@ -176,17 +161,14 @@ int find_possible_sp4(t_filler *f)
 	fclose(ID);
 	int i;
 	int j;
-	int	ret;
 
-	ret = 0;
 	i = 0;
 	while (i < f->map.width)
 	{
 		j = 0;
 		while (j < f->map.height)
 		{
-			ret = check_place(f, j, i);
-			if (ret == 1)
+			if (check_place(f, j, i) == 1)
 			{
 				place_and_free(f, j, i);
 				return (1);

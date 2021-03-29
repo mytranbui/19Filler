@@ -63,7 +63,10 @@ void	fill_object(t_object *o, unsigned int start)
 	while (i < o->height && get_next_line(0, &line) > 0)
 	{
 		if (!(o->tab[i] = ft_strsub(line, start, o->width)))
+		{
+			o->tab = free_tab(o->tab, i);
 			return ;
+		}
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "%03d %s\n", i, o->tab[i]);
 		fclose(ID);
@@ -74,6 +77,9 @@ void	fill_object(t_object *o, unsigned int start)
 	//return (object);
 }
 
+/*
+** line ??: skipping a line from the vm
+*/
 void	get_map(t_filler *f, char *line)
 {
 	init_object(&f->map);
@@ -92,8 +98,6 @@ void	get_map(t_filler *f, char *line)
 void	get_piece(t_filler *f, char *line)
 {
 	init_object(&f->piece);
-	// if (line)
-	// 	ft_strdel(&line); // still reachable leak
 	f->piece.height = ft_atoi(ft_strchr(line, ' '));
 	f->piece.width = ft_atoi(ft_strrchr(line, ' '));
 	fill_object(&f->piece, 0);
