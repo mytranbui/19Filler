@@ -12,7 +12,7 @@
 
 #include "../filler.h"
 
-int find_possible_sp1bis(t_filler *f)
+int possible_sp_ne(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "FD_POS_SP_1BIS\n");
@@ -38,35 +38,8 @@ int find_possible_sp1bis(t_filler *f)
 	return(-1);
 }
 
-int find_possible_sp1(t_filler *f)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "FD_POS_SP_1\n");
-	fclose(ID);
-	int i;
-	int j;
 
-	j = 0;
-	while (j < f->map.height)
-	{
-		i = 0;
-		while (i < f->map.width)
-		{
-			if (check_place(f, j, i) == 1)
-			{
-				place_and_free(f, j, i);
-				return (1);
-			}
-			i++;
-		}
-		j++;
-	}
-	// if (find_possible_sp1bis(f) == 1)
-	// 	return (1);
-	return(-1);
-}
-
-int find_possible_sp2bis(t_filler *f)
+int possible_sp_so(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "FD_POS_SP_2BIS\n");
@@ -96,7 +69,32 @@ int find_possible_sp2bis(t_filler *f)
 	return(-1);
 }
 
-int find_possible_sp2(t_filler *f)
+int possible_sp_no(t_filler *f)
+{
+	FILE *ID = fopen("debugi.txt", "a");
+	fprintf(ID, "FD_POS_SP_1\n");
+	fclose(ID);
+	int i;
+	int j;
+
+	j = 0;
+	while (j < f->map.height)
+	{
+		i = 0;
+		while (i < f->map.width)
+		{
+			if (check_place(f, j, i) == 1)
+			{
+				place_and_free(f, j, i);
+				return (1);
+			}
+			i++;
+		}
+		j++;
+	}
+	return(-1);
+}
+int find_possible_sp_no(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "FD_POS_SP_2\n");
@@ -119,12 +117,12 @@ int find_possible_sp2(t_filler *f)
 		}
 		j--;
 	}
-	if (find_possible_sp2bis(f) == 1)
+	if (possible_sp_so(f) == 1)
 		return (1);
 	return(-1);
 }
 
-int find_possible_sp3(t_filler *f)
+int possible_sp_se(t_filler *f)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "FD_POS_SP_3\n");
@@ -148,8 +146,6 @@ int find_possible_sp3(t_filler *f)
 		}
 		i--;
 	}
-	// if (find_possible_sp2bis(f) == 1)
-	// 	return (1);
 	return(-1);
 }
 
@@ -177,38 +173,54 @@ int find_possible_sp4(t_filler *f)
 		}
 		i++;
 	}
-	// if (find_possible_sp2bis(f) == 1)
-	// 	return (1);
 	return(-1);
 }
 
+// void	which_algo(t_filler *f)
+// {
+// 	FILE *ID = fopen("debugi.txt", "a");
+// 	fprintf(ID, "WHICH_ALGO\n");
+// 	fclose(ID);
+// 	if (f->me.init.y < f->opp.init.y)
+// 	{
+// 		ID = fopen("debugi.txt", "a");
+// 		fprintf(ID, "GOING DOWNkk\n");
+// 		fclose(ID);
+// 		if (possible_sp_se(f) == -1)
+// 		{
+// 			if (possible_sp_no(f) == -1)
+// 			{
+// 				ID = fopen("debugi.txt", "a");
+// 				fprintf(ID, "EXIT\n");
+// 				fclose(ID);
+// 				place_and_free(f, 0, 0);
+// 				exit(1);
+// 			}
+// 		}
+// 	}
+// 	else if (f->me.init.y >= f->opp.init.y)
+// 	{
+// 		ID = fopen("debugi.txt", "a");
+// 		fprintf(ID, "GOING UP\n");
+// 		fclose(ID);
+// 		possible_sp_no(f);
+// 	}
+// }
+
 void	which_algo(t_filler *f)
 {
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "WHICH_ALGO\n");
-	fclose(ID);
 	if (f->me.init.y < f->opp.init.y)
 	{
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "GOING DOWNkk\n");
-		fclose(ID);
-		if (find_possible_sp3(f) == -1)
-		{
-			if (find_possible_sp1(f) == -1)
-			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "EXIT\n");
-				fclose(ID);
-				place_and_free(f, 0, 0);
-				exit(1);
-			}
-		}
+		if (f->me.init.x < f->opp.init.x)
+			possible_sp_ne(f);
+		else if (f->me.init.x >= f->opp.init.x)
+			possible_sp_ne(f);
 	}
 	else if (f->me.init.y >= f->opp.init.y)
 	{
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "GOING UP\n");
-		fclose(ID);
-		find_possible_sp1(f);
+		if (f->me.init.x < f->opp.init.x)
+			possible_sp_ne(f);
+		else if (f->me.init.x >= f->opp.init.x)
+			possible_sp_ne(f);
 	}
 }

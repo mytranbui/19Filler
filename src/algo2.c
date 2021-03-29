@@ -14,23 +14,23 @@
 
 int check_place(t_filler *f, int j, int i)
 {
-	FILE *ID = fopen("debugi.txt", "a");
+	//FILE *ID;// = fopen("debugi.txt", "a");
 	int nb;
 	int nb2;
 	int i2;
 	int j2;
 
-	fprintf(ID, "TRY j=[%d] i=[%d]\n", j, i);
-	fclose(ID);
+	// fprintf(ID, "TRY j=[%d] i=[%d]\n", j, i);
+	// fclose(ID);
 	nb = 0;
 	nb2 = 0;
 	j2 = 0;
 	if (j + f->piece.height > f->map.height ||
 			i + f->piece.width > f->map.width)
 	{
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "OUT OF MAP\n");
-		fclose(ID);
+		// ID = fopen("debugi.txt", "a");
+		// fprintf(ID, "OUT OF MAP\n");
+		// fclose(ID);
 		return (-1);
 	}
 	while (j2 < f->piece.height)
