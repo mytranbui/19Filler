@@ -13,12 +13,13 @@
 #include "../filler.h"
 
 //to delete
-void print_tab(t_object *o)
+void	print_tab(t_object *o)
 {
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "~print_tab~\n");
 	fclose(ID);
 	int j;
+
 	j = 0;
 	while (j < o->height)
 	{
@@ -32,13 +33,6 @@ void print_tab(t_object *o)
 	fclose(ID);
 }
 
-// t_point	*init_pt(t_point *p)
-// {
-// 	p->x = 0;
-// 	p->y = 0;
-// 	return (p);
-// }
-
 t_point	*assign_pt(t_point *p, int x, int y)
 {
 	p->x = x;
@@ -46,11 +40,10 @@ t_point	*assign_pt(t_point *p, int x, int y)
 	return (p);
 }
 
-//no use rn
-void init_object(t_object *o)
+void	init_object(t_object *o)
 {
-	//if (o->tab)
-	//	free_tab(o->tab, o->height - 1);
+	if (o->tab) //works fine without it
+		free_tab(o->tab, o->height - 1);
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;
@@ -59,7 +52,6 @@ void init_object(t_object *o)
 
 void	get_nb_chartab(t_object *o, char c)
 {
-	FILE *ID = fopen("debugi.txt", "a");
 	int i;
 	int j;
 
@@ -75,22 +67,19 @@ void	get_nb_chartab(t_object *o, char c)
 		}
 		j++;
 	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "nb=%d\n", o->nb);
-	fprintf(ID, "~find_star~END\n");
-	fclose(ID);
 }
 
-void	place(t_filler *f)
+void	place_and_free(t_filler *f, int j, int i)
 {
-	// static int i = 0;
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "P L A C E ==> %d %d <==\n", f->res.y, f->res.x);
+	// static int	o = 0;
+	FILE		*ID = fopen("debugi.txt", "a");
+
+	fprintf(ID, "P L A C E ==> %d %d <==\n", j, i);
 	fclose(ID);
-	ft_printf("%d %d\n", f->res.y, f->res.x);
+	ft_printf("%d %d\n", j, i);
 	f->map.tab = free_tab(f->map.tab, f->map.height - 1);
 	f->piece.tab = free_tab(f->piece.tab, f->piece.height - 1);
-	// i++;
-	// if (i == 5)
+	// o++;
+	// if (o == 5)
 	// 	exit(1);
 }

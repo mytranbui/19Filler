@@ -31,11 +31,7 @@ int find_possible_sp1bis(t_filler *f)
 			ret = check_place(f, j, i);
 			if (ret == 1)
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
-				fclose(ID);
-				assign_pt(&f->res, i, j);
-				place(f);
+				place_and_free(f, j, i);
 				return (1);
 			}
 			i--;
@@ -64,11 +60,7 @@ int find_possible_sp1(t_filler *f)
 			ret = check_place(f, j, i);
 			if (ret == 1)
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
-				fclose(ID);
-				assign_pt(&f->res, i, j);
-				place(f);
+				place_and_free(f, j, i);
 				return (1);
 			}
 			i++;
@@ -99,11 +91,7 @@ int find_possible_sp2bis(t_filler *f)
 			ret = check_place(f, j, i);
 			if (ret == 1)
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
-				fclose(ID);
-				assign_pt(&f->res, i, j);
-				place(f);
+				place_and_free(f, j, i);
 				return (1);
 			}
 			i++;
@@ -136,11 +124,7 @@ int find_possible_sp2(t_filler *f)
 			ret = check_place(f, j, i);
 			if (ret == 1)
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
-				fclose(ID);
-				assign_pt(&f->res, i, j);
-				place(f);
+				place_and_free(f, j, i);
 				return (1);
 			}
 			i--;
@@ -172,11 +156,7 @@ int find_possible_sp3(t_filler *f)
 			ret = check_place(f, j, i);
 			if (ret == 1)
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
-				fclose(ID);
-				assign_pt(&f->res, i, j);
-				place(f);
+				place_and_free(f, j, i);
 				return (1);
 			}
 			j--;
@@ -208,11 +188,7 @@ int find_possible_sp4(t_filler *f)
 			ret = check_place(f, j, i);
 			if (ret == 1)
 			{
-				ID = fopen("debugi.txt", "a");
-				fprintf(ID, "PLACE: MAP MIN [j]=%d [i]=%d\n", j, i);
-				fclose(ID);
-				assign_pt(&f->res, i, j);
-				place(f);
+				place_and_free(f, j, i);
 				return (1);
 			}
 			j++;
@@ -241,10 +217,8 @@ void	which_algo(t_filler *f)
 				ID = fopen("debugi.txt", "a");
 				fprintf(ID, "EXIT\n");
 				fclose(ID);
-				assign_pt(&f->res, 0, 0);
-				place(f);
+				place_and_free(f, 0, 0);
 				exit(1);
-				//exit useful ?
 			}
 		}
 	}
