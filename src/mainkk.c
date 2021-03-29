@@ -74,13 +74,13 @@ int		find_space(t_filler *f)
 		while (++f->res.x < f->map.width)
 		{
 			l = 0;
-			while (l < f->piece.nstar && f->map.tab[f->res.y][f->res.x] == '.')
+			while (l < f->piece.nb && f->map.tab[f->res.y][f->res.x] == '.')
 			{
 				x = f->res.x + f->piece.tab[l][0] - f->piece.tab[0][0];
 				y = f->res.y + f->piece.tab[l][1] - f->piece.tab[0][1];
 				l++;
 				//l = (y > f-> - 1 || x < 0 || f->map.tab[y][x] != '.') ? 5 : l + 1;
-				if (l == f->piece.nstar)
+				if (l == f->piece.nb)
 					return (1);
 			}
 		}
@@ -216,7 +216,7 @@ void find_stars(t_object *object)
 	int i;
 	int j;
 
-	object->nstar = 0;
+	object->nb = 0;
 	object->pt.x = object->width;
 	object->pt.y = object->height;
 	j = 0;
@@ -227,7 +227,7 @@ void find_stars(t_object *object)
 		{
 			if (object->tab[j][i] == '*')
 			{
-				object->nstar++;
+				object->nb++;
 				if (i < object->pt.x)
 					object->pt.x = i;
 				if (j < object->pt.y)
@@ -238,7 +238,7 @@ void find_stars(t_object *object)
 		j++;
 	}
 	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "STARNB=%d\n", object->nstar);
+	fprintf(ID, "STARNB=%d\n", object->nb);
 	fclose(ID);
 }
 

@@ -35,7 +35,7 @@ typedef struct	s_object
 	int 	width;
 	int 	height;
 	char 	**tab;
-	int		nstar;
+	int		nb;
 }				t_object;
 
 typedef struct	s_filler
@@ -44,9 +44,7 @@ typedef struct	s_filler
 	t_player	opp;
 	t_object	piece;
 	t_object	map;
-	int			score;
 	t_point		res;
-	t_point		tmp;
 }				t_filler;
 
 int		main(void);

@@ -144,7 +144,7 @@ void get_piece(t_filler *f, char *line)
 		fprintf(ID, "P.height =	%d\n", f->piece.height);
 		fprintf(ID, "P.width  =	%d\n", f->piece.width);
 		fclose(ID);
-		f->piece.nstar = 0;
+		f->piece.nb = 0;
 		// f->s = find_stars(&f->piece);
 		get_nbstars(&f->piece);
 		//printlst(f->s);

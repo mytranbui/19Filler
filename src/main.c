@@ -74,9 +74,9 @@ int check_sp_pc(t_filler *f, int j, int i)
 		j2++;
 	}
 	ID = fopen("debugi.txt", "a");
-		fprintf(ID, "nstar=%d =? nb=%d & nb2=%d\n",f->piece.nstar, nb, nb2);
+		fprintf(ID, "nb=%d =? nb=%d & nb2=%d\n",f->piece.nb, nb, nb2);
 		fclose(ID);
-	if (nb == f->piece.nstar - 1 && nb2 == 1)
+	if (nb == f->piece.nb - 1 && nb2 == 1)
 	{
 		ID = fopen("debugi.txt", "a");
 		fprintf(ID, "CHECK_SP_PC OK\n");

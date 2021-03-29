@@ -69,13 +69,13 @@ void	get_nbstars(t_object *o)
 		while (i < o->width)
 		{
 			if (o->tab[j][i] == '*')
-				o->nstar++;
+				o->nb++;
 			i++;
 		}
 		j++;
 	}
 	// ID = fopen("debugi.txt", "a");
-	// fprintf(ID, "nstar=%d\n", o->nstar);
+	// fprintf(ID, "nb=%d\n", o->nb);
 	// fprintf(ID, "~find_star~END\n");
 	// fclose(ID);
 }
