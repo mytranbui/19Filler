@@ -83,14 +83,14 @@ void	get_nb_chartab(t_object *o, char c)
 
 void	place(t_filler *f)
 {
-	static int i = 0;
+	// static int i = 0;
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "P L A C E ==> %d %d <==\n", f->res.y, f->res.x);
 	fclose(ID);
 	ft_printf("%d %d\n", f->res.y, f->res.x);
 	f->map.tab = free_tab(f->map.tab, f->map.height - 1);
 	f->piece.tab = free_tab(f->piece.tab, f->piece.height - 1);
-	i++;
-	if (i == 3)
-		exit(1);
+	// i++;
+	// if (i == 5)
+	// 	exit(1);
 }

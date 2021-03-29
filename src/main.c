@@ -19,10 +19,10 @@ void	init_filler(t_filler *f)
 	assign_pt(&f->res, 0, 0);
 }
 
-int main(void)
+int		main(void)
 {
-	t_filler f;
-	char *line;
+	t_filler	f;
+	char		*line;
 	int	i;
 	int k;
 
@@ -30,8 +30,8 @@ int main(void)
 	FILE *ID = fopen("debugi.txt", "a");
 	fprintf(ID, "\n\n----------MAIN START----------\n");
 	fclose(ID);
-	line = NULL;
 	i = 0;
+	line = NULL;
 	//ft_bzero(&f, sizeof(t_filler));
 	init_filler(&f);
 	if (!(get_player(&f)))
