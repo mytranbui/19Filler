@@ -62,10 +62,6 @@ int possible_sp_so(t_filler *f)
 		}
 		j--;
 	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "STOPBIS\n");
-	fclose(ID);
-	//  exit(1);
 	return(-1);
 }
 
@@ -117,8 +113,6 @@ int find_possible_sp_no(t_filler *f)
 		}
 		j--;
 	}
-	if (possible_sp_so(f) == 1)
-		return (1);
 	return(-1);
 }
 
@@ -212,15 +206,15 @@ void	which_algo(t_filler *f)
 	if (f->me.init.y < f->opp.init.y)
 	{
 		if (f->me.init.x < f->opp.init.x)
-			possible_sp_ne(f);
+			find_possible_sp_no(f);
 		else if (f->me.init.x >= f->opp.init.x)
-			possible_sp_ne(f);
+			find_possible_sp_no(f);
 	}
 	else if (f->me.init.y >= f->opp.init.y)
 	{
 		if (f->me.init.x < f->opp.init.x)
-			possible_sp_ne(f);
+			find_possible_sp_no(f);
 		else if (f->me.init.x >= f->opp.init.x)
-			possible_sp_ne(f);
+			find_possible_sp_no(f);
 	}
 }

@@ -62,10 +62,10 @@ void			find_start(t_filler *f);
 */
 void			which_algo(t_filler *f);
 int				check_place(t_filler *f, int j, int i);
-int				find_possible_sp1(t_filler *f);
-int				find_possible_sp1bis(t_filler *f);
-int				find_possible_sp2(t_filler *f);
-int				find_possible_sp2bis(t_filler *f);
+int				possible_sp_no(t_filler *f);
+int				possible_sp_ne(t_filler *f);
+int				find_possible_sp_no(t_filler *f);
+int				possible_sp_so(t_filler *f);
 
 /*
 ** utils.c
