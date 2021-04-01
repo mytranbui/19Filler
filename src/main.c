@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 19:22:10 by mbui              #+#    #+#             */
-/*   Updated: 2021/03/29 10:22:57 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/01 17:26:02 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int		main(void)
 			get_piece(&f, line);
 			ID = fopen("debugi.txt", "a");
 			fprintf(ID, "PIECE%d : H=%d & W=%d\n", k++, f.piece.height, f.piece.width);
-		fprintf(ID, "INITme: x = %d  y = %d\n", f.me.init.x, f.me.init.y);
-		fprintf(ID, "INITop: x = %d  y = %d\n", f.opp.init.x, f.opp.init.y);
-		fclose(ID);
+			fprintf(ID, "INITme: x = %d  y = %d\n", f.me.init.x, f.me.init.y);
+			fprintf(ID, "INITop: x = %d  y = %d\n", f.opp.init.x, f.opp.init.y);
+			fclose(ID);
 			which_algo(&f);
 		}
 		ID = fopen("debugi.txt", "a");

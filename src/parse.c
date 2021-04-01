@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 18:55:26 by mbui              #+#    #+#             */
-/*   Updated: 2021/03/29 11:05:09 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/01 17:26:16 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	fill_object(t_object *o, unsigned int start)
 }
 
 /*
-** line 87-88: skips a line from the vm
-*/
+ ** line 87-88: skips a line from the vm
+ */
 
 void	get_map(t_filler *f, char *line)
 {

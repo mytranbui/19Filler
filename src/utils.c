@@ -12,27 +12,6 @@
 
 #include "../filler.h"
 
-//to delete
-void	print_tab(t_object *o)
-{
-	FILE *ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~print_tab~\n");
-	fclose(ID);
-	int j;
-
-	j = 0;
-	while (j < o->height)
-	{
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "%03d %s\n", j, o->tab[j]);
-		fclose(ID);
-		j++;
-	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "~print_tab~END\n");
-	fclose(ID);
-}
-
 t_point	*assign_pt(t_point *p, int x, int y)
 {
 	p->x = x;
@@ -42,8 +21,6 @@ t_point	*assign_pt(t_point *p, int x, int y)
 
 void	init_object(t_object *o)
 {
-	// if (o->tab) //works fine without it
-	// 	free_tab(o->tab, o->height - 1);
 	o->tab = NULL;
 	o->height = 0;
 	o->width = 0;
