@@ -16,6 +16,7 @@ void	init_filler(t_filler *f)
 {
 	assign_pt(&f->me.init, -1, -1);
 	assign_pt(&f->opp.init, -1, -1);
+	f->nb_piece = 0;
 }
 
 int		main(void)
@@ -51,11 +52,9 @@ int		main(void)
 		}
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
-			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "PIECE%d : H=%d & W=%d\n", k++, f.piece.height, f.piece.width);
-			fclose(ID);
 			get_piece(&f, line);
 			ID = fopen("debugi.txt", "a");
+			fprintf(ID, "PIECE%d : H=%d & W=%d\n", k++, f.piece.height, f.piece.width);
 		fprintf(ID, "INITme: x = %d  y = %d\n", f.me.init.x, f.me.init.y);
 		fprintf(ID, "INITop: x = %d  y = %d\n", f.opp.init.x, f.opp.init.y);
 		fclose(ID);

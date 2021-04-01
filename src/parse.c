@@ -52,7 +52,7 @@ void	find_start(t_filler *f)
 
 void	fill_object(t_object *o, unsigned int start)
 {
-	FILE	*ID;// = fopen("debugi.txt", "a");
+	FILE	*ID;
 	int		i;
 	char	*line;
 
@@ -74,19 +74,19 @@ void	fill_object(t_object *o, unsigned int start)
 			ft_strdel(&line);
 		i++;
 	}
-	//return (object);
 }
 
 /*
-** line ??: skipping a line from the vm
+** line 87-88: skips a line from the vm
 */
+
 void	get_map(t_filler *f, char *line)
 {
 	init_object(&f->map);
 	f->map.height = ft_atoi(ft_strchr(line, ' '));
 	f->map.width = ft_atoi(ft_strrchr(line, ' '));
 	if (!(get_next_line(0, &line)))
-		return ; // skip line lol
+		return ;
 	if (line)
 		ft_strdel(&line);
 	fill_object(&f->map, 4);

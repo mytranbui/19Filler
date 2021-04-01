@@ -44,6 +44,7 @@ typedef struct	s_filler
 	t_player	opp;
 	t_object	piece;
 	t_object	map;
+	int			nb_piece;
 }				t_filler;
 
 int				main(void);
@@ -64,7 +65,7 @@ void			which_algo(t_filler *f);
 int				check_place(t_filler *f, int j, int i);
 int				possible_sp_no(t_filler *f);
 int				possible_sp_ne(t_filler *f);
-int				find_possible_sp_no(t_filler *f);
+int				possible_sp_se(t_filler *f);
 int				possible_sp_so(t_filler *f);
 
 /*
