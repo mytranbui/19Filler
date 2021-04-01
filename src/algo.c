@@ -295,4 +295,3 @@ void	which_algo(t_filler *f)
 		}
 	}
 }
-
