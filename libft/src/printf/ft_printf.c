@@ -6,13 +6,13 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 14:59:34 by mbui              #+#    #+#             */
-/*   Updated: 2020/10/16 16:09:42 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 16:34:40 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-t_print		*init_flags(t_print *p)
+t_print	*init_flags(t_print *p)
 {
 	p->width = 0;
 	p->pres = -1;
@@ -27,9 +27,10 @@ t_print		*init_flags(t_print *p)
 	return (p);
 }
 
-t_print		*init_print(const char *format, t_print *p)
+t_print	*init_print(const char *format, t_print *p)
 {
-	if (!(p = (t_print*)ft_memalloc(sizeof(t_print))))
+	p = (t_print *)ft_memalloc(sizeof(t_print));
+	if (!p)
 		return (NULL);
 	p->fmt = format;
 	p->ret = 0;
@@ -44,7 +45,7 @@ static int	ft_printf2(va_list ap, t_print *p, int i)
 	return (i);
 }
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_print	*p;

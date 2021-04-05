@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/28 16:43:22 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/10 16:14:30 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:27:06 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*ft_strjoin_free(char *s1, char *s2, int opt)
 {
 	char			*d;
 
-	if (!(d = ft_strjoin(s1, s2)))
+	d = ft_strjoin(s1, s2);
+	if (!d)
 		return (NULL);
 	if (opt == 1)
 		ft_strdel(&s1);

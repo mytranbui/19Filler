@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:56:00 by mbui              #+#    #+#             */
-/*   Updated: 2019/04/27 12:13:26 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:35:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	i = 0;
 	if (!s || !f)
 		return (NULL);
-	if (!(d = ft_strnew(ft_strlen(s))))
+	d = ft_strnew(ft_strlen(s));
+	if (!d)
 		return (NULL);
 	while (s[i])
 	{

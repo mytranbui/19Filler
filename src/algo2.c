@@ -21,6 +21,7 @@ int	check_place2(t_filler *f, int nb, int nb2)
 
 int	check_place(t_filler *f, int j, int i)
 {
+	FILE *ID;
 	int		nb;
 	int		nb2;
 	t_point	piece_ij;
@@ -28,19 +29,21 @@ int	check_place(t_filler *f, int j, int i)
 	nb = 0;
 	nb2 = 0;
 	piece_ij.y = 0;
-	if (j + f->piece.height > f->map.height ||
-			i + f->piece.width > f->map.width)
+	if (j + f->piece.h > f->map.h || i + f->piece.w > f->map.w)
 		return (-1);
-	while (piece_ij.y < f->piece.height)
+	ID = fopen("debugi.txt", "a");
+	fprintf(ID, "try ji[%d %d]\n", j, i);
+	fclose(ID);
+	while (piece_ij.y < f->piece.h)
 	{
 		piece_ij.x = 0;
-		while (piece_ij.x < f->piece.width)
+		while (piece_ij.x < f->piece.w)
 		{
-			if (f->piece.tab[piece_ij.y][piece_ij.x] == '*' &&
-					f->map.tab[j + piece_ij.y][i + piece_ij.x] == '.')
+			if (f->piece.tab[piece_ij.y][piece_ij.x] == '*'
+				&& f->map.tab[j + piece_ij.y][i + piece_ij.x] == '.')
 				nb++;
-			else if (f->piece.tab[piece_ij.y][piece_ij.x] == '*' &&
-					f->map.tab[j + piece_ij.y][i + piece_ij.x] == f->me.let)
+			else if (f->piece.tab[piece_ij.y][piece_ij.x] == '*'
+				&& f->map.tab[j + piece_ij.y][i + piece_ij.x] == f->me.let)
 				nb2++;
 			piece_ij.x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 11:50:46 by mbui              #+#    #+#             */
-/*   Updated: 2019/09/28 10:27:30 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 12:41:53 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 double	ft_sqrt(double nb)
 {
-	double tmp;
-	double sqrt;
+	double	tmp;
+	double	sqrt;
 
 	tmp = 0;
 	if (nb < 0)

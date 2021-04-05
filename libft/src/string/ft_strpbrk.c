@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 10:50:35 by mbui              #+#    #+#             */
-/*   Updated: 2019/09/27 08:45:08 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:28:28 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strpbrk(const char *s, const char *charset)
 	while (*s)
 	{
 		if (ft_strchr(charset, *s))
-			return (char *)s;
+			return ((char *)s);
 		s++;
 	}
 	return (NULL);

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/21 10:48:01 by mbui              #+#    #+#             */
-/*   Updated: 2019/11/22 14:52:07 by mbui             ###   ########.fr       */
+/*   Created: 2019/06/12 14:20:00 by mbui              #+#    #+#             */
+/*   Updated: 2021/04/05 14:53:19 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
+
+static int	get_line2(const int fd, char **stack, char **line)
+{
+	*line = ft_strdup(stack[fd]);
+	if (!*line)
+		return (-1);
+	ft_strdel(&stack[fd]);
+	return (1);
+}
 
 static int	get_line(const int fd, char **stack, char **line)
 {
@@ -22,9 +31,11 @@ static int	get_line(const int fd, char **stack, char **line)
 		i++;
 	if (stack[fd][i] == '\n')
 	{
-		if (!(*line = ft_strndup(stack[fd], i)))
+		*line = ft_strndup(stack[fd], i);
+		if (!*line)
 			return (-1);
-		if (!(tmp = ft_strsub(stack[fd], i + 1, ft_strlen(stack[fd]))))
+		tmp = ft_strsub(stack[fd], i + 1, ft_strlen(stack[fd]));
+		if (!tmp)
 			return (-1);
 		free(stack[fd]);
 		stack[fd] = tmp;
@@ -32,41 +43,50 @@ static int	get_line(const int fd, char **stack, char **line)
 			ft_strdel(&stack[fd]);
 	}
 	else
-	{
-		if (!(*line = ft_strdup(stack[fd])))
-			return (-1);
-		ft_strdel(&stack[fd]);
-	}
+		get_line2(fd, stack, line);
 	return (1);
+}
+
+static char	*read_file2(const int fd, char *buf, char **stack)
+{
+	char	*tmp;
+
+	if (!stack[fd])
+	{
+		stack[fd] = ft_strdup(buf);
+		if (!stack[fd])
+			return (NULL);
+	}
+	else if (stack[fd])
+	{
+		tmp = stack[fd];
+		stack[fd] = ft_strjoin(tmp, buf);
+		if (!stack[fd])
+			return (NULL);
+		ft_strdel(&tmp);
+	}
+	return (stack[fd]);
 }
 
 static int	read_file(const int fd, char *buf, char **stack)
 {
-	char	*tmp;
 	int		ret;
 
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	ret = read(fd, buf, BUFF_SIZE);
+	while (ret > 0)
 	{
 		buf[ret] = '\0';
+		stack[fd] = read_file2(fd, buf, stack);
 		if (!stack[fd])
-		{
-			if (!(stack[fd] = ft_strdup(buf)))
-				return (-1);
-		}
-		else if (stack[fd])
-		{
-			tmp = stack[fd];
-			if (!(stack[fd] = ft_strjoin(tmp, buf)))
-				return (-1);
-			ft_strdel(&tmp);
-		}
+			return (-1);
 		if (ft_strchr(stack[fd], '\n'))
 			break ;
+		ret = read(fd, buf, BUFF_SIZE);
 	}
 	return (ret);
 }
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	char		buf[BUFF_SIZE + 1];
 	static char	*stack[OPEN_MAX];
@@ -74,7 +94,8 @@ int			get_next_line(const int fd, char **line)
 
 	if (!line || fd < 0 || fd > OPEN_MAX || read(fd, stack[fd], 0) < 0)
 		return (-1);
-	if ((ret = read_file(fd, buf, stack)) < 0)
+	ret = read_file(fd, buf, stack);
+	if (ret < 0)
 		return (-1);
 	else if (stack[fd])
 		get_line(fd, stack, line);

@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:52:37 by mbui              #+#    #+#             */
-/*   Updated: 2019/09/28 10:00:29 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:32:19 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,8 @@ char	*ft_strnew(size_t size)
 {
 	char	*str;
 
-	return (!(str = (char *)ft_memalloc(size + 1)) ? NULL : str);
+	str = (char *)ft_memalloc(size + 1);
+	if (!str)
+		return (NULL);
+	return (str);
 }

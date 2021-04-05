@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:22:40 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/06 18:30:50 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:51:01 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,12 @@ uintmax_t	convert_arg_oux(va_list ap, t_print *p)
 	return (arg);
 }
 
-void		print_(t_print *p)
+void	print_(t_print *p)
 {
 	padding_ze_sp(0, p);
 }
 
-void		conversion(va_list ap, t_print *p)
+void	conversion(va_list ap, t_print *p)
 {
 	if (p->type == 'c')
 		print_c(ap, p);

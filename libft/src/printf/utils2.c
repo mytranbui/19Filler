@@ -6,15 +6,15 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 16:11:13 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/03 21:25:30 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:48:51 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_putstr_len_percent(const char *str, t_print *p)
+int	ft_putstr_len_percent(const char *str, t_print *p)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != '%')

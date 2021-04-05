@@ -22,21 +22,21 @@ t_point	*assign_pt(t_point *p, int x, int y)
 void	init_object(t_object *o)
 {
 	o->tab = NULL;
-	o->height = 0;
-	o->width = 0;
+	o->h = 0;
+	o->w = 0;
 	o->nb = 0;
 }
 
 void	get_nb_chartab(t_object *o, char c)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
-	while (j < o->height)
+	while (j < o->h)
 	{
 		i = 0;
-		while (i < o->width)
+		while (i < o->w)
 		{
 			if (o->tab[j][i] == c)
 				o->nb++;
@@ -46,7 +46,13 @@ void	get_nb_chartab(t_object *o, char c)
 	}
 }
 
-void	place_and_free(t_filler *f, int j, int i)
+void	free_tabs(t_filler *f)
+{
+	f->map.tab = free_tab(f->map.tab, f->map.h - 1);
+	f->piece.tab = free_tab(f->piece.tab, f->piece.h - 1);
+}
+
+void	place(t_filler *f, int j, int i)
 {
 	// static int	o = 0;
 	FILE		*ID = fopen("debugi.txt", "a");
@@ -54,9 +60,8 @@ void	place_and_free(t_filler *f, int j, int i)
 	fprintf(ID, "P L A C E ==> %d %d <==\n", j, i);
 	fclose(ID);
 	ft_printf("%d %d\n", j, i);
-	f->map.tab = free_tab(f->map.tab, f->map.height - 1);
-	f->piece.tab = free_tab(f->piece.tab, f->piece.height - 1);
+	free_tabs(f);
 	// o++;
-	// if (o == 5)
+	// if (o == 1)
 	// 	exit(1);
 }

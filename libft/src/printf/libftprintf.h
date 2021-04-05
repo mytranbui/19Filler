@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 08:56:07 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/15 18:46:26 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:50:36 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "../../libft.h"
 # include <stdarg.h>
 
-typedef struct	s_flag
+typedef struct s_flag
 {
 	int	plus;
 	int	minus;
@@ -27,7 +27,7 @@ typedef struct	s_flag
 	int	maj_l;
 }				t_flag;
 
-typedef struct	s_print
+typedef struct s_print
 {
 	const char	*fmt;
 	int			width;
@@ -73,6 +73,8 @@ void			print_o(uintmax_t arg, t_print *p);
 void			print_u(uintmax_t arg, t_print *p);
 void			print_x(uintmax_t arg, t_print *p);
 void			print_f(long double arg, t_print *p);
+char			*get_int(long double n, t_print *p);
+char			*roundup(long double n, char *str_flt, int i);
 void			print_(t_print *p);
 
 /*

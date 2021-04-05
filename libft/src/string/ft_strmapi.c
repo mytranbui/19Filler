@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 11:57:11 by mbui              #+#    #+#             */
-/*   Updated: 2019/04/27 12:16:10 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:34:17 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	l = ft_strlen(s);
-	if (!(d = ft_strnew(l)))
+	d = ft_strnew(l);
+	if (!d)
 		return (NULL);
 	while (s[i])
 	{

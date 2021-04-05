@@ -148,6 +148,7 @@ SRCS_PRINTF = ft_printf.c \
 			  print_u.c \
 			  print_x.c \
 			  print_f.c \
+			  print_f2.c \
 			  utils.c \
 			  utils2.c \
 

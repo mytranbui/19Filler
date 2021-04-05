@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 10:59:47 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/10 15:55:07 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:08:42 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,46 @@ static int	find_size(long long value, int base)
 	return (len);
 }
 
-char		*ft_itoa_base(long long value, int base, char x)
+static char	*which_str_base(char x)
 {
-	char	*ret;
 	char	*str_base;
-	int		len;
-	int		sign;
 
-	sign = 0;
 	str_base = "0123456789abcdef";
-	x == 'X' ? str_base = "0123456789ABCDEF" : str_base;
-	len = find_size(value, base);
+	if (x == 'X')
+		str_base = "0123456789ABCDEF";
+	return (str_base);
+}
+
+static char	*ft_itoa_base2(long long value, int base)
+{
 	if (base < 2 || base > 16)
 		return (0);
 	if (value == 0)
 		return (ft_strdup("0"));
-	(base == 10 && value < 0) ? sign = 1 && len++ : len;
-	value < 0 ? value = -value : value;
-	if (!(ret = ft_strnew(len)))
+	return (0);
+}
+
+char	*ft_itoa_base(long long value, int base, char x)
+{
+	char	*ret;
+	char	*str_base;
+	int		len;
+	int		no_sign_len;
+
+	str_base = which_str_base(x);
+	len = find_size(value, base);
+	no_sign_len = len;
+	if (base < 2 || base > 16 || value == 0)
+		return (ft_itoa_base2(value, base));
+	if (base == 10 && value < 0)
+		len++;
+	if (value < 0)
+		value = -value;
+	ret = ft_strnew(len);
+	if (!ret)
 		return (NULL);
-	sign ? (ret[0] = '-') : 0;
+	if (no_sign_len < len)
+		ret[0] = '-';
 	while (value)
 	{
 		ret[--len] = str_base[value % base];

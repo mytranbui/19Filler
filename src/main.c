@@ -19,12 +19,12 @@ void	init_filler(t_filler *f)
 	f->nb_piece = 0;
 }
 
-int		main(void)
+int	main(void)
 {
 	t_filler	f;
 	char		*line;
-	int	i;
-	int k;
+	int			i;
+	int			k;
 
 	k = 0;
 	FILE *ID = fopen("debugi.txt", "a");
@@ -47,14 +47,14 @@ int		main(void)
 		{
 			get_map(&f, line);
 			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "MAP : H=%d & W=%d\n", f.map.height, f.map.width);
+			fprintf(ID, "MAP : H=%d & W=%d\n", f.map.h, f.map.w);
 			fclose(ID);
 		}
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
 			get_piece(&f, line);
 			ID = fopen("debugi.txt", "a");
-			fprintf(ID, "PIECE%d : H=%d & W=%d\n", k++, f.piece.height, f.piece.width);
+			fprintf(ID, "PIECE%d : H=%d & W=%d\n", k++, f.piece.h, f.piece.w);
 			fprintf(ID, "INITme: x = %d  y = %d\n", f.me.init.x, f.me.init.y);
 			fprintf(ID, "INITop: x = %d  y = %d\n", f.opp.init.x, f.opp.init.y);
 			fclose(ID);

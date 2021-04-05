@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:08:15 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/01 17:13:51 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/05 18:01:44 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int possible_sp_ne2(t_filler *f)
 	int i;
 	int j;
 
-	i = f->map.width - 1;
-	while (i > 0)
+	i = f->map.w - 1;
+	while (i >= 0)
 	{
 		j = 0;
-		while (j < f->map.height)
+		while (j < f->map.h)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				if (f->nb_piece + f->me.init.y > f->map.height)
-					return (-1);
+				place(f, j, i);
+				// if (f->nb_piece + f->me.init.y > f->map.h)
+				// 	return (-1);
 				return (1);
 			}
 			j++;
@@ -51,17 +51,17 @@ int possible_sp_ne(t_filler *f)
 	int j;
 
 	j = 0;
-	while (j < f->map.height)
+	while (j < f->map.h)
 	{
-		i = f->map.width - 1;
-		while (i > 0)
+		i = f->map.w - 1;
+		while (i >= 0)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				if (f->nb_piece + f->me.init.y > f->map.height)
-					return (-1);
+				place(f, j, i);
+				// if (f->nb_piece + f->me.init.y > f->map.h)
+				// 	return (-1);
 				return (1);
 			}
 			i--;
@@ -80,17 +80,17 @@ int possible_sp_so2(t_filler *f)
 	int j;
 
 	i = 0;
-	while (i < f->map.width)
+	while (i < f->map.w)
 	{
-		j = f->map.height - 1;
-		while (j > 0)
+		j = f->map.h - 1;
+		while (j >= 0)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				if (f->nb_piece + f->me.init.y > f->map.height)
-					return (-1);
+				place(f, j, i);
+				// if (f->nb_piece + f->me.init.y > f->map.h)
+				// 	return (-1);
 				return (1);
 			}
 			j--;
@@ -108,18 +108,18 @@ int possible_sp_so(t_filler *f)
 	int i;
 	int j;
 
-	j = f->map.height - 1;
-	while (j > 0)
+	j = f->map.h - 1;
+	while (j >= 0)
 	{
 		i = 0;
-		while (i < f->map.width)
+		while (i < f->map.w)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				if (f->nb_piece + f->me.init.y > f->map.height)
-					return (-1);
+				place(f, j, i);
+				// if (f->nb_piece + f->me.init.y > f->map.h)
+				// 	return (-1);
 				return (1);
 			}
 			i++;
@@ -137,18 +137,18 @@ int possible_sp_se2(t_filler *f)
 	int i;
 	int j;
 
-	j = f->map.height - 1;
-	while (j > 0)
+	j = f->map.h - 1;
+	while (j >= 0)
 	{
-		i = f->map.width - 1;
-		while (i > 0)
+		i = f->map.w - 1;
+		while (i >= 0)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				if (f->nb_piece + f->me.init.y > f->map.height)
-					return (-1);
+				place(f, j, i);
+				// if (f->nb_piece + f->me.init.y > f->map.h)
+				// 	return (-1);
 				return (1);
 			}
 			i--;
@@ -167,17 +167,17 @@ int possible_sp_se(t_filler *f)
 	int i;
 	int j;
 
-	i = f->map.width - 1;
-	while (i > 0)
+	i = f->map.w - 1;
+	while (i >= 0)
 	{
-		j = f->map.height - 1;
-		while (j > 0)
+		j = f->map.h - 1;
+		while (j >= 0)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				// 		if (f->nb_piece + f->me.init.y > f->map.height)
+				place(f, j, i);
+				// 		if (f->nb_piece + f->me.init.y > f->map.h)
 				// 		{
 				// 			ID = fopen("debugi.txt", "a");
 				// fprintf(ID, "overpiece2\n");
@@ -190,9 +190,6 @@ int possible_sp_se(t_filler *f)
 		}
 		i--;
 	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "-222222\n");
-	fclose(ID);
 	return(-1);
 }
 
@@ -205,17 +202,17 @@ int possible_sp_no2(t_filler *f)
 	int j;
 
 	j = 0;
-	while (j < f->map.height)
+	while (j < f->map.h)
 	{
 		i = 0;
-		while (i < f->map.width)
+		while (i < f->map.w)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				if (f->nb_piece + f->me.init.y > f->map.height)
-					return (-1);
+				place(f, j, i);
+				// if (f->nb_piece + f->me.init.y > f->map.h)
+				// 	return (-1);
 				return (1);
 			}
 			i++;
@@ -234,31 +231,21 @@ int possible_sp_no(t_filler *f)
 	int j;
 
 	i = 0;
-	while (i < f->map.width)
+	while (i < f->map.w)
 	{
 		j = 0;
-		while (j < f->map.height)
+		while (j < f->map.h)
 		{
 			if (check_place(f, j, i) == 1)
 			{
 				f->nb_piece++;
-				place_and_free(f, j, i);
-				// 		if (f->nb_piece + f->me.init.y > f->map.height)
-				// 		{
-				// 			ID = fopen("debugi.txt", "a");
-				// fprintf(ID, "overpiece\n");
-				// fclose(ID);
-				// 			return (-1);
-				// 		}
+				place(f, j, i);
 				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "-1111111\n");
-	fclose(ID);
 	return(-1);
 }
 
@@ -270,13 +257,20 @@ void	which_algo(t_filler *f)
 		{
 			if (possible_sp_se(f) == -1)
 				if (possible_sp_no(f) == -1)
-					exit(EXIT_SUCCESS);
+					if (possible_sp_so(f) == -1)
+					{
+						free_tabs(f);
+						exit(1);
+					}
 		}
 		else if (f->me.init.x >= f->opp.init.x)
 		{
 			if (possible_sp_ne(f) == -1)
 				if (possible_sp_so(f) == -1)
-					exit(EXIT_SUCCESS);
+				{
+					free_tabs(f);
+					exit(1);
+				}
 		}
 	}
 	else if (f->me.init.y >= f->opp.init.y)
@@ -285,13 +279,20 @@ void	which_algo(t_filler *f)
 		{
 			if (possible_sp_so(f) == -1)
 				if (possible_sp_ne(f) == -1)
-					exit(EXIT_SUCCESS);
+				{
+					free_tabs(f);
+					exit(1);
+				}
 		}
 		else if (f->me.init.x >= f->opp.init.x)
 		{
 			if (possible_sp_no(f) == -1)
-				if (possible_sp_se(f) == -1)
-					exit(EXIT_SUCCESS);
+				if (possible_sp_se2(f) == -1)
+				if (possible_sp_so(f) == -1)
+				{
+					free_tabs(f);
+					exit(1);
+				}
 		}
 	}
 }

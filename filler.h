@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:00:32 by mbui              #+#    #+#             */
-/*   Updated: 2021/03/29 12:12:53 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 14:49:56 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,33 @@
 
 # include "libft/libft.h"
 
-//delete, using for fprintf
-# include <stdio.h>
+# include <stdio.h> //ddelete, using for fprintf
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int x;
-	int y;
+	int	y;
 }				t_point;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	char	let;
 	t_point	init;
 }				t_player;
 
-typedef struct	s_object
+/*
+** w = width & h = height
+*/
+
+typedef struct s_object
 {
-	int		width;
-	int		height;
+	int		w;
+	int		h;
 	int		nb;
 	char	**tab;
 }				t_object;
 
-typedef struct	s_filler
+typedef struct s_filler
 {
 	t_player	me;
 	t_player	opp;
@@ -74,5 +77,6 @@ int				possible_sp_so(t_filler *f);
 void			init_object(t_object *o);
 t_point			*assign_pt(t_point *p, int x, int y);
 void			get_nb_chartab(t_object *o, char c);
-void			place_and_free(t_filler *f, int j, int i);
+void			place(t_filler *f, int j, int i);
+void			free_tabs(t_filler *f);
 #endif

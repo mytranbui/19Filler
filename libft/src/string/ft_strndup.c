@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/12 10:23:08 by mbui              #+#    #+#             */
-/*   Updated: 2019/09/28 10:09:45 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 13:32:44 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strndup(const char *s1, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!(dst = ft_strnew(n)))
+	dst = ft_strnew(n);
+	if (!dst)
 		return (NULL);
 	while (s1[i] && i < n)
 	{

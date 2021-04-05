@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2020/11/11 10:06:41 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/02 11:24:29 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 # define BUFF_SIZE 9999
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
 
-typedef struct	s_gnl
+typedef struct s_gnl
 {
 	char	buff[BUFF_SIZE + 1];
 	char	*rest[OPEN_MAX];
