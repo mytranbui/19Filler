@@ -49,6 +49,7 @@ int	main(void)
 			ID = fopen("debugi.txt", "a");
 			fprintf(ID, "MAP : H=%d & W=%d\n", f.map.h, f.map.w);
 			fclose(ID);
+			print_tab(&f.map);
 		}
 		else if (line && !ft_strncmp(line, "Piece ", 6))
 		{
@@ -58,6 +59,7 @@ int	main(void)
 			fprintf(ID, "INITme: x = %d  y = %d\n", f.me.init.x, f.me.init.y);
 			fprintf(ID, "INITop: x = %d  y = %d\n", f.opp.init.x, f.opp.init.y);
 			fclose(ID);
+			print_tab(&f.piece);
 			which_algo(&f);
 		}
 		ID = fopen("debugi.txt", "a");

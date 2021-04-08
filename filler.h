@@ -14,12 +14,11 @@
 # define FILLER_H
 
 # include "libft/libft.h"
-
-# include <stdio.h> //ddelete, using for fprintf
+# include <stdio.h> //using for fprintf
 
 typedef struct s_point
 {
-	int x;
+	int	x;
 	int	y;
 }				t_point;
 
@@ -70,13 +69,23 @@ int				possible_sp_no(t_filler *f);
 int				possible_sp_ne(t_filler *f);
 int				possible_sp_se(t_filler *f);
 int				possible_sp_so(t_filler *f);
+int				possible_sp_last(t_filler *f);
+
+int				possible_sp_no2(t_filler *f);
+int				possible_sp_ne2(t_filler *f);
+int				possible_sp_se2(t_filler *f);
+int				possible_sp_so2(t_filler *f);
 
 /*
-** utils.c
+** utils.c & utils2.c
 */
 void			init_object(t_object *o);
 t_point			*assign_pt(t_point *p, int x, int y);
 void			get_nb_chartab(t_object *o, char c);
 void			place(t_filler *f, int j, int i);
 void			free_tabs(t_filler *f);
+
+int				touch_border_right(t_filler *f);
+int				touch_border_left(t_filler *f);
+void			print_tab(t_object *o);
 #endif

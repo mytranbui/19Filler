@@ -60,7 +60,6 @@ void	find_start(t_filler *f)
 
 void	fill_object(t_object *o, unsigned int start)
 {
-	FILE	*ID;
 	int		i;
 	char	*line;
 
@@ -77,9 +76,6 @@ void	fill_object(t_object *o, unsigned int start)
 			o->tab = free_tab(o->tab, i);
 			return ;
 		}
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "%03d %s\n", i, o->tab[i]);
-		fclose(ID);
 		if (line)
 			ft_strdel(&line);
 		i++;

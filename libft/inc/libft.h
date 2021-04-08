@@ -21,7 +21,7 @@
 
 # define BUFF_SIZE 9999
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
