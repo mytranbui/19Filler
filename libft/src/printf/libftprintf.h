@@ -15,6 +15,12 @@
 # include "../../libft.h"
 # include <stdarg.h>
 
+// # ifdef __linux
+// #  define OPEN_MAX FOPEN_MAX
+// #  define INTMAX_T __INTMAX_T
+// #  define UINTMAX_T __UINTMAX_T
+// # endif
+
 typedef struct s_flag
 {
 	int	plus;

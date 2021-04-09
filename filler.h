@@ -71,11 +71,11 @@ int				possible_sp_se(t_filler *f);
 int				possible_sp_so(t_filler *f);
 int				possible_sp_last(t_filler *f);
 
-int				possible_sp_no2(t_filler *f);
+/*int				possible_sp_no2(t_filler *f);
 int				possible_sp_ne2(t_filler *f);
 int				possible_sp_se2(t_filler *f);
 int				possible_sp_so2(t_filler *f);
-
+*/
 /*
 ** utils.c & utils2.c
 */

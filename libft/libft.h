@@ -17,9 +17,16 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <stdarg.h>
 # include <limits.h>
 
 # define BUFF_SIZE 9999
+
+# ifdef __linux
+#  define OPEN_MAX FOPEN_MAX
+// #  define INTMAX_T __INTMAX_T
+// #  define UINTMAX_T __UINTMAX_T
+# endif
 
 typedef struct s_list
 {
@@ -31,7 +38,7 @@ typedef struct s_list
 typedef struct s_gnl
 {
 	char	buff[BUFF_SIZE + 1];
-	char	*rest[OPEN_MAX];
+	char	*rest[_SC_OPEN_MAX];
 	int		ret;
 	char	*ptr;
 }				t_gnl;
