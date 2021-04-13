@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 08:56:07 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/02 13:50:36 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/13 14:15:31 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define LIBFTPRINTF_H
 # include "../../libft.h"
 # include <stdarg.h>
-
-// # ifdef __linux
-// #  define OPEN_MAX FOPEN_MAX
-// #  define INTMAX_T __INTMAX_T
-// #  define UINTMAX_T __UINTMAX_T
-// # endif
 
 typedef struct s_flag
 {
