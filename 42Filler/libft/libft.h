@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/13 16:17:22 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/13 16:18:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 ** string.h	: use of strerror()
 ** stdarg.h	: use of va_arg(), va_start() and va_end()
 ** limits.h	: use of OPEN_MAX
-** stdint	: compatibility use with Linux for intmax_t and uintmax_t
+** stdint.h	: compatibility use with Linux for intmax_t and uintmax_t
 */
 
 # define BUFF_SIZE 9999
