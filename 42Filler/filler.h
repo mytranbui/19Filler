@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:00:32 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/02 14:49:56 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/13 15:40:20 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct s_point
 	int	y;
 }				t_point;
 
+/*
+** let = letter 'O' or 'X' & init = coords of the starting point
+*/
 typedef struct s_player
 {
 	char	let;
@@ -30,7 +33,6 @@ typedef struct s_player
 /*
 ** w = width & h = height
 */
-
 typedef struct s_object
 {
 	int		w;
