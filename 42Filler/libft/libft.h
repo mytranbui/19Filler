@@ -6,7 +6,7 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/13 14:15:58 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/13 16:17:22 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,25 @@
 # define LIBFT_H
 
 # include <unistd.h>
-# include <stdlib.h>
-# include <stdint.h>
-# include <stdio.h>
-# include <string.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <stdint.h>
+
+/*
+** unistd.h	: use of write()
+** sys/types.h & sys/uio.h : use of read()
+** stdlib.h	: use of malloc(), free() and exit()
+** stdio.h	: use of perror()
+** string.h	: use of strerror()
+** stdarg.h	: use of va_arg(), va_start() and va_end()
+** limits.h	: use of OPEN_MAX
+** stdint	: compatibility use with Linux for intmax_t and uintmax_t
+*/
 
 # define BUFF_SIZE 9999
 
