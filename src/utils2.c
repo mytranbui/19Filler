@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 18:11:25 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/08 18:18:46 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/17 14:05:43 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	touch_border_left(t_filler *f)
 
 int	exit_n_free(t_filler *f)
 {
+	ft_printf("0 0\n");
 	free_tabs(f);
 	exit(1);
 }
