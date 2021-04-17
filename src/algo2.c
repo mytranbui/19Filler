@@ -21,7 +21,6 @@ static int	check_place2(t_filler *f, int nb, int nb2)
 
 int	check_place(t_filler *f, int j, int i)
 {
-	FILE	*ID;
 	int		nb;
 	int		nb2;
 	t_point	piece_ij;
@@ -31,9 +30,6 @@ int	check_place(t_filler *f, int j, int i)
 	piece_ij.y = 0;
 	if (j + f->piece.h > f->map.h || i + f->piece.w > f->map.w)
 		return (-1);
-	ID = fopen("debugi.txt", "a");
-	fprintf(ID, "try ji[%d %d]\n", j, i);
-	fclose(ID);
 	while (piece_ij.y < f->piece.h)
 	{
 		piece_ij.x = 0;
@@ -54,65 +50,39 @@ int	check_place(t_filler *f, int j, int i)
 
 static void	which_algo2(t_filler *f)
 {
-	FILE *ID;
 	if (f->me.init.x < f->opp.init.x)
 	{
-		ID = fopen("debugi.txt","a");
-		fprintf(ID, "3rd OPTION\n");
-		fclose(ID);
 		if (possible_sp_so(f) == -1)
 			if (possible_sp_ne(f) == -1)
 				if (possible_sp_last(f) == -1)
-				{
-					free_tabs(f);
-					exit(1);
-				}
+					exit_n_free(f);
 	}
 	else if (f->me.init.x >= f->opp.init.x)
 	{
-		ID = fopen("debugi.txt","a");
-		fprintf(ID, "4th OPTION\n");
-		fclose(ID);
 		if (possible_sp_no(f) == -1)
 			if (possible_sp_se(f) == -1)
 				if (possible_sp_last(f) == -1)
-				{
-					free_tabs(f);
-					exit(1);
-				}
+					exit_n_free(f);
 	}
 }
 
 void	which_algo(t_filler *f)
 {
-	FILE *ID;
 	if (f->me.init.y < f->opp.init.y)
 	{
 		if (f->me.init.x < f->opp.init.x)
 		{
-			ID = fopen("debugi.txt","a");
-			fprintf(ID, "1ST OPTION\n");
-			fclose(ID);
 			if (possible_sp_se(f) == -1)
 				if (possible_sp_no(f) == -1)
 					if (possible_sp_last(f) == -1)
-					{
-						free_tabs(f);
-						exit(1);
-					}
+						exit_n_free(f);
 		}
 		else if (f->me.init.x >= f->opp.init.x)
 		{
-			ID = fopen("debugi.txt","a");
-			fprintf(ID, "2nd OPTION\n");
-			fclose(ID);
 			if (possible_sp_ne(f) == -1)
 				if (possible_sp_so(f) == -1)
 					if (possible_sp_last(f) == -1)
-					{
-						free_tabs(f);
-						exit(1);
-					}
+						exit_n_free(f);
 		}
 	}
 	else if (f->me.init.y >= f->opp.init.y)

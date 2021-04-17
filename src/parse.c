@@ -83,7 +83,7 @@ void	fill_object(t_object *o, unsigned int start)
 }
 
 /*
-** line 87-88: skips a line from the vm
+** line 94-95: skips a line from the vm
 */
 
 void	get_map(t_filler *f, char *line)

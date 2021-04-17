@@ -54,30 +54,7 @@ void	free_tabs(t_filler *f)
 
 void	place(t_filler *f, int j, int i)
 {
-	// static int	o = 0;
-	FILE		*ID = fopen("debugi.txt", "a");
-
-	fprintf(ID, "P L A C E ==> %d %d <==\n", j, i);
-	fclose(ID);
 	f->nb_piece++;
 	ft_printf("%d %d\n", j, i);
 	free_tabs(f);
-	// o++;
-	// if (o == 1)
-	// 	exit(1);
-}
-
-void	print_tab(t_object *o)
-{
-	FILE *ID;
-	int j;
-
-	j = 0;
-	while (j < o->h)
-	{
-		ID = fopen("debugi.txt", "a");
-		fprintf(ID, "%03d %s\n", j, o->tab[j]);
-		fclose(ID);
-		j++;
-	}
 }

@@ -43,3 +43,9 @@ int	touch_border_left(t_filler *f)
 	}
 	return (-1);
 }
+
+int	exit_n_free(t_filler *f)
+{
+	free_tabs(f);
+	exit(1);
+}

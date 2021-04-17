@@ -6,26 +6,38 @@
 /*   By: mbui <mbui@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 12:53:43 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/02 11:24:29 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/13 16:18:57 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <stdint.h>
+
+/*
+** unistd.h	: use of write()
+** sys/types.h & sys/uio.h : use of read()
+** stdlib.h	: use of malloc(), free() and exit()
+** stdio.h	: use of perror()
+** string.h	: use of strerror()
+** stdarg.h	: use of va_arg(), va_start() and va_end()
+** limits.h	: use of OPEN_MAX
+** stdint.h	: compatibility use with Linux for intmax_t and uintmax_t
+*/
 
 # define BUFF_SIZE 9999
 
 # ifdef __linux
 #  define OPEN_MAX FOPEN_MAX
-// #  define INTMAX_T __INTMAX_T
-// #  define UINTMAX_T __UINTMAX_T
 # endif
 
 typedef struct s_list
@@ -35,10 +47,13 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+/*
+** OPEN_MAX: Maximum number of files that one process can have open at once.
+*/
 typedef struct s_gnl
 {
 	char	buff[BUFF_SIZE + 1];
-	char	*rest[_SC_OPEN_MAX];
+	char	*rest[OPEN_MAX];
 	int		ret;
 	char	*ptr;
 }				t_gnl;

@@ -6,7 +6,7 @@
 /*   By: mbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:00:32 by mbui              #+#    #+#             */
-/*   Updated: 2021/04/02 14:49:56 by mbui             ###   ########.fr       */
+/*   Updated: 2021/04/13 15:40:20 by mbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FILLER_H
 
 # include "libft/libft.h"
-# include <stdio.h> //using for fprintf
 
 typedef struct s_point
 {
@@ -22,6 +21,9 @@ typedef struct s_point
 	int	y;
 }				t_point;
 
+/*
+** let = letter 'O' or 'X' & init = coords of the starting point
+*/
 typedef struct s_player
 {
 	char	let;
@@ -31,7 +33,6 @@ typedef struct s_player
 /*
 ** w = width & h = height
 */
-
 typedef struct s_object
 {
 	int		w;
@@ -71,21 +72,15 @@ int				possible_sp_se(t_filler *f);
 int				possible_sp_so(t_filler *f);
 int				possible_sp_last(t_filler *f);
 
-/*int				possible_sp_no2(t_filler *f);
-int				possible_sp_ne2(t_filler *f);
-int				possible_sp_se2(t_filler *f);
-int				possible_sp_so2(t_filler *f);
-*/
 /*
 ** utils.c & utils2.c
 */
 void			init_object(t_object *o);
 t_point			*assign_pt(t_point *p, int x, int y);
 void			get_nb_chartab(t_object *o, char c);
-void			place(t_filler *f, int j, int i);
-void			free_tabs(t_filler *f);
-
 int				touch_border_right(t_filler *f);
 int				touch_border_left(t_filler *f);
-void			print_tab(t_object *o);
+void			free_tabs(t_filler *f);
+void			place(t_filler *f, int j, int i);
+int				exit_n_free(t_filler *f);
 #endif
